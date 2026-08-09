@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://benbenyaojifen.github.io/magical-cp-library/sitemap.xml
+Sitemap: https://magical-cp-library.vercel.app/sitemap.xml
