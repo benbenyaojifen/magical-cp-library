@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Bad News: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Bad News, Other, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="Bad News — C++ Solution" />
+    <meta property="og:description" content="Bad News: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/bad-news-022/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/bad-news-022/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Bad News — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Bad News — C++ Solution","description":"Bad News: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/bad-news-022/","keywords":["Bad News","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-022">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>Bad News</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · mwc15c3p3</p>
+          <h1>Bad News</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>64 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>022</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/mwc15c3p3" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-022.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-022">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>bad_news.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int n, q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>vector&lt;vector&lt;char&gt;&gt; grid;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>vector&lt;vector&lt;bool&gt;&gt; visited; </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>const vector&lt;pair&lt;int,int&gt;&gt; dirs = {{-1, -1}, {-1, 0}, {-1, 1},{0, -1},{0, 1},{1, -1}, {1, 0}, {1, 1}};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>bool dfs(int x, int y, const string &amp;w, int idx) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    visited[x][y] = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    if (idx == (int) w.size() - 1) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        visited[x][y] = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        return true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    for (auto [dx, dy] : dirs) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        int nx = x + dx;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        int ny = y + dy;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        if (nx &lt; 0 || nx &gt;= n || ny &lt; 0 || ny &gt;= n || visited[nx][ny] || grid[nx][ny] != w[idx + 1]) </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            continue;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        if (dfs(nx, ny, w, idx + 1)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            visited[x][y] = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            return true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    // does not exist</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    visited[x][y] = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    return false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>int main(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    ios::sync_with_stdio(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    cin &gt;&gt; n &gt;&gt; q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    grid.resize(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    for(int i = 0; i &lt; n; i++)grid[i].resize(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    visited.assign(n, vector&lt;bool&gt;(n, false));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        for(int j = 0; j &lt; n; j++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            cin &gt;&gt; grid[i][j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    string _;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    getline(cin, _);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    while(q--&gt; 0){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        string word;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        getline(cin, word);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        for (char &amp;c : word) c = tolower(c);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        bool found = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        for (int i = 0; i &lt; n &amp;&amp; !found; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>            for (int j = 0; j &lt; n &amp;&amp; !found; j++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>                if (grid[i][j] == word[0]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>                    // reset visited</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>                    for (auto &amp;k : visited) </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>                        fill(k.begin(), k.end(), false);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>                    if (dfs(i, j, word, 0)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>                        found = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>                    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>                }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        cout &lt;&lt; (found ? &quot;good puzzle!\n&quot; : &quot;bad puzzle!&quot;) &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/bad-bunnies-021/"><span>← Previous</span><strong>Bad Bunnies</strong></a>
+        <a class="next" href="../../problems/balanced-trees-023/"><span>Next →</span><strong>Balanced Trees</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

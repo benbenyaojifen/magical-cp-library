@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="The Robotic Rush: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="The Robotic Rush, Other, C++, competitive programming solution, Codeforces" />
+    <meta property="og:title" content="The Robotic Rush — C++ Solution" />
+    <meta property="og:description" content="The Robotic Rush: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/the-robotic-rush-220/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/the-robotic-rush-220/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>The Robotic Rush — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The Robotic Rush — C++ Solution","description":"The Robotic Rush: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/the-robotic-rush-220/","keywords":["The Robotic Rush","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-220">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>The Robotic Rush</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">Codeforces · 2185E</p>
+          <h1>The Robotic Rush</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>70 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>220</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://codeforces.com/problemset/problem/2185/E" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-220.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-220">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>E_The_Robotic_Rush.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>typedef long long ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const long long INF = 1e17; //❄️</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>#define int long long</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>void solve() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    int n, m, k; cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    //we want to precompute how much each update will kill</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    vector&lt;int&gt; a(n), b(m);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    for (int i = 0; i &lt; n; i++) cin &gt;&gt; a[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    for (int i = 0; i &lt; m; i++) cin &gt;&gt; b[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    sort(b.begin(), b.end());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    unordered_map&lt;int, int&gt; kill, first;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    unordered_set&lt;int&gt; used;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    string s; cin &gt;&gt; s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    int cur = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    for (int i = 0; i &lt; s.size(); i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    if (s[i] == &#39;L&#39;) cur--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    else cur++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    if (!first.count(cur)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        first[cur] = i + 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>for (int i = 0; i &lt; n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    int x = a[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    int indx = lower_bound(b.begin(), b.end(), x) - b.begin();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    int best_time = INF, dif = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    if (indx &lt; m) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        int d = b[indx] - x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        if (first.count(d)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>            if (first[d] &lt; best_time) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                best_time= first[d];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>                dif = d;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    if (indx &gt; 0) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        int d = b[indx - 1] - x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        if (first.count(d)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            if (first[d] &lt; best_time) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>                best_time = first[d];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>                dif = d;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    if (best_time != INF) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        kill[dif]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    int pos = 0, dead = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>    for (int i = 0; i &lt; s.size(); i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        if (s[i] == &#39;L&#39;) pos--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        else pos++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>        if (!used.count(pos)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>            if (kill.count(pos)) dead += kill[pos];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>            used.insert(pos);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        cout &lt;&lt; n - dead &lt;&lt; &quot; \n&quot;[i == s.size() - 1];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>signed main() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>    int t; cin &gt;&gt; t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    while (t--) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/the-polar-express-219/"><span>← Previous</span><strong>The Polar Express</strong></a>
+        <a class="next" href="../../problems/the-triangle-221/"><span>Next →</span><strong>The Triangle</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

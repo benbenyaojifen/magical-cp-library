@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Balanced Trees: a C++ competitive programming solution in Graphs &amp; trees. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Balanced Trees, Graphs &amp; trees, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="Balanced Trees — C++ Solution" />
+    <meta property="og:description" content="Balanced Trees: a C++ competitive programming solution in Graphs &amp; trees. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/balanced-trees-023/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/balanced-trees-023/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Balanced Trees — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Balanced Trees — C++ Solution","description":"Balanced Trees: a C++ competitive programming solution in Graphs & trees. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/balanced-trees-023/","keywords":["Balanced Trees","Graphs & trees","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-023">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Graphs &amp; trees</span><span>/</span><span>Balanced Trees</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · ccc18s4</p>
+          <h1>Balanced Trees</h1>
+          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <div class="tags"><span>Graphs &amp; trees</span><span>C++</span><span>25 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>023</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/ccc18s4" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-023.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-023">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>S_4_Balanced_Trees.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int inf = 1e9;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const long long INF = 1e17; //❄️</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>unordered_map&lt;ll, ll&gt; memo;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>ll solve(ll n) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    if (n == 1) return 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    if (memo.count(n)) return memo[n];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    ll ans = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for (ll i = 2; i &lt;= n;) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        ll branch_weight = n / i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        ll nxt = n / branch_weight + 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        ans += (nxt - i) * solve(branch_weight);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        i = nxt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    memo[n] = ans;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    return ans;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>int main() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    ll weight; cin &gt;&gt; weight;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    cout &lt;&lt; solve(weight) &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Graphs &amp; trees</p><h2>Continue exploring.</h2><div><a href="../../problems/avocado-trees-019/"><span>Graphs &amp; trees</span><strong>Avocado Trees!</strong></a>
+<a href="../../problems/bobs-portal-travel-034/"><span>Graphs &amp; trees</span><strong>Bobs Portal Travel</strong></a>
+<a href="../../problems/connected-components-052/"><span>Graphs &amp; trees</span><strong>Connected Components</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/bad-news-022/"><span>← Previous</span><strong>Bad News</strong></a>
+        <a class="next" href="../../problems/balancing-bacteria-024/"><span>Next →</span><strong>Balancing Bacteria</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

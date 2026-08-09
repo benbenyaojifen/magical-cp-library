@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="The 67th Permutation Problem: a C++ competitive programming solution in Data structures. Read, copy, or download the implementation." />
+    <meta name="keywords" content="The 67th Permutation Problem, Data structures, C++, competitive programming solution, Codeforces" />
+    <meta property="og:title" content="The 67th Permutation Problem — C++ Solution" />
+    <meta property="og:description" content="The 67th Permutation Problem: a C++ competitive programming solution in Data structures. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/the-67th-permutation-problem-216/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/the-67th-permutation-problem-216/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>The 67th Permutation Problem — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The 67th Permutation Problem — C++ Solution","description":"The 67th Permutation Problem: a C++ competitive programming solution in Data structures. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/the-67th-permutation-problem-216/","keywords":["The 67th Permutation Problem","Data structures","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-216">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Data structures</span><span>/</span><span>The 67th Permutation Problem</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">Codeforces · 2218C</p>
+          <h1>The 67th Permutation Problem</h1>
+          <p class="summary">C++ solution for a competitive programming problem in data structures.</p>
+          <div class="tags"><span>Data structures</span><span>C++</span><span>39 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>216</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://codeforces.com/problemset/problem/2218/C" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-216.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-216">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>C_The_67_th_Permutation_Problem.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e18; //❄️</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>void solve() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n; cin &gt;&gt; n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    n *= 3;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    vector&lt;int&gt; v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    bool f = 1, s = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    int cur = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    int a = n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        if (f) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            cout &lt;&lt; cur &lt;&lt; &quot; &quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            f = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            s = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            cur++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            if (s) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>                cout &lt;&lt; a-- &lt;&lt; &quot; &quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>                s = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>                cout &lt;&lt; a-- &lt;&lt; &quot; &quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>                f = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    cout &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>int main() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    int t; cin &gt;&gt; t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    while (t--) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Data structures</p><h2>Continue exploring.</h2><div><a href="../../problems/and-array-014/"><span>Data structures</span><strong>AND-array</strong></a>
+<a href="../../problems/array-017/"><span>Data structures</span><strong>Array</strong></a>
+<a href="../../problems/binary-array-game-029/"><span>Data structures</span><strong>Binary Array Game</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/the-67th-oeis-problem-215/"><span>← Previous</span><strong>The 67th OEIS Problem</strong></a>
+        <a class="next" href="../../problems/the-great-revegetation-217/"><span>Next →</span><strong>The Great Revegetation</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

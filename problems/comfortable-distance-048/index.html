@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Comfortable Distance: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Comfortable Distance, Other, C++, competitive programming solution, AtCoder" />
+    <meta property="og:title" content="Comfortable Distance — C++ Solution" />
+    <meta property="og:description" content="Comfortable Distance: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/comfortable-distance-048/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/comfortable-distance-048/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Comfortable Distance — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Comfortable Distance — C++ Solution","description":"Comfortable Distance: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/comfortable-distance-048/","keywords":["Comfortable Distance","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-048">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>Comfortable Distance</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">AtCoder · abc449_c</p>
+          <h1>Comfortable Distance</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>36 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>048</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://atcoder.jp/contests/abc449/tasks/abc449_c" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-048.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-048">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>C_Comfortable_Distance.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e18; //❄️</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>int main() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    int n, l, r; cin &gt;&gt; n &gt;&gt; l &gt;&gt; r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    string s; cin &gt;&gt; s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    // int len = r - l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    ll cnt = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    // for (int i = 0; i &lt; s.size(); i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    //     char c = s[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    //     for (int j = min(n - 1, i + l); j &lt;= min(n - 1, j + r); j++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    //         if (j &gt;= i + l &amp;&amp; j &lt;= i + r &amp;&amp; s[j] == c) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    //             cnt++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    //         }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    //     }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    // }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    vector&lt;vector&lt;int&gt;&gt; psa(26, vector&lt;int&gt;(n));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    psa[s[0] - &#39;a&#39;][0] = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    for (int i = 1; i &lt; n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        for (int j = 0; j &lt; 26; j++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            psa[j][i] = psa[j][i - 1];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        psa[s[i] - &#39;a&#39;][i]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        int lft = i + l, rit = min(n - 1, i + r);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        if (lft &gt; rit) continue;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        cnt += (lft &gt; 0 ? psa[s[i] - &#39;a&#39;][rit] - psa[s[i] - &#39;a&#39;][lft - 1] : psa[s[i] - &#39;a&#39;][rit]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    cout &lt;&lt; cnt &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/comfortable-cows-047/"><span>← Previous</span><strong>Comfortable Cows</strong></a>
+        <a class="next" href="../../problems/common-card-choice-049/"><span>Next →</span><strong>Common Card Choice</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

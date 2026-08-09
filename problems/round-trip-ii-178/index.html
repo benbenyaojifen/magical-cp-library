@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Round Trip II: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Round Trip II, Other, C++, competitive programming solution, CSES" />
+    <meta property="og:title" content="Round Trip II — C++ Solution" />
+    <meta property="og:description" content="Round Trip II: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/round-trip-ii-178/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/round-trip-ii-178/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Round Trip II — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Round Trip II — C++ Solution","description":"Round Trip II: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/round-trip-ii-178/","keywords":["Round Trip II","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-178">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>Round Trip II</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">CSES · 1678</p>
+          <h1>Round Trip II</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>67 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>178</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://cses.fi/problemset/task/1678/" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-178.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-178">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>round_trip2.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>void dfs(int u, vector&lt;vector&lt;int&gt;&gt; &amp;adj, vector&lt;int&gt; &amp;parent, vector&lt;int&gt; &amp; colour, vector&lt;int&gt;&amp; cycle, bool &amp;found){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    if(found) return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    colour[u] = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    for(int nxt : adj[u]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        if(found) return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        if(colour[nxt] == 0){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>            parent[nxt] = u;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            dfs(nxt, adj, parent, colour, cycle, found);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        } else if(colour[nxt] == 1){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            // find parent and build cycle</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            int cur = u;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            cycle.push_back(nxt);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            while(cur != nxt){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>                cycle.push_back(cur);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>                cur = parent[cur];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            reverse(cycle.begin(), cycle.end());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            found = true; return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    colour[u] = 2;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>vector&lt;int&gt; find_cycle(vector&lt;vector&lt;int&gt;&gt; &amp;adj){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    vector&lt;int&gt; colour(adj.size()), parent(adj.size()); // if colour[i] == 0, it is not visited, colour[1] = visiting, colour[2] = visited</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    vector&lt;int&gt;cycle;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    bool found = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    for(int i = 1; i &lt; adj.size() &amp;&amp; !found; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        if(colour[i] == 0) dfs(i, adj, parent, colour, cycle, found);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    return cycle;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>int main(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    int n, m; cin &gt;&gt; n &gt;&gt; m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    vector&lt;vector&lt;int&gt;&gt; adj(n + 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    vector&lt;int&gt; indegree(n + 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    for(int i = 0; i &lt; m; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        int a, b; cin &gt;&gt; a &gt;&gt; b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        adj[a].push_back(b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        indegree[b]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    queue&lt;int&gt; q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    for(int i = 1; i &lt; indegree.size(); i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        if(indegree[i] == 0) q.push(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    } </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    int visited = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    while(!q.empty()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>        int cur = q.front(); q.pop(); visited++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>        for(int nxt : adj[cur]){ </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>            if(!(--indegree[nxt])) q.push(nxt);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    if(visited == n){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>        cout &lt;&lt; &quot;IMPOSSIBLE&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        vector&lt;int&gt; cycle = find_cycle(adj);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        cout &lt;&lt; cycle.size() + 1 &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        for(int i = 0; i &lt; cycle.size(); i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>            cout &lt;&lt; cycle[i] &lt;&lt; &quot; &quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        cout &lt;&lt; cycle[0] &lt;&lt; &quot;\n&quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/road-network-177/"><span>← Previous</span><strong>Road Network</strong></a>
+        <a class="next" href="../../problems/royal-guard-179/"><span>Next →</span><strong>Royal Guard</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

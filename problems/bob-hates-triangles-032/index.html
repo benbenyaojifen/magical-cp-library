@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Bob Hates Triangles: a C++ competitive programming solution in Math. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Bob Hates Triangles, Math, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="Bob Hates Triangles — C++ Solution" />
+    <meta property="og:description" content="Bob Hates Triangles: a C++ competitive programming solution in Math. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/bob-hates-triangles-032/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/bob-hates-triangles-032/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Bob Hates Triangles — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Bob Hates Triangles — C++ Solution","description":"Bob Hates Triangles: a C++ competitive programming solution in Math. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/bob-hates-triangles-032/","keywords":["Bob Hates Triangles","Math","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-032">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Math</span><span>/</span><span>Bob Hates Triangles</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · bobhatestriangles</p>
+          <h1>Bob Hates Triangles</h1>
+          <p class="summary">C++ solution for a competitive programming problem in math.</p>
+          <div class="tags"><span>Math</span><span>C++</span><span>16 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>032</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/bobhatestriangles" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-032.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-032">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>bob_hates_triangles.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int main(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios::sync_with_stdio(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n, m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin &gt;&gt; n &gt;&gt; m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    while (m--) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        int u, v; cin &gt;&gt; u &gt;&gt; v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        if (u &lt; v) cout &lt;&lt; u &lt;&lt; &#39; &#39; &lt;&lt; v &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        else cout &lt;&lt; v &lt;&lt; &#39; &#39; &lt;&lt; u &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Math</p><h2>Continue exploring.</h2><div><a href="../../problems/a-square-problem-005/"><span>Math</span><strong>A Square Problem</strong></a>
+<a href="../../problems/absolutely-even-008/"><span>Math</span><strong>Absolutely Even</strong></a>
+<a href="../../problems/bingo-candies-031/"><span>Math</span><strong>Bingo Candies</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/bingo-candies-031/"><span>← Previous</span><strong>Bingo Candies</strong></a>
+        <a class="next" href="../../problems/bob-s-rocks-033/"><span>Next →</span><strong>Bob&#39;s Rocks</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

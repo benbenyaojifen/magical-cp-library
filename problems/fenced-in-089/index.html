@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Fenced In: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Fenced In, Other, C++, competitive programming solution, USACO" />
+    <meta property="og:title" content="Fenced In — C++ Solution" />
+    <meta property="og:description" content="Fenced In: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/fenced-in-089/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/fenced-in-089/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Fenced In — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Fenced In — C++ Solution","description":"Fenced In: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/fenced-in-089/","keywords":["Fenced In","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-089">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>Fenced In</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">USACO · 623</p>
+          <h1>Fenced In</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>105 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>089</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=623" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-089.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-089">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>fenced_in.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include&lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int A, B, n, m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>int ver[2010], hor[2010], v[2010], h[2010];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>vector&lt;tuple&lt;int, int, int&gt;&gt; edges;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>long long ans = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>struct DSU {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>vector&lt;int&gt; e;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>DSU(int N) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>   e = vector&lt;int&gt;(N, -1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>// get representive component (uses path compression)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>int get(int x) { return e[x] &lt; 0 ? x : e[x] = get(e[x]); }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>bool same_set(int a, int b) { return get(a) == get(b); }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>int size(int x) { return -e[get(x)]; }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>bool unite(int x, int y) {  // union by size</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span> x = get(x), y = get(y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span> if (x == y) return false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span> if (e[x] &gt; e[y]) swap(x, y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span> e[x] += e[y];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span> e[y] = x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span> return true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>int main(void){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>   ifstream cin(&quot;fencedin.in&quot;);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>   ofstream cout(&quot;fencedin.out&quot;);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>   cin &gt;&gt; A &gt;&gt; B &gt;&gt; n &gt;&gt; m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>   for(int i = 0; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>       cin &gt;&gt; v[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>   }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>   v[n] = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>   v[n+1] = A;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>   for(int i = 0; i &lt; m; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>       cin &gt;&gt; h[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>   }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>   h[m] = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>   h[m+1] = B;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>   sort(v, v+n+2);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>   sort(h, h+m+2);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>   for(int i = 0; i &lt;= m; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>       int deltay = h[i+1]-h[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>       for(int j = 0; j &lt; n; j++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>           int a = i*(n+1)+j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>           int b = i*(n+1)+j+1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>           edges.push_back(tie(deltay, a, b));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>       }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>   }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>   for(int i = 0; i &lt;= n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>       int deltax = v[i+1]-v[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>       for(int j = 0; j &lt; m; j++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>           int a = j*(n+1)+i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">75</span><span>           int b = (j+1)*(n+1)+i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">76</span><span>           edges.push_back(tie(deltax, a, b));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">77</span><span>       }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">78</span><span>   }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">79</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">80</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">81</span><span>   sort(edges.begin(), edges.end());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">82</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">83</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">84</span><span>   DSU du((n+1)*(m+1));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">85</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">86</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">87</span><span>   for(auto u: edges){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">88</span><span>       if(du.unite(get&lt;1&gt;(u), get&lt;2&gt;(u))){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">89</span><span>           ans += get&lt;0&gt;(u);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">90</span><span>           </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">91</span><span>           // if(du.size(get&lt;1&gt;(u)) == (n+1)*(m+1)){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">92</span><span>           //     cout &lt;&lt; ans &lt;&lt; endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">93</span><span>           //     return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">94</span><span>           // }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">95</span><span>       }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">96</span><span>   }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">97</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">98</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">99</span><span>   cout &lt;&lt; ans &lt;&lt; endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">100</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">101</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">102</span><span>   return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">103</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">104</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">105</span><span> </span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/exponentiation-ii-088/"><span>← Previous</span><strong>Exponentiation II</strong></a>
+        <a class="next" href="../../problems/find-all-cycles-090/"><span>Next →</span><strong>Find All Cycles</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Cool Numbers: a C++ competitive programming solution in Math. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Cool Numbers, Math, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="Cool Numbers — C++ Solution" />
+    <meta property="og:description" content="Cool Numbers: a C++ competitive programming solution in Math. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/cool-numbers-056/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/cool-numbers-056/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Cool Numbers — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Cool Numbers — C++ Solution","description":"Cool Numbers: a C++ competitive programming solution in Math. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/cool-numbers-056/","keywords":["Cool Numbers","Math","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-056">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Math</span><span>/</span><span>Cool Numbers</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · ccc09s1</p>
+          <h1>Cool Numbers</h1>
+          <p class="summary">C++ solution for a competitive programming problem in math.</p>
+          <div class="tags"><span>Math</span><span>C++</span><span>39 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>056</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/ccc09s1" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-056.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-056">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>cool_numbers.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &quot;stdc.h&quot;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int main(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    vector&lt;int&gt; vec;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    for(int i = 0;; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>        int range = pow(i, 6);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        if(range &gt; 1e8) break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>         vec.push_back(range);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    int a, b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    cin &gt;&gt; a &gt;&gt; b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    int cnt, l, r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    l = lower_bound(vec.begin(), vec.end(), a) - vec.begin();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    r = upper_bound(vec.begin(), vec.end(), b) - vec.begin();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    cnt = r - l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    cout &lt;&lt; cnt &lt;&lt; endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>//faster solution using scanf</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>/*</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>#include &lt;stdio.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>#include &lt;math.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>int main()</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>{</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>	int a,b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>	scanf(&quot;%d&quot;,&amp;a);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>	scanf(&quot;%d&quot;,&amp;b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>	int i = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>	int count = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>	while (pow(i,6) &lt;= b) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>		if (pow(i,6) &gt;= a) count++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>		i++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>	}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>	printf(&quot;%d\n&quot;,count);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>	return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>}*/</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Math</p><h2>Continue exploring.</h2><div><a href="../../problems/a-square-problem-005/"><span>Math</span><strong>A Square Problem</strong></a>
+<a href="../../problems/absolutely-even-008/"><span>Math</span><strong>Absolutely Even</strong></a>
+<a href="../../problems/bingo-candies-031/"><span>Math</span><strong>Bingo Candies</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/2spooky4me-055/"><span>← Previous</span><strong>2spooky4me</strong></a>
+        <a class="next" href="../../problems/cops-and-robbers-057/"><span>Next →</span><strong>Cops and Robbers</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

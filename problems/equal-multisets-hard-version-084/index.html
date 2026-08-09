@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Equal Multisets (Hard Version): a C++ competitive programming solution in Data structures. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Equal Multisets (Hard Version), Data structures, C++, competitive programming solution, Codeforces" />
+    <meta property="og:title" content="Equal Multisets (Hard Version) — C++ Solution" />
+    <meta property="og:description" content="Equal Multisets (Hard Version): a C++ competitive programming solution in Data structures. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/equal-multisets-hard-version-084/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/equal-multisets-hard-version-084/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Equal Multisets (Hard Version) — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Equal Multisets (Hard Version) — C++ Solution","description":"Equal Multisets (Hard Version): a C++ competitive programming solution in Data structures. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/equal-multisets-hard-version-084/","keywords":["Equal Multisets (Hard Version)","Data structures","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-084">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Data structures</span><span>/</span><span>Equal Multisets (Hard Version)</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">Codeforces · 2211C2</p>
+          <h1>Equal Multisets (Hard Version)</h1>
+          <p class="summary">C++ solution for a competitive programming problem in data structures.</p>
+          <div class="tags"><span>Data structures</span><span>C++</span><span>65 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>084</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://codeforces.com/problemset/problem/2211/C2" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-084.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-084">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>C_2_Equal_Multisets_Hard_Version.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e18; //❄️</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>void solve() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n, k; cin &gt;&gt; n &gt;&gt; k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    vector&lt;int&gt; a(n), b(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    for (int i = 0; i &lt; n; i++) cin &gt;&gt; a[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for (int i = 0; i &lt; n; i++) cin &gt;&gt; b[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    vector&lt;int&gt; tar(n + 1), used(n + 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    for (int i = 0; i &lt; k; i++) { </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        tar[a[i]]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    for (int i = 0; i &lt; k; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        bool c = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        int f = a[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        for (int j = i + k; j &lt; n; j += k) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            if (a[j] != f) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>                c = 0; </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>                break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        if (!c) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            for (int j = i; j &lt; n; j += k) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>                if (b[j] != -1 &amp;&amp; b[j] != a[j]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>                    cout &lt;&lt; &quot;NO&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>                    return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>                }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            used[a[i]]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            int val = -1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            for (int j = i; j &lt; n; j += k) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>                if (b[j] != -1) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>                    if (val == -1) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>                        val = b[j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>                    } else if (val != b[j]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>                        cout &lt;&lt; &quot;NO&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>                        return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>                    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>                }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            if (val != -1) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>                used[val]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>        if (used[i] &gt; tar[i]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>            cout &lt;&lt; &quot;NO&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>            return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    cout &lt;&lt; &quot;YES&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>int main() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    int t; cin &gt;&gt; t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    while (t--) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Data structures</p><h2>Continue exploring.</h2><div><a href="../../problems/and-array-014/"><span>Data structures</span><strong>AND-array</strong></a>
+<a href="../../problems/array-017/"><span>Data structures</span><strong>Array</strong></a>
+<a href="../../problems/binary-array-game-029/"><span>Data structures</span><strong>Binary Array Game</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/dmopc-16-contest-2-p2-ebola-outbreak-083/"><span>← Previous</span><strong>DMOPC &#39;16 Contest 2 P2 - Ebola Outbreak</strong></a>
+        <a class="next" href="../../problems/aaaa-1-p1-even-odd-sort-085/"><span>Next →</span><strong>AAAA 1 P1 - Even-Odd Sort</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

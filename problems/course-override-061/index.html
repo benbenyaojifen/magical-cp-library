@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Course Override: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Course Override, Other, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="Course Override — C++ Solution" />
+    <meta property="og:description" content="Course Override: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/course-override-061/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/course-override-061/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Course Override — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Course Override — C++ Solution","description":"Course Override: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/course-override-061/","keywords":["Course Override","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-061">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>Course Override</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · ciw25p1</p>
+          <h1>Course Override</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>94 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>061</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/ciw25p1" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-061.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-061">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>course_override.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>// Oh I just realized it is not a greedy problem</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>// should have looked at the constraint</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>//it is a backtracking/dp question</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>//大意了没有闪</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>struct course {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    int s, f, b, e, m, v, total;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>int n, m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>vector&lt;course&gt; a;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>bool bad[21][21];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>bool chose[21];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>long long best = -1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>// index is next course to consider</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>// count is how many chosen so far</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>// sum is total value so far</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>void dfs(int indx, int cnt, long long sum){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    if (cnt + (n - indx) &lt; m) return; // stop if we cannot reach m even if we pick all courses</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    if(indx == n){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        if(cnt &gt;= m){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            best = max(best, sum);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    //if mandatory, we must include it </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    if(a[indx].m){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        bool good = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        //check if conflict with previously chosen courses</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        for(int i = 0; i &lt; indx; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            if(chose[i] &amp;&amp; bad[indx][i]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>                good = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        if(good){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>            chose[indx] = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            dfs(indx + 1, cnt + 1, sum + a[indx].total);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            chose[indx] = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        } // if we cannot chose mandatory, we cannot proceed with the current arrangement since mandatory cannot be satisfied </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        //skip optional course</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        dfs(indx + 1, cnt, sum);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        // if no conflict, try including it</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        bool good = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>         //check if conflict with previously chosen courses</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        for(int i = 0; i &lt; indx; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>            if(chose[i] &amp;&amp; bad[indx][i]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>                good = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>                break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        if(good){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>            chose[indx] = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>            dfs(indx + 1, cnt + 1, sum + a[indx].total);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>            chose[indx] = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>int main(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>    ios::sync_with_stdio(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>    cin &gt;&gt; n &gt;&gt; m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>    a.resize(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>        cin &gt;&gt; a[i].s &gt;&gt; a[i].f &gt;&gt; a[i].b &gt;&gt; a[i].e &gt;&gt; a[i].m &gt;&gt; a[i].v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>        a[i].total = (a[i].f - a[i].s + 1) * (a[i].e - a[i].b + 1) * a[i].v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>    //preprocess conflicting </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>        for(int j = i + 1; j &lt; n; j++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>            bool bad_day = !(a[i].f &lt; a[j].s || a[j].f &lt; a[i].s); // i finishes before j starts or j finishes before i starts</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>            bool bad_time = !(a[i].e &lt; a[j].b || a[j].e &lt; a[i].b); // the same for time</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">75</span><span>            if(bad_day &amp;&amp; bad_time) bad[i][j] = bad[j][i] = true; // conflict if on same day and at same time</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">76</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">77</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">78</span><span>    //check if mandatory days conlfict each other or not , if yes then it is impossible </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">79</span><span>    int count = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">80</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">81</span><span>        if(a[i].m){ // mandatory </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">82</span><span>            count++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">83</span><span>            for(int j = i + 1; j &lt; n; j++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">84</span><span>                if(a[j].m &amp;&amp; (bad[i][j] || bad[j][i])){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">85</span><span>                    cout &lt;&lt; -1 &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">86</span><span>                    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">87</span><span>                }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">88</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">89</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">90</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">91</span><span>    dfs(0, 0, 0LL);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">92</span><span>    cout &lt;&lt; best &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">93</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">94</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/counting-liars-060/"><span>← Previous</span><strong>Counting Liars</strong></a>
+        <a class="next" href="../../problems/course-requirements-062/"><span>Next →</span><strong>Course Requirements</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

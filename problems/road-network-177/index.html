@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Road Network: a C++ competitive programming solution in Graphs &amp; trees. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Road Network, Graphs &amp; trees, C++, competitive programming solution, C++" />
+    <meta property="og:title" content="Road Network — C++ Solution" />
+    <meta property="og:description" content="Road Network: a C++ competitive programming solution in Graphs &amp; trees. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/road-network-177/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/road-network-177/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Road Network — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Road Network — C++ Solution","description":"Road Network: a C++ competitive programming solution in Graphs & trees. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/road-network-177/","keywords":["Road Network","Graphs & trees","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-177">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Graphs &amp; trees</span><span>/</span><span>Road Network</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">C++ · Solution</p>
+          <h1>Road Network</h1>
+          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <div class="tags"><span>Graphs &amp; trees</span><span>C++</span><span>63 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>177</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        
+        <a href="../../solutions/solution-177.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-177">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>Road_Network.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>typedef long long ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int INF = 0x3f3f3f3f; //❄️</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>#define int long long</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>vector&lt;int&gt; parent;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>struct node {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int c, x, y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    node(int c, int x, int y) : c(c), x(x), y(y){}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>struct edge {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    int u, v; double d;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    edge(int u, int v, double d) : u(u), v(v), d(d){}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    bool operator&lt;(const edge&amp; other) const {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        return d &lt; other.d;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>int find(int x) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    if(parent[x] == x) return x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    return parent[x] = find(parent[x]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>void unite(int x, int y) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    x = find(x), y = find(y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    parent[x] = y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>signed main() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    int n, m; cin &gt;&gt; n &gt;&gt; m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    parent.resize(n + 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    for (int i = 0; i &lt;= n; i++) parent[i] = i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    vector&lt;node&gt; vv;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    vector&lt;edge&gt; e;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        int c = i + 1, x, y; cin &gt;&gt; x &gt;&gt; y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        vv.emplace_back(c, x, y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    for (int i = 0; i &lt; m; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        int x, y; cin &gt;&gt; x &gt;&gt; y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        e.emplace_back(x, y, 0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    for (int i = 0; i &lt; vv.size(); i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        auto [c, x, y] = vv[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        for (int j = i + 1; j &lt; vv.size(); j++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>            auto[cc, xx, yy] = vv[j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            double dist = sqrt((xx - x) * (xx - x) + (yy - y) * (yy - y));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>            e.emplace_back(c, cc, dist);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    sort(e.begin(), e.end());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    int cnt = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    double ans = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    for (int i = 0; i &lt; e.size(); i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>        auto[u, v, d] = e[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        if(find(u) != find(v)){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>            unite(u, v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>            cnt++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>            ans += d;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        if (cnt == n - 1) break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    cout &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; ans &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Graphs &amp; trees</p><h2>Continue exploring.</h2><div><a href="../../problems/avocado-trees-019/"><span>Graphs &amp; trees</span><strong>Avocado Trees!</strong></a>
+<a href="../../problems/balanced-trees-023/"><span>Graphs &amp; trees</span><strong>Balanced Trees</strong></a>
+<a href="../../problems/bobs-portal-travel-034/"><span>Graphs &amp; trees</span><strong>Bobs Portal Travel</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/right-maximum-176/"><span>← Previous</span><strong>Right Maximum</strong></a>
+        <a class="next" href="../../problems/round-trip-ii-178/"><span>Next →</span><strong>Round Trip II</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

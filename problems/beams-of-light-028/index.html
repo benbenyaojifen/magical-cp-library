@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Beams of Light: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Beams of Light, Other, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="Beams of Light — C++ Solution" />
+    <meta property="og:description" content="Beams of Light: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/beams-of-light-028/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/beams-of-light-028/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Beams of Light — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Beams of Light — C++ Solution","description":"Beams of Light: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/beams-of-light-028/","keywords":["Beams of Light","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-028">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>Beams of Light</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · ccc26s2</p>
+          <h1>Beams of Light</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>57 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>028</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/ccc26s2" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-028.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-028">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>S_2_Beams_of_Light.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e17;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>void solve1() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n, l, q; cin &gt;&gt; n &gt;&gt; l &gt;&gt; q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    vector&lt;int&gt; diff(n + 2);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    for (int i = 0; i &lt; l; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        int a, b; cin &gt;&gt; a &gt;&gt; b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        diff[max(1, a - b)]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        diff[min(n + 1, a + b + 1)]--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    for (int i = 1; i &lt;= n; i++) diff[i] += diff[i - 1];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    for (int i  = 0; i &lt; q; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        int x; cin &gt;&gt; x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        cout &lt;&lt; (diff[x] ? &quot;Y&quot;: &quot;N&quot;) &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>void solve2() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    int n, l, q; cin &gt;&gt; n &gt;&gt; l &gt;&gt; q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    vector&lt;pair&lt;int, int&gt;&gt; seg;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    for (int i = 0; i &lt; l; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        int a, b; cin &gt;&gt; a &gt;&gt; b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        seg.emplace_back(max(1, a - b), min(n, a + b));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    sort(seg.begin(), seg.end());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    vector&lt;pair&lt;int, int&gt;&gt; ss;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    for (int i = 0, j = 0; i &lt; seg.size(); i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        auto[a, b] = seg[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        j = i + 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        while (j &lt; seg.size() &amp;&amp; seg[j].first &lt;= b) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            b = max(b, seg[j].second);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            j++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        i = j - 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        ss.emplace_back(a, b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    for (int i = 0; i &lt; q; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        int x; cin &gt;&gt; x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        pair p = {x, inf};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        int pos = upper_bound(ss.begin(), ss.end(), p) - ss.begin();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        pos = max(0, pos - 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        auto[a, b] = ss[pos];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        if (x &gt;= a &amp;&amp; x &lt;= b) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>            cout &lt;&lt; &quot;Y&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>            cout &lt;&lt; &quot;N&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>int main() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>    solve1();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/battle-positions-027/"><span>← Previous</span><strong>Battle Positions</strong></a>
+        <a class="next" href="../../problems/binary-array-game-029/"><span>Next →</span><strong>Binary Array Game</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

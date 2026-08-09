@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="A Square Problem: a C++ competitive programming solution in Math. Read, copy, or download the implementation." />
+    <meta name="keywords" content="A Square Problem, Math, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="A Square Problem — C++ Solution" />
+    <meta property="og:description" content="A Square Problem: a C++ competitive programming solution in Math. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/a-square-problem-005/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/a-square-problem-005/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>A Square Problem — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"A Square Problem — C++ Solution","description":"A Square Problem: a C++ competitive programming solution in Math. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/a-square-problem-005/","keywords":["A Square Problem","Math","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-005">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Math</span><span>/</span><span>A Square Problem</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · nccc1j4s2</p>
+          <h1>A Square Problem</h1>
+          <p class="summary">C++ solution for a competitive programming problem in math.</p>
+          <div class="tags"><span>Math</span><span>C++</span><span>59 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>005</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/nccc1j4s2" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-005.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-005">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>a_square_problem.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int main(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    int n; cin &gt;&gt; n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    vector&lt;vector&lt;int&gt;&gt; v(n, vector&lt;int&gt;(n));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        for(int j = 0; j &lt; n; j++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>            char c; cin &gt;&gt; c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>            int val;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            if(c &lt;= &#39;Z&#39; &amp;&amp; c &gt;= &#39;A&#39;){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>                val = int(c);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>                val = c - &#39;0&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            v[i][j]= val;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    bool latin = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        unordered_set&lt;int&gt; vis;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        for(int j = 0; j &lt; n; j++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            if(vis.count(v[i][j])){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>                latin = 0; break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            vis.insert(v[i][j]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        unordered_set&lt;int&gt; vis;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        for(int j = 0; j &lt; n; j++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            if(vis.count(v[j][i])){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>                latin = 0; break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            vis.insert(v[j][i]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    if(latin){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        bool reduced = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        for(int i = 1; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            if(v[0][i] &lt; v[0][i - 1]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>                reduced = false; break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        for(int i = 1; i &lt; n; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>            if(v[i][0] &lt; v[i - 1][0]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>                reduced = false; break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>        if(reduced){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            cout &lt;&lt; &quot;Reduced&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>        } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>            cout &lt;&lt; &quot;Latin&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>    } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>        cout &lt;&lt; &quot;No&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Math</p><h2>Continue exploring.</h2><div><a href="../../problems/absolutely-even-008/"><span>Math</span><strong>Absolutely Even</strong></a>
+<a href="../../problems/bingo-candies-031/"><span>Math</span><strong>Bingo Candies</strong></a>
+<a href="../../problems/bob-hates-triangles-032/"><span>Math</span><strong>Bob Hates Triangles</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/a-palindrome-problem-004/"><span>← Previous</span><strong>A Palindrome Problem</strong></a>
+        <a class="next" href="../../problems/a-trivial-string-problem-006/"><span>Next →</span><strong>A Trivial String Problem</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="DMPG &#39;18 G1 - Musical Chairs: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="DMPG &#39;18 G1 - Musical Chairs, Other, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="DMPG &#39;18 G1 - Musical Chairs — C++ Solution" />
+    <meta property="og:description" content="DMPG &#39;18 G1 - Musical Chairs: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/dmpg-18-g1-musical-chairs-149/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/dmpg-18-g1-musical-chairs-149/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>DMPG &#39;18 G1 - Musical Chairs — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DMPG '18 G1 - Musical Chairs — C++ Solution","description":"DMPG '18 G1 - Musical Chairs: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/dmpg-18-g1-musical-chairs-149/","keywords":["DMPG '18 G1 - Musical Chairs","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-149">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>DMPG &#39;18 G1 - Musical Chairs</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · dmpg18g1</p>
+          <h1>DMPG &#39;18 G1 - Musical Chairs</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>38 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>149</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/dmpg18g1" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-149.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-149">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>musical_chairs.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int main(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios::sync_with_stdio(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n, k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin &gt;&gt; n &gt;&gt; k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    vector&lt;bool&gt; empty(n + 1, false);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for(int i = 0, x; i &lt; k; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        cin &gt;&gt; x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        empty[x] = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    vector&lt;int&gt; st(n + 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    for(int i = 1, x; i &lt;= k + 1; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        cin &gt;&gt; x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        st[x] = i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    stack&lt;int&gt; stk;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    int emp = k, cur = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    while(emp){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        if(st[cur]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            stk.push(st[cur]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            st[cur] = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        if(empty[cur] &amp;&amp; !stk.empty()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>            empty[cur] = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            stk.pop();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            emp--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        cur = cur % n + 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    cout &lt;&lt; stk.top() &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span> </span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/dmopc-20-contest-4-p1-missing-numbers-148/"><span>← Previous</span><strong>DMOPC &#39;20 Contest 4 P1 - Missing Numbers</strong></a>
+        <a class="next" href="../../problems/a-2-n-2-n-150/"><span>Next →</span><strong>A - 2^n - 2*n</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Milk Exchange: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Milk Exchange, Other, C++, competitive programming solution, USACO" />
+    <meta property="og:title" content="Milk Exchange — C++ Solution" />
+    <meta property="og:description" content="Milk Exchange: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/milk-exchange-144/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/milk-exchange-144/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Milk Exchange — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Milk Exchange — C++ Solution","description":"Milk Exchange: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/milk-exchange-144/","keywords":["Milk Exchange","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-144">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>Milk Exchange</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">USACO · 1396</p>
+          <h1>Milk Exchange</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>84 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>144</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://usaco.org/index.php?page=viewproblem2&amp;cpid=1396" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-144.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-144">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>milk_exchange.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>/*</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>bruce code</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>typedef long long ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const int MM = 2e5+5;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>int N, M, a[MM];  string s; ll ans, loss;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>int main(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    cin &gt;&gt; N &gt;&gt; M &gt;&gt; s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for(int i=0; i&lt;N; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        cin &gt;&gt; a[i]; ans += a[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    for(int i=0; i&lt;N; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        if(s[i] == &#39;R&#39; &amp;&amp; s[(i+1)%N] == &#39;L&#39;) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            ll sum = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            for(int j=(i-1+N)%N; s[j]==&#39;R&#39;; j=(j-1+N)%N){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>                sum += a[j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            loss += min((ll)M, sum);  sum = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            for(int j=(i+2)%N; s[j]==&#39;L&#39;; j=(j+1)%N){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>                sum += a[j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            loss += min((ll)M, sum);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    cout &lt;&lt; ans - loss &lt;&lt; &quot;\n&quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>}*/</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>const int MAXN = 200000 + 5;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>int n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>long long m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>long long cap[MAXN];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>int indeg[MAXN], nxtCow[MAXN], vis[MAXN];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>int main() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    ios::sync_with_stdio(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    cin &gt;&gt; n &gt;&gt; m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    string s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    cin &gt;&gt; s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    s = &quot;a&quot; + s;// 1-index</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    long long total = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        cin &gt;&gt; cap[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        total += cap[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    // Build directed graph</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>        int j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>        if (s[i] == &#39;L&#39;) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>            j = (i == 1 ? n : i - 1); // wrap around left</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>        } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>            j = (i == n ? 1 : i + 1); // wrap around right</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>        nxtCow[i] = j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>        indeg[j]++;  // j has one more incoming edge</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    // Start from all cows with indegree 0 (net givers)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        if (!vis[i] &amp;&amp; indeg[i] == 0) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>            vector&lt;int&gt; path;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>            int cur = i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>            // Follow the chain until we reach a visited node(cycle)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>            while (!vis[cur]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>                vis[cur] = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>                path.push_back(cur);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>                cur = nxtCow[cur];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>            // All nodes in path before the first occurrence of cur are non-cycle</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>            long long nonCycleSum = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>            for (int x : path) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>                if (x == cur) break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">75</span><span>                nonCycleSum += cap[x];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">76</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">77</span><span>            // This chain can lose at most min(m, sum of its non-cycle milk)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">78</span><span>            total -= min(m, nonCycleSum);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">79</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">80</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">81</span><span>    cout &lt;&lt; total &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">82</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">83</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">84</span><span> </span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/amplitude-hackathon-summer-24-problem-3-mike-s-unlocked-laptop-143/"><span>← Previous</span><strong>Amplitude Hackathon Summer &#39;24 Problem 3 - Mike&#39;s Unlocked Laptop</strong></a>
+        <a class="next" href="../../problems/dmpg-18-b2-mimi-and-modulus-145/"><span>Next →</span><strong>DMPG &#39;18 B2 - Mimi and Modulus</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Cyclic Sorting: a C++ competitive programming solution in Data structures. Read, copy, or download the implementation." />
+    <meta name="keywords" content="Cyclic Sorting, Data structures, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="Cyclic Sorting — C++ Solution" />
+    <meta property="og:description" content="Cyclic Sorting: a C++ competitive programming solution in Data structures. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/cyclic-sorting-069/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/cyclic-sorting-069/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>Cyclic Sorting — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Cyclic Sorting — C++ Solution","description":"Cyclic Sorting: a C++ competitive programming solution in Data structures. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/cyclic-sorting-069/","keywords":["Cyclic Sorting","Data structures","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-069">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Data structures</span><span>/</span><span>Cyclic Sorting</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · ahscc1p4</p>
+          <h1>Cyclic Sorting</h1>
+          <p class="summary">C++ solution for a competitive programming problem in data structures.</p>
+          <div class="tags"><span>Data structures</span><span>C++</span><span>44 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>069</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/ahscc1p4" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-069.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-069">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>cyclic_sorting.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int main(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios::sync_with_stdio(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.tie(0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n, q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin &gt;&gt; n &gt;&gt; q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    vector&lt;int&gt; vec(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for(int i = 0; i &lt; vec.size(); i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        cin &gt;&gt; vec[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    set&lt;int&gt; decrease;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    auto down = [&amp;](int i) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        int nxt = (i + 1) % n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        return vec[i] &gt; vec[nxt];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    };</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        if (down(i)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            decrease.insert(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    for(int i = 0; i &lt; q; i++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        int index, x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        cin &gt;&gt; index &gt;&gt; x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        index--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        vec[index] = x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        for(int j = -1; j &lt;= 0; j++){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            int pos = (index + j + n) % n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            decrease.erase(pos);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            if(down(pos)) decrease.insert(pos);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        if(decrease.size() &gt; 1){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            cout &lt;&lt; -1 &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        } else if(decrease.empty()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>            cout &lt;&lt; 0 &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        } else {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            int ans = *decrease.begin();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            cout &lt;&lt; min(ans + 1, n - ans - 1) &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Data structures</p><h2>Continue exploring.</h2><div><a href="../../problems/and-array-014/"><span>Data structures</span><strong>AND-array</strong></a>
+<a href="../../problems/array-017/"><span>Data structures</span><strong>Array</strong></a>
+<a href="../../problems/binary-array-game-029/"><span>Data structures</span><strong>Binary Array Game</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/cycle-sort-068/"><span>← Previous</span><strong>Cycle Sort</strong></a>
+        <a class="next" href="../../problems/dbmb-and-the-array-070/"><span>Next →</span><strong>DBMB and the Array</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>

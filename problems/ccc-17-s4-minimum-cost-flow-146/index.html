@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="CCC &#39;17 S4 - Minimum Cost Flow: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="keywords" content="CCC &#39;17 S4 - Minimum Cost Flow, Other, C++, competitive programming solution, DMOJ" />
+    <meta property="og:title" content="CCC &#39;17 S4 - Minimum Cost Flow — C++ Solution" />
+    <meta property="og:description" content="CCC &#39;17 S4 - Minimum Cost Flow: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://benbenyaojifen.github.io/magical-cp-library/problems/ccc-17-s4-minimum-cost-flow-146/" />
+    <meta property="og:image" content="https://benbenyaojifen.github.io/magical-cp-library/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://benbenyaojifen.github.io/magical-cp-library/problems/ccc-17-s4-minimum-cost-flow-146/" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../../problem.css" />
+    <title>CCC &#39;17 S4 - Minimum Cost Flow — C++ Solution | Magical CP Library</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"CCC '17 S4 - Minimum Cost Flow — C++ Solution","description":"CCC '17 S4 - Minimum Cost Flow: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://benbenyaojifen.github.io/magical-cp-library/problems/ccc-17-s4-minimum-cost-flow-146/","keywords":["CCC '17 S4 - Minimum Cost Flow","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://benbenyaojifen.github.io/magical-cp-library/"}}</script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <a class="library-link" href="../../#solution-146">All solutions <span>↗</span></a>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Other</span><span>/</span><span>CCC &#39;17 S4 - Minimum Cost Flow</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · ccc17s4</p>
+          <h1>CCC &#39;17 S4 - Minimum Cost Flow</h1>
+          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <div class="tags"><span>Other</span><span>C++</span><span>63 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>146</strong><small>of 245</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/ccc17s4" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <a href="../../solutions/solution-146.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-146">Open in library <span>→</span></a>
+      </section>
+      <article class="solution-panel">
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>S_4_Minimum_Cost_Flow.cpp</h2></div>
+          <span class="language">C++</span>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>typedef long long ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const long long INF = 1e17; //❄️</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>vector&lt;int&gt; parent;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>struct edge {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    int u, v, w, s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    edge(int uu, int vv, int ww, int ss) : u(uu), v(vv), w(ww), s(ss) {}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    bool operator&lt;(const edge&amp; o) const {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        if (o.w != w) return w &lt; o.w;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        return s &gt; o.s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>int find(int x) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    return parent[x] == x ? x : parent[x] = find(parent[x]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>void unite(int x, int y) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    x = find(x); y = find(y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    parent[x] = y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>int main() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    int n, m, d; cin &gt;&gt; n &gt;&gt; m &gt;&gt; d;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    vector&lt;edge&gt; edges;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    parent.resize(n + 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    for (int i = 1; i &lt;= n; i++) parent[i] = i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    for (int i = 0; i &lt; m; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        int u, v, w; cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        edges.emplace_back(u, v, w, i &lt; n - 1 ? 1 : 0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    sort(edges.begin(), edges.end());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    vector&lt;edge&gt; use;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    int cnt = 0, ans = 0, last = -1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    for (int i = 0; i &lt; edges.size(); i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        if (cnt == n - 1) break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        auto[u, v, w, s] = edges[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        if (find(u) != find(v)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>            use.emplace_back((edge){u, v, w, s});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            unite(u, v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            cnt++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            last = i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            if (!s) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>                ans++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    if (edges[last].w &lt;= d &amp;&amp; edges[last].s == 0) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        for (int i = 1; i &lt;= n; i++) parent[i] = i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        for (int i = 0; i &lt; last; i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>            auto[u, v, w, s] = edges[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            if (w == edges[last].w &amp;&amp; s == edges[last].s) continue;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>            if (find(u) != find(v)) unite(u, v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        for (int i = last + 1; i &lt; edges.size(); i++) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>            auto[u, v, w, s] = edges[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>            if (w &lt;= d &amp;&amp; s &amp;&amp; find(u) != find(v)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>                ans--; break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>            } </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    cout &lt;&lt; ans &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>}</span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Other</p><h2>Continue exploring.</h2><div><a href="../../problems/2026-001/"><span>Other</span><strong>2026</strong></a>
+<a href="../../problems/a-math-problem-002/"><span>Other</span><strong>A Math Problem</strong></a>
+<a href="../../problems/a-noisy-class-003/"><span>Other</span><strong>A Noisy Class</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/dmpg-18-b2-mimi-and-modulus-145/"><span>← Previous</span><strong>DMPG &#39;18 B2 - Mimi and Modulus</strong></a>
+        <a class="next" href="../../problems/mirrored-pairs-147/"><span>Next →</span><strong>Mirrored Pairs</strong></a>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>245 C++ solutions · 228 official problem links</span></footer>
+  </body>
+</html>
