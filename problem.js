@@ -20,6 +20,7 @@
 
   const applyTheme = (theme) => {
     document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "moon" ? "#10151f" : "#efe7d7");
     if (themeButton) themeButton.textContent = theme === "moon" ? "☀ Daylight" : "☾ Moonlit";
   };
 
@@ -40,7 +41,7 @@
   const paintFavorite = () => {
     if (!favoriteButton || !solutionId) return;
     const saved = readList(favoriteKey).includes(solutionId);
-    favoriteButton.textContent = saved ? "★ Saved" : "☆ Save";
+    favoriteButton.textContent = saved ? "Saved" : "Save";
     favoriteButton.setAttribute("aria-pressed", String(saved));
   };
 
