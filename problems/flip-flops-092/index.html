@@ -1,29 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="day">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Flip Flops: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta name="description" content="Flip Flops: a C++ competitive programming solution using sorting &amp; greedy. Read the approach, complexity, and implementation." />
     <meta name="keywords" content="Flip Flops, Other, C++, competitive programming solution, Codeforces" />
     <meta property="og:title" content="Flip Flops — C++ Solution" />
-    <meta property="og:description" content="Flip Flops: a C++ competitive programming solution in Other. Read, copy, or download the implementation." />
+    <meta property="og:description" content="Flip Flops: a C++ competitive programming solution using sorting &amp; greedy. Read the approach, complexity, and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/flip-flops-092" />
-    <meta property="og:image" content="https://magical-cp-library.vercel.app/og.png" />
+    <meta property="og:image" content="https://magical-cp-library.vercel.app/og-v2.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/flip-flops-092" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="../../problem.css" />
+    <script src="../../problem.js" defer></script>
     <title>Flip Flops — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Flip Flops — C++ Solution","description":"Flip Flops: a C++ competitive programming solution in Other. Read, copy, or download the implementation.","url":"https://magical-cp-library.vercel.app/problems/flip-flops-092","keywords":["Flip Flops","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Flip Flops — C++ Solution","description":"Flip Flops: a C++ competitive programming solution using sorting & greedy. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/flip-flops-092","keywords":["Flip Flops","Other","Sorting & greedy","Sorting & greedy","Greedy","Sorting","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
-  <body>
+  <body data-solution-id="solution-092">
     <header class="site-header">
       <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
-      <a class="library-link" href="../../#solution-092">All solutions <span>↗</span></a>
+      <div class="header-tools">
+        <button type="button" data-theme-toggle aria-label="Switch color theme">☾ Moonlit</button>
+        <a class="library-link" href="../../#solution-092">All solutions <span>↗</span></a>
+      </div>
     </header>
     <main>
       <nav class="breadcrumbs" aria-label="Breadcrumb">
@@ -34,19 +38,49 @@
           <p class="eyebrow">Codeforces · 2209A</p>
           <h1>Flip Flops</h1>
           <p class="summary">C++ solution for a competitive programming problem in other.</p>
-          <div class="tags"><span>Other</span><span>C++</span><span>39 lines</span></div>
+          <div class="tags"><span>Other</span><span>Sorting &amp; greedy</span><span>C++</span><span>39 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>092</strong><small>of 245</small></div>
       </section>
       <section class="actions" aria-label="Problem actions">
         <a class="primary" href="https://codeforces.com/problemset/problem/2209/A" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <button type="button" data-practice-toggle>Hide the answer <span>?</span></button>
+        <button type="button" data-favorite>☆ Save</button>
         <a href="../../solutions/solution-092.cpp" download>Download C++ file <span>↓</span></a>
         <a href="../../#solution-092">Open in library <span>→</span></a>
+        <a href="https://github.com/benbenyaojifen/magical-cp-library/issues/new?title=Report%3A%20Flip%20Flops&amp;body=Problem%20page%3A%20https%3A%2F%2Fmagical-cp-library.vercel.app%2Fproblems%2Fflip-flops-092%0A%0AWhat%20appears%20to%20be%20incorrect%3F%0A-%20%5B%20%5D%20Problem%20title%0A-%20%5B%20%5D%20Official%20problem%20link%0A-%20%5B%20%5D%20Solution%20code%0A-%20%5B%20%5D%20Explanation%20or%20complexity%0A%0ADetails%3A%0A" target="_blank" rel="noreferrer">Report an issue <span>↗</span></a>
       </section>
-      <article class="solution-panel">
+      <section class="practice-card" data-practice-card hidden>
+        <span class="practice-sigil">?</span>
+        <p class="eyebrow">No-peeking mode</p>
+        <h2>Solve it before you peek.</h2>
+        <p>Study the official statement and plan your algorithm. Reveal the library notes and implementation when you are ready to compare.</p>
+        <div>
+          <a href="https://codeforces.com/problemset/problem/2209/A" target="_blank" rel="noreferrer">Open official problem ↗</a>
+          <button type="button" data-reveal-solution>I gave it a fair shot</button>
+        </div>
+      </section>
+      <section class="learning-panel" data-learning-panel>
+        <div>
+          <p class="eyebrow">The key move</p>
+          <h2>Sorting &amp; greedy</h2>
+          <p>Sort the relevant values to expose a useful order, then scan that order while making the locally correct choice or maintaining the required invariant.</p>
+          <div class="learning-tags"><span>Greedy</span><span>Sorting</span></div>
+        </div>
+        <dl>
+          <div><dt>Time</dt><dd>O(n log n)</dd></div>
+          <div><dt>Space</dt><dd>O(n)</dd></div>
+        </dl>
+      </section>
+      <article class="solution-panel" data-solution-panel>
         <div class="panel-heading">
           <div><span>Implementation</span><h2>A_Flip_Flops.cpp</h2></div>
-          <span class="language">C++</span>
+          <div class="panel-tools">
+            <button type="button" data-wrap-code>Wrap</button>
+            <button type="button" data-copy-code data-code-path="../../solutions/solution-092.cpp">Copy code</button>
+            <button type="button" data-fullscreen>Full screen</button>
+            <span class="language">C++</span>
+          </div>
         </div>
         <pre aria-label="C++ solution code"><code>
     <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>

@@ -52,6 +52,9 @@ a:focus-visible { outline: 3px solid var(--cobalt); outline-offset: 4px; }
 }
 .brand strong { font-family: Georgia, serif; font-size: 1.02rem; letter-spacing: 0.02em; }
 .library-link { font-size: 0.76rem; font-weight: 850; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; }
+.header-tools { align-items: center; display: flex; gap: 14px; }
+.header-tools button { background: transparent; border: 1px solid var(--line); color: var(--ink); cursor: pointer; font-size: 0.68rem; font-weight: 850; min-height: 38px; padding: 0 12px; text-transform: uppercase; }
+.header-tools button:hover { background: var(--cobalt); border-color: var(--cobalt); color: white; }
 
 main { margin: 0 auto; max-width: 1240px; padding: 46px clamp(20px, 5vw, 72px) 100px; }
 .breadcrumbs { align-items: center; color: #69665e; display: flex; flex-wrap: wrap; font-size: 0.76rem; gap: 9px; margin-bottom: 44px; }
@@ -70,21 +73,48 @@ h1 { font-size: clamp(3.4rem, 8vw, 7.6rem); letter-spacing: -0.055em; line-heigh
 .problem-number strong { color: var(--acid); font-family: Georgia, serif; font-size: 4.4rem; font-weight: 400; line-height: 1; margin: 5px 0; }
 
 .actions { border-bottom: 1px solid var(--ink); border-top: 1px solid var(--ink); display: flex; flex-wrap: wrap; margin-bottom: 38px; }
-.actions a { align-items: center; border-right: 1px solid var(--ink); display: inline-flex; font-size: 0.74rem; font-weight: 850; gap: 22px; justify-content: space-between; letter-spacing: 0.06em; min-height: 56px; padding: 0 20px; text-decoration: none; text-transform: uppercase; }
-.actions a:hover { background: var(--acid); }
+.actions a, .actions button { align-items: center; background: transparent; border: 0; border-right: 1px solid var(--ink); color: var(--ink); cursor: pointer; display: inline-flex; font-size: 0.74rem; font-weight: 850; gap: 22px; justify-content: space-between; letter-spacing: 0.06em; min-height: 56px; padding: 0 20px; text-decoration: none; text-transform: uppercase; }
+.actions a:hover, .actions button:hover, .actions button[aria-pressed="true"] { background: var(--acid); color: #0d1117; }
 .actions a.primary { background: var(--cinnabar); color: white; }
 .actions a.primary:hover { background: #c24e3e; }
+
+[hidden] { display: none !important; }
+.practice-card { align-items: center; background: var(--code); color: white; display: flex; flex-direction: column; min-height: 540px; padding: 72px 28px; text-align: center; }
+.practice-sigil { align-items: center; border: 1px solid #607089; border-radius: 50%; color: var(--acid); display: flex; font-family: Georgia, serif; font-size: 2.3rem; height: 86px; justify-content: center; margin-bottom: 24px; width: 86px; }
+.practice-card h2 { font-size: clamp(2.7rem, 5vw, 5rem); margin: 0; }
+.practice-card > p:not(.eyebrow) { color: #a7b2c2; line-height: 1.7; max-width: 620px; }
+.practice-card > div { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
+.practice-card a, .practice-card button { align-items: center; border: 1px solid var(--acid); cursor: pointer; display: inline-flex; font-size: 0.72rem; font-weight: 850; min-height: 48px; padding: 0 18px; text-decoration: none; text-transform: uppercase; }
+.practice-card a { color: var(--acid); }
+.practice-card button { background: var(--acid); color: #0d1117; }
+
+.learning-panel { align-items: stretch; background: rgba(250, 246, 236, 0.72); border: 1px solid var(--ink); display: grid; gap: 34px; grid-template-columns: 1fr auto; margin-bottom: 36px; padding: 30px; }
+.learning-panel h2 { font-size: clamp(2.3rem, 4vw, 4.2rem); margin: 0; }
+.learning-panel > div > p:not(.eyebrow) { color: #56544e; line-height: 1.7; max-width: 780px; }
+.learning-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+.learning-tags span { border: 1px solid var(--ink); border-radius: 999px; font-size: 0.68rem; padding: 6px 10px; }
+.learning-panel dl { display: grid; gap: 10px; margin: 0; min-width: 180px; }
+.learning-panel dl > div { background: var(--ink); color: white; padding: 18px; }
+.learning-panel dt { color: #9da8b7; font-size: 0.63rem; font-weight: 850; letter-spacing: 0.1em; text-transform: uppercase; }
+.learning-panel dd { color: var(--acid); font-family: ui-monospace, monospace; font-size: 0.9rem; margin: 7px 0 0; }
 
 .solution-panel { background: var(--code); box-shadow: 10px 10px 0 rgba(13, 17, 23, 0.18); color: white; }
 .panel-heading { align-items: center; border-bottom: 1px solid #344154; display: flex; justify-content: space-between; padding: 22px 26px; }
 .panel-heading span { color: #9eacbd; font-size: 0.68rem; font-weight: 850; letter-spacing: 0.11em; text-transform: uppercase; }
 .panel-heading h2 { font-family: ui-monospace, monospace; font-size: 0.9rem; font-weight: 600; margin: 5px 0 0; }
-.panel-heading .language { background: var(--acid); border-radius: 999px; color: var(--ink); padding: 7px 11px; }
+.panel-heading .language { background: var(--acid); border-radius: 999px; color: #0d1117; padding: 7px 11px; }
+.panel-tools { align-items: center; display: flex; flex-wrap: wrap; gap: 7px; justify-content: flex-end; }
+.panel-tools button { background: transparent; border: 1px solid #536278; color: #d7dfeb; cursor: pointer; font-size: 0.64rem; font-weight: 850; min-height: 34px; padding: 0 10px; text-transform: uppercase; }
+.panel-tools button:hover, .panel-tools button[aria-pressed="true"] { border-color: var(--acid); color: var(--acid); }
 pre { margin: 0; max-height: 760px; overflow: auto; padding: 22px 0 30px; }
 code { color: #dce6f3; font-family: "SFMono-Regular", Consolas, monospace; font-size: 0.82rem; line-height: 1.65; }
 .code-line { display: grid; grid-template-columns: 58px 1fr; min-height: 1.65em; padding-right: 24px; white-space: pre; }
 .code-line:hover { background: rgba(220, 239, 178, 0.055); }
 .line-number { border-right: 1px solid #263244; color: #64748b; margin-right: 18px; padding-right: 13px; text-align: right; user-select: none; }
+.wrap-code .code-line > span:last-child { overflow-wrap: anywhere; white-space: pre-wrap; }
+.solution-panel.fullscreen { bottom: 18px; display: flex; flex-direction: column; left: 18px; position: fixed; right: 18px; top: 18px; z-index: 100; }
+.solution-panel.fullscreen pre { flex: 1; max-height: none; }
+.no-scroll { overflow: hidden; }
 
 .related { padding: 82px 0 58px; }
 .related h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); margin: 0 0 30px; }
@@ -104,6 +134,16 @@ footer { background: var(--ink); color: white; display: flex; justify-content: s
 footer a { font-family: Georgia, serif; font-size: 1.05rem; text-decoration: none; }
 footer span { color: #aab3c0; font-size: 0.72rem; }
 
+html[data-theme="moon"] { --paper: #151923; --paper-light: #202735; --ink: #edf0f6; --line: rgba(237, 240, 246, 0.22); }
+html[data-theme="moon"] body { background: radial-gradient(circle at 10% 4%, rgba(74, 97, 196, 0.2), transparent 30rem), linear-gradient(rgba(230, 235, 245, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(230, 235, 245, 0.025) 1px, transparent 1px), var(--paper); background-size: auto, 34px 34px, 34px 34px, auto; }
+html[data-theme="moon"] .site-header { background: rgba(18, 22, 31, 0.92); }
+html[data-theme="moon"] .brand > span, html[data-theme="moon"] footer { background: #080c13; }
+html[data-theme="moon"] .summary, html[data-theme="moon"] .breadcrumbs { color: #aeb7c5; }
+html[data-theme="moon"] .learning-panel, html[data-theme="moon"] .related a { background: rgba(31, 38, 51, 0.9); }
+html[data-theme="moon"] .learning-panel > div > p:not(.eyebrow) { color: #aeb7c5; }
+html[data-theme="moon"] .learning-panel dl > div { background: #080c13; }
+html[data-theme="moon"] .problem-number { background: #080c13; }
+
 @media (max-width: 760px) {
   .brand strong { display: none; }
   main { padding-top: 30px; }
@@ -112,7 +152,12 @@ footer span { color: #aab3c0; font-size: 0.72rem; }
   .problem-number { height: 104px; width: 104px; }
   .problem-number strong { font-size: 2.6rem; }
   .actions { display: grid; }
-  .actions a { border-bottom: 1px solid var(--ink); border-right: 0; }
+  .actions a, .actions button { border-bottom: 1px solid var(--ink); border-right: 0; }
+  .learning-panel { grid-template-columns: 1fr; padding: 22px; }
+  .learning-panel dl { grid-template-columns: 1fr 1fr; min-width: 0; }
+  .panel-heading { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .panel-tools { justify-content: flex-start; }
+  .solution-panel.fullscreen { bottom: 0; left: 0; right: 0; top: 0; }
   .related > div { grid-template-columns: 1fr; }
   .page-nav { gap: 28px; grid-template-columns: 1fr; }
   .page-nav a.next { justify-self: start; text-align: left; }
