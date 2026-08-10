@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" data-theme="day">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0f16" />
+    <meta name="application-name" content="Magical CP Library" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="CCC 2024 S2 solution: a verified C++ approach using string processing, with complexity analysis and implementation." />
+    <meta name="keywords" content="CCC &#39;24 S2 - Heavy-Light Composition, ccc24s2, CCC 2024 S2, ccc2024s2, Strings, String processing, C++ solution, DMOJ" />
+    <meta property="og:title" content="CCC &#39;24 S2 - Heavy-Light Composition — C++ Solution" />
+    <meta property="og:description" content="CCC 2024 S2 solution: a verified C++ approach using string processing, with complexity analysis and implementation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/ccc-24-s2-heavy-light-composition-246" />
+    <meta property="og:image" content="https://magical-cp-library.vercel.app/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/ccc-24-s2-heavy-light-composition-246" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow";const p=location.pathname.replace(/^\/magical-cp-library\/?/,"/");location.replace("https://magical-cp-library.vercel.app"+p+location.search+location.hash)}</script>
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
+    <script src="../../api/analytics-config" defer></script>
+    <link rel="stylesheet" href="../../problem.css" />
+    <script src="../../problem.js" defer></script>
+    <title>CCC &#39;24 S2 - Heavy-Light Composition — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"CCC '24 S2 - Heavy-Light Composition — C++ Solution","description":"CCC 2024 S2 solution: a verified C++ approach using string processing, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/ccc-24-s2-heavy-light-composition-246","dateModified":"2026-08-10","inLanguage":"en","isAccessibleForFree":true,"keywords":["CCC '24 S2 - Heavy-Light Composition","ccc24s2","CCC 2024 S2","ccc2024s2","Strings","String processing","String processing","Strings","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/ccc-24-s2-heavy-light-composition-246","sameAs":"https://dmoj.ca/problem/ccc24s2","isPartOf":{"@type":"WebSite","@id":"https://magical-cp-library.vercel.app/#website","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+  </head>
+  <body data-solution-id="solution-246">
+    <header class="site-header">
+      <a class="brand" href="../../"><span>CP</span><strong>Magical CP Library</strong></a>
+      <div class="header-tools">
+        <button type="button" data-theme-toggle aria-label="Switch color theme">☾ Moonlit</button>
+        <a class="library-link" href="../../#solution-246">All solutions <span>↗</span></a>
+      </div>
+    </header>
+    <main>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../">Library</a><span>/</span><span>Strings</span><span>/</span><span>CCC &#39;24 S2 - Heavy-Light Composition</span>
+      </nav>
+      <section class="problem-hero">
+        <div>
+          <p class="eyebrow">DMOJ · ccc24s2</p>
+          <h1>CCC &#39;24 S2 - Heavy-Light Composition</h1>
+          <p class="summary">Verified C++ solution for CCC 2024 S2, with the core idea, complexity, and readable implementation.</p>
+          <div class="tags"><span>Strings</span><span>String processing</span><span>C++</span><span>34 lines</span></div>
+        </div>
+        <div class="problem-number"><span>Solution</span><strong>246</strong><small>of 246</small></div>
+      </section>
+      <section class="actions" aria-label="Problem actions">
+        <a class="primary" href="https://dmoj.ca/problem/ccc24s2" target="_blank" rel="noreferrer">Open official problem <span>↗</span></a>
+        <button type="button" data-practice-toggle>Hide solution <span>?</span></button>
+        <button type="button" data-favorite>Save</button>
+        <label class="progress-action"><span>Progress</span><select data-progress-status aria-label="Progress status for CCC &#39;24 S2 - Heavy-Light Composition"><option>Not started</option><option>Solving</option><option>Solved</option><option>Review</option></select></label>
+        <a href="../../solutions/solution-246.cpp" download>Download C++ file <span>↓</span></a>
+        <a href="../../#solution-246">Open in library <span>→</span></a>
+        <a href="https://github.com/benbenyaojifen/magical-cp-library/issues/new?title=Report%3A%20CCC%20&#39;24%20S2%20-%20Heavy-Light%20Composition&amp;body=Problem%20page%3A%20https%3A%2F%2Fmagical-cp-library.vercel.app%2Fproblems%2Fccc-24-s2-heavy-light-composition-246%0A%0AWhat%20appears%20to%20be%20incorrect%3F%0A-%20%5B%20%5D%20Problem%20title%0A-%20%5B%20%5D%20Official%20problem%20link%0A-%20%5B%20%5D%20Solution%20code%0A-%20%5B%20%5D%20Explanation%20or%20complexity%0A%0ADetails%3A%0A" target="_blank" rel="noreferrer">Report an issue <span>↗</span></a>
+      </section>
+      <section class="practice-card" data-practice-card hidden>
+        <span class="practice-sigil">?</span>
+        <p class="eyebrow">Solve first</p>
+        <h2>Solve it before you peek.</h2>
+        <p>Study the official statement and plan your algorithm. Reveal the library notes and implementation when you are ready to compare.</p>
+        <div>
+          <a href="https://dmoj.ca/problem/ccc24s2" target="_blank" rel="noreferrer">Open official problem ↗</a>
+          <button type="button" data-reveal-solution>Reveal solution</button>
+        </div>
+      </section>
+      <section class="learning-panel" data-learning-panel>
+        <div>
+          <p class="eyebrow">The key move</p>
+          <h2>String processing</h2>
+          <p>Scan the character sequence while maintaining the positions, counts, or partial match information required to construct the answer.</p>
+          <div class="learning-tags"><span>Strings</span></div>
+        </div>
+        <dl>
+          <div><dt>Time</dt><dd>O(n)</dd></div>
+          <div><dt>Space</dt><dd>O(n)</dd></div>
+        </dl>
+      </section>
+      <article class="solution-panel" data-solution-panel>
+        <div class="panel-heading">
+          <div><span>Implementation</span><h2>CCC_24_S2_Heavy_Light_Composition.cpp</h2></div>
+          <div class="panel-tools">
+            <button type="button" data-wrap-code>Wrap</button>
+            <button type="button" data-copy-code data-code-path="../../solutions/solution-246.cpp">Copy code</button>
+            <button type="button" data-fullscreen>Full screen</button>
+            <span class="language">C++</span>
+          </div>
+        </div>
+        <pre aria-label="C++ solution code"><code>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;array&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-preprocessor">#include &lt;iostream&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-preprocessor">#include &lt;string&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-keyword">false</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin.<span class="token-function">tie</span>(<span class="token-keyword">nullptr</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-type">int</span> testCases, length;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    cin <span class="token-operator">&gt;&gt;</span> testCases <span class="token-operator">&gt;&gt;</span> length;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-keyword">while</span> (testCases<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        <span class="token-type">string</span> composition;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        cin <span class="token-operator">&gt;&gt;</span> composition;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        array<span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-number">26</span><span class="token-operator">&gt;</span> frequency{};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        <span class="token-keyword">for</span> (<span class="token-type">char</span> letter <span class="token-operator">:</span> composition) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            <span class="token-operator">++</span>frequency[letter <span class="token-operator">-</span> <span class="token-string">&#39;a&#39;</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        <span class="token-type">bool</span> alternates <span class="token-operator">=</span> <span class="token-keyword">true</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> index <span class="token-operator">=</span> <span class="token-number">1</span>; index <span class="token-operator">&lt;</span> length; <span class="token-operator">++</span>index) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            <span class="token-type">bool</span> previousIsHeavy <span class="token-operator">=</span> frequency[composition[index <span class="token-operator">-</span> <span class="token-number">1</span>] <span class="token-operator">-</span> <span class="token-string">&#39;a&#39;</span>] <span class="token-operator">&gt;</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            <span class="token-type">bool</span> currentIsHeavy <span class="token-operator">=</span> frequency[composition[index] <span class="token-operator">-</span> <span class="token-string">&#39;a&#39;</span>] <span class="token-operator">&gt;</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            <span class="token-keyword">if</span> (previousIsHeavy <span class="token-operator">==</span> currentIsHeavy) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>                alternates <span class="token-operator">=</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>                <span class="token-keyword">break</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span> </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        cout <span class="token-operator">&lt;&lt;</span> (alternates <span class="token-operator">?</span> <span class="token-string">&#39;T&#39;</span> <span class="token-operator">:</span> <span class="token-string">&#39;F&#39;</span>) <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span> </span></span>
+        </code></pre>
+      </article>
+      <section class="related"><p class="eyebrow">More in Strings</p><h2>Continue exploring.</h2><div><a href="../../problems/a-trivial-string-problem-006"><span>Strings</span><strong>A Trivial String Problem</strong></a>
+<a href="../../problems/alphabet-011"><span>Strings</span><strong>Alphabet</strong></a>
+<a href="../../problems/alphabet-score-012"><span>Strings</span><strong>Alphabet Score</strong></a></div></section>
+      <nav class="page-nav" aria-label="Adjacent solutions">
+        <a href="../../problems/2022-245"><span>← Previous</span><strong>[蓝桥杯青少年组省赛 2022] 农作物</strong></a>
+        <span></span>
+      </nav>
+    </main>
+    <footer><a href="../../">Magical CP Library</a><span>246 C++ solutions · 229 official problem links</span></footer>
+  </body>
+</html>
