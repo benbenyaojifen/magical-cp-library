@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Cool Numbers: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Cool Numbers, Math, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="CCC 2009 S1 solution: a verified C++ approach using binary search, with complexity analysis and implementation." />
+    <meta name="keywords" content="Cool Numbers, ccc09s1, CCC 2009 S1, ccc2009s1, Math, Binary search, C++ solution, DMOJ" />
     <meta property="og:title" content="Cool Numbers — C++ Solution" />
-    <meta property="og:description" content="Cool Numbers: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="CCC 2009 S1 solution: a verified C++ approach using binary search, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/cool-numbers-056" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/cool-numbers-056" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Cool Numbers — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Cool Numbers — C++ Solution","description":"Cool Numbers: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/cool-numbers-056","keywords":["Cool Numbers","Math","Binary search","Binary search","Monotonic search","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Cool Numbers — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Cool Numbers — C++ Solution","description":"CCC 2009 S1 solution: a verified C++ approach using binary search, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/cool-numbers-056","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Cool Numbers","ccc09s1","CCC 2009 S1","ccc2009s1","Math","Binary search","Binary search","Monotonic search","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/cool-numbers-056","sameAs":"https://dmoj.ca/problem/ccc09s1","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-056">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · ccc09s1</p>
           <h1>Cool Numbers</h1>
-          <p class="summary">C++ solution for a competitive programming problem in math.</p>
+          <p class="summary">Verified C++ solution for CCC 2009 S1, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Math</span><span>Binary search</span><span>C++</span><span>39 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>056</strong><small>of 245</small></div>
@@ -85,45 +87,45 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &quot;stdc.h&quot;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &quot;stdc.h&quot;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    vector&lt;int&gt; vec;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    for(int i = 0;; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>        int range = pow(i, 6);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        if(range &gt; 1e8) break;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>         vec.push_back(range);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> vec;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>;; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>        <span class="token-type">int</span> range <span class="token-operator">=</span> <span class="token-function">pow</span>(i, <span class="token-number">6</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        <span class="token-keyword">if</span>(range <span class="token-operator">&gt;</span> <span class="token-number">1e8</span>) <span class="token-keyword">break</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>         vec.<span class="token-function">push_back</span>(range);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    int a, b;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    cin &gt;&gt; a &gt;&gt; b;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    int cnt, l, r;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    l = lower_bound(vec.begin(), vec.end(), a) - vec.begin();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    r = upper_bound(vec.begin(), vec.end(), b) - vec.begin();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    cnt = r - l;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    cout &lt;&lt; cnt &lt;&lt; endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">int</span> a, b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    cin <span class="token-operator">&gt;&gt;</span> a <span class="token-operator">&gt;&gt;</span> b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-type">int</span> cnt, l, r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    l <span class="token-operator">=</span> <span class="token-function">lower_bound</span>(vec.<span class="token-function">begin</span>(), vec.<span class="token-function">end</span>(), a) <span class="token-operator">-</span> vec.<span class="token-function">begin</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    r <span class="token-operator">=</span> <span class="token-function">upper_bound</span>(vec.<span class="token-function">begin</span>(), vec.<span class="token-function">end</span>(), b) <span class="token-operator">-</span> vec.<span class="token-function">begin</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    cnt <span class="token-operator">=</span> r <span class="token-operator">-</span> l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    cout <span class="token-operator">&lt;&lt;</span> cnt <span class="token-operator">&lt;&lt;</span> endl;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>//faster solution using scanf</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>/*</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>#include &lt;stdio.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>#include &lt;math.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span><span class="token-comment">//faster solution using scanf</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span><span class="token-operator">/</span><span class="token-operator">*</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span><span class="token-preprocessor">#include &lt;stdio.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span><span class="token-preprocessor">#include &lt;math.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>int main()</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span><span class="token-type">int</span> <span class="token-function">main</span>()</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>{</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>	int a,b;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>	scanf(&quot;%d&quot;,&amp;a);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>	scanf(&quot;%d&quot;,&amp;b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>	<span class="token-type">int</span> a,b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>	<span class="token-function">scanf</span>(<span class="token-string">&quot;%d&quot;</span>,<span class="token-operator">&amp;</span>a);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>	<span class="token-function">scanf</span>(<span class="token-string">&quot;%d&quot;</span>,<span class="token-operator">&amp;</span>b);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>	int i = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>	int count = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>	while (pow(i,6) &lt;= b) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>		if (pow(i,6) &gt;= a) count++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>		i++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>	<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>	<span class="token-type">int</span> count <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>	<span class="token-keyword">while</span> (<span class="token-function">pow</span>(i,<span class="token-number">6</span>) <span class="token-operator">&lt;=</span> b) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>		<span class="token-keyword">if</span> (<span class="token-function">pow</span>(i,<span class="token-number">6</span>) <span class="token-operator">&gt;=</span> a) count<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>		i<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>	}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>	printf(&quot;%d\n&quot;,count);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>	<span class="token-function">printf</span>(<span class="token-string">&quot;%d\n&quot;</span>,count);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>	return 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>}*/</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>	<span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>}<span class="token-operator">*</span><span class="token-operator">/</span></span></span>
         </code></pre>
       </article>
       <section class="related"><p class="eyebrow">More in Math</p><h2>Continue exploring.</h2><div><a href="../../problems/a-square-problem-005"><span>Math</span><strong>A Square Problem</strong></a>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Stock Trading: a C++ competitive programming solution using sorting &amp; greedy. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Stock Trading, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Stock Trading solution: a verified C++ approach using sorting &amp; greedy, with complexity analysis and implementation." />
+    <meta name="keywords" content="Stock Trading, cheerio1s3, Other, Sorting &amp; greedy, C++ solution, DMOJ" />
     <meta property="og:title" content="Stock Trading — C++ Solution" />
-    <meta property="og:description" content="Stock Trading: a C++ competitive programming solution using sorting &amp; greedy. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Stock Trading solution: a verified C++ approach using sorting &amp; greedy, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/stock-trading-201" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/stock-trading-201" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Stock Trading — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Stock Trading — C++ Solution","description":"Stock Trading: a C++ competitive programming solution using sorting & greedy. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/stock-trading-201","keywords":["Stock Trading","Other","Sorting & greedy","Sorting & greedy","Greedy","Sorting","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Stock Trading — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Stock Trading — C++ Solution","description":"Stock Trading solution: a verified C++ approach using sorting & greedy, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/stock-trading-201","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Stock Trading","cheerio1s3","Other","Sorting & greedy","Sorting & greedy","Greedy","Sorting","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/stock-trading-201","sameAs":"https://dmoj.ca/problem/cheerio1s3","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-201">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · cheerio1s3</p>
           <h1>Stock Trading</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Stock Trading, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Sorting &amp; greedy</span><span>C++</span><span>45 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>201</strong><small>of 245</small></div>
@@ -85,50 +87,50 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const long long INF = 1e17; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    vector&lt;pair&lt;ll, ll&gt;&gt; v;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        ll x, y; cin &gt;&gt; x &gt;&gt; y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        v.emplace_back(x, y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">using</span> i128 <span class="token-operator">=</span> __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e17</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span>ll, ll<span class="token-operator">&gt;&gt;</span> v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        ll x, y; cin <span class="token-operator">&gt;&gt;</span> x <span class="token-operator">&gt;&gt;</span> y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        v.<span class="token-function">emplace_back</span>(x, y);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    ll cnt = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    sort(v.begin(), v.end());</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    auto slope_less = [&amp;](int i, int a, int b) { // slope(i,a) &lt;= slope(i,b)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        i128 lhs = (i128)(v[a].second - v[i].second) * (v[b].first - v[i].first);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        i128 rhs = (i128)(v[b].second - v[i].second) * (v[a].first - v[i].first);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        return lhs &lt;= rhs;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    ll cnt <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-function">sort</span>(v.<span class="token-function">begin</span>(), v.<span class="token-function">end</span>());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-type">auto</span> slope_less <span class="token-operator">=</span> [<span class="token-operator">&amp;</span>](<span class="token-type">int</span> i, <span class="token-type">int</span> a, <span class="token-type">int</span> b) { <span class="token-comment">// slope(i,a) &lt;= slope(i,b)</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        i128 lhs <span class="token-operator">=</span> (i128)(v[a].second <span class="token-operator">-</span> v[i].second) <span class="token-operator">*</span> (v[b].first <span class="token-operator">-</span> v[i].first);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        i128 rhs <span class="token-operator">=</span> (i128)(v[b].second <span class="token-operator">-</span> v[i].second) <span class="token-operator">*</span> (v[a].first <span class="token-operator">-</span> v[i].first);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        <span class="token-keyword">return</span> lhs <span class="token-operator">&lt;=</span> rhs;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    };</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    auto slope_greater = [&amp;](int i, int a, int b) { // slope(i,a) &gt;= slope(i,b)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        i128 lhs = (i128)(v[a].second - v[i].second) * (v[b].first - v[i].first);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        i128 rhs = (i128)(v[b].second - v[i].second) * (v[a].first - v[i].first);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        return lhs &gt;= rhs;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-type">auto</span> slope_greater <span class="token-operator">=</span> [<span class="token-operator">&amp;</span>](<span class="token-type">int</span> i, <span class="token-type">int</span> a, <span class="token-type">int</span> b) { <span class="token-comment">// slope(i,a) &gt;= slope(i,b)</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        i128 lhs <span class="token-operator">=</span> (i128)(v[a].second <span class="token-operator">-</span> v[i].second) <span class="token-operator">*</span> (v[b].first <span class="token-operator">-</span> v[i].first);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        i128 rhs <span class="token-operator">=</span> (i128)(v[b].second <span class="token-operator">-</span> v[i].second) <span class="token-operator">*</span> (v[a].first <span class="token-operator">-</span> v[i].first);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        <span class="token-keyword">return</span> lhs <span class="token-operator">&gt;=</span> rhs;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    };</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        int mn = -1, mx = -1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        for (int j = i + 1; j &lt; n; j++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            bool flag = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            if (mn != -1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>                if (!(slope_less(i, j, mn) || slope_greater(i, j, mx))) flag = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        <span class="token-type">int</span> mn <span class="token-operator">=</span> <span class="token-operator">-</span><span class="token-number">1</span>, mx <span class="token-operator">=</span> <span class="token-operator">-</span><span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> j <span class="token-operator">=</span> i <span class="token-operator">+</span> <span class="token-number">1</span>; j <span class="token-operator">&lt;</span> n; j<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            <span class="token-type">bool</span> flag <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            <span class="token-keyword">if</span> (mn <span class="token-operator">!=</span> <span class="token-operator">-</span><span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>                <span class="token-keyword">if</span> (<span class="token-operator">!</span>(<span class="token-function">slope_less</span>(i, j, mn) <span class="token-operator">||</span> <span class="token-function">slope_greater</span>(i, j, mx))) flag <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            if (flag) cnt++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            if (mn == -1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>                mn = mx = j;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>            } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>                if (slope_less(i, j, mn)) mn = j;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>                if (slope_greater(i, j, mx)) mx = j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            <span class="token-keyword">if</span> (flag) cnt<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            <span class="token-keyword">if</span> (mn <span class="token-operator">==</span> <span class="token-operator">-</span><span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>                mn <span class="token-operator">=</span> mx <span class="token-operator">=</span> j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>            } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>                <span class="token-keyword">if</span> (<span class="token-function">slope_less</span>(i, j, mn)) mn <span class="token-operator">=</span> j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>                <span class="token-keyword">if</span> (<span class="token-function">slope_greater</span>(i, j, mx)) mx <span class="token-operator">=</span> j;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    cout &lt;&lt; cnt &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    cout <span class="token-operator">&lt;&lt;</span> cnt <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>}</span></span>
         </code></pre>
       </article>

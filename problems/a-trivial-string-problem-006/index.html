@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="A Trivial String Problem: a C++ competitive programming solution using sorting &amp; greedy. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="A Trivial String Problem, Strings, C++, competitive programming solution, Codeforces" />
+    <meta name="description" content="A Trivial String Problem solution: a verified C++ approach using sorting &amp; greedy, with complexity analysis and implementation." />
+    <meta name="keywords" content="A Trivial String Problem, 2209E, Strings, Sorting &amp; greedy, C++ solution, Codeforces" />
     <meta property="og:title" content="A Trivial String Problem — C++ Solution" />
-    <meta property="og:description" content="A Trivial String Problem: a C++ competitive programming solution using sorting &amp; greedy. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="A Trivial String Problem solution: a verified C++ approach using sorting &amp; greedy, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/a-trivial-string-problem-006" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/a-trivial-string-problem-006" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>A Trivial String Problem — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"A Trivial String Problem — C++ Solution","description":"A Trivial String Problem: a C++ competitive programming solution using sorting & greedy. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/a-trivial-string-problem-006","keywords":["A Trivial String Problem","Strings","Sorting & greedy","Sorting & greedy","Greedy","Sorting","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>A Trivial String Problem — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"A Trivial String Problem — C++ Solution","description":"A Trivial String Problem solution: a verified C++ approach using sorting & greedy, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/a-trivial-string-problem-006","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["A Trivial String Problem","2209E","Strings","Sorting & greedy","Sorting & greedy","Greedy","Sorting","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/a-trivial-string-problem-006","sameAs":"https://codeforces.com/problemset/problem/2209/E","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-006">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">Codeforces · 2209E</p>
           <h1>A Trivial String Problem</h1>
-          <p class="summary">C++ solution for a competitive programming problem in strings.</p>
+          <p class="summary">Verified C++ solution for A Trivial String Problem, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Strings</span><span>Sorting &amp; greedy</span><span>C++</span><span>103 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>006</strong><small>of 245</small></div>
@@ -85,108 +87,108 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e18; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>const int MM = 1000005;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>int Z[MM];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>int cnt[MM];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>int head[MM];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>int nxt[MM];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>int val[MM];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>int q_head[MM];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>int q_nxt[105];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>int q_r[105];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>int q_id[105];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>void solve() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    fill(q_head, q_head + MM, -1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    int n, q; cin &gt;&gt; n &gt;&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    string s; cin &gt;&gt; s;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    vector&lt;int&gt; active;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    int q_cnt = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    for (int i = 0; i &lt; q; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        int l, r;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        cin &gt;&gt; l &gt;&gt; r;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        if (q_head[l] == -1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            active.push_back(l);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">using</span> i128 <span class="token-operator">=</span> __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-keyword">const</span> ll <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e18</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> <span class="token-constant">MM</span> <span class="token-operator">=</span> <span class="token-number">1000005</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span><span class="token-type">int</span> <span class="token-constant">Z</span>[<span class="token-constant">MM</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span><span class="token-type">int</span> cnt[<span class="token-constant">MM</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span><span class="token-type">int</span> head[<span class="token-constant">MM</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span><span class="token-type">int</span> nxt[<span class="token-constant">MM</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span><span class="token-type">int</span> val[<span class="token-constant">MM</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span><span class="token-type">int</span> q_head[<span class="token-constant">MM</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span><span class="token-type">int</span> q_nxt[<span class="token-number">105</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span><span class="token-type">int</span> q_r[<span class="token-number">105</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span><span class="token-type">int</span> q_id[<span class="token-number">105</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span><span class="token-type">void</span> <span class="token-function">solve</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-function">fill</span>(q_head, q_head <span class="token-operator">+</span> <span class="token-constant">MM</span>, <span class="token-operator">-</span><span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-type">int</span> n, q; cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-type">string</span> s; cin <span class="token-operator">&gt;&gt;</span> s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> active;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-type">int</span> q_cnt <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> q; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        <span class="token-type">int</span> l, r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        cin <span class="token-operator">&gt;&gt;</span> l <span class="token-operator">&gt;&gt;</span> r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        <span class="token-keyword">if</span> (q_head[l] <span class="token-operator">==</span> <span class="token-operator">-</span><span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            active.<span class="token-function">push_back</span>(l);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        q_r[q_cnt] = r;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        q_id[q_cnt] = i;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        q_nxt[q_cnt] = q_head[l];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        q_head[l] = q_cnt++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        q_r[q_cnt] <span class="token-operator">=</span> r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        q_id[q_cnt] <span class="token-operator">=</span> i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        q_nxt[q_cnt] <span class="token-operator">=</span> q_head[l];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        q_head[l] <span class="token-operator">=</span> q_cnt<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    vector&lt;ll&gt; ans(q);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    for (int l : active) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        vector&lt;pair&lt;int, int&gt;&gt; current_q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        int cur_q = q_head[l];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        while (cur_q != -1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            current_q.push_back({q_r[cur_q], q_id[cur_q]});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            cur_q = q_nxt[cur_q];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span>ll<span class="token-operator">&gt;</span> <span class="token-function">ans</span>(q);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> l <span class="token-operator">:</span> active) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> current_q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        <span class="token-type">int</span> cur_q <span class="token-operator">=</span> q_head[l];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-keyword">while</span> (cur_q <span class="token-operator">!=</span> <span class="token-operator">-</span><span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            current_q.<span class="token-function">push_back</span>({q_r[cur_q], q_id[cur_q]});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            cur_q <span class="token-operator">=</span> q_nxt[cur_q];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        sort(current_q.begin(), current_q.end());</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        int max_r = current_q.back().first;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        int m = max_r - l + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        Z[0] = m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        for (int i = 1, L = 0, R = 0; i &lt; m; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>            Z[i] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>            if (i &lt;= R) Z[i] = min(R - i + 1, Z[i - L]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>            while (i + Z[i] &lt; m &amp;&amp; s[l - 1 + Z[i]] == s[l - 1 + i + Z[i]]) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>                Z[i]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        <span class="token-function">sort</span>(current_q.<span class="token-function">begin</span>(), current_q.<span class="token-function">end</span>());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        <span class="token-type">int</span> max_r <span class="token-operator">=</span> current_q.<span class="token-function">back</span>().first;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        <span class="token-type">int</span> m <span class="token-operator">=</span> max_r <span class="token-operator">-</span> l <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        <span class="token-constant">Z</span>[<span class="token-number">0</span>] <span class="token-operator">=</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>, <span class="token-constant">L</span> <span class="token-operator">=</span> <span class="token-number">0</span>, <span class="token-constant">R</span> <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>            <span class="token-constant">Z</span>[i] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>            <span class="token-keyword">if</span> (i <span class="token-operator">&lt;=</span> <span class="token-constant">R</span>) <span class="token-constant">Z</span>[i] <span class="token-operator">=</span> <span class="token-function">min</span>(<span class="token-constant">R</span> <span class="token-operator">-</span> i <span class="token-operator">+</span> <span class="token-number">1</span>, <span class="token-constant">Z</span>[i <span class="token-operator">-</span> <span class="token-constant">L</span>]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>            <span class="token-keyword">while</span> (i <span class="token-operator">+</span> <span class="token-constant">Z</span>[i] <span class="token-operator">&lt;</span> m <span class="token-operator">&amp;&amp;</span> s[l <span class="token-operator">-</span> <span class="token-number">1</span> <span class="token-operator">+</span> <span class="token-constant">Z</span>[i]] <span class="token-operator">==</span> s[l <span class="token-operator">-</span> <span class="token-number">1</span> <span class="token-operator">+</span> i <span class="token-operator">+</span> <span class="token-constant">Z</span>[i]]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>                <span class="token-constant">Z</span>[i]<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>            if (i + Z[i] - 1 &gt; R) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>                L = i;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>                R = i + Z[i] - 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>            <span class="token-keyword">if</span> (i <span class="token-operator">+</span> <span class="token-constant">Z</span>[i] <span class="token-operator">-</span> <span class="token-number">1</span> <span class="token-operator">&gt;</span> <span class="token-constant">R</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>                <span class="token-constant">L</span> <span class="token-operator">=</span> i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>                <span class="token-constant">R</span> <span class="token-operator">=</span> i <span class="token-operator">+</span> <span class="token-constant">Z</span>[i] <span class="token-operator">-</span> <span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>        cnt[0] = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>        int max_val = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        ll current_sum = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        for (int i = 1; i &lt;= m + 1; i++) head[i] = -1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        int q_indx = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        for (int i = 1; i &lt;= m; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>            int cur = head[i];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>            while (cur != -1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>                cnt[val[cur]]--;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>                cur = nxt[cur];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>        cnt[<span class="token-number">0</span>] <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>        <span class="token-type">int</span> max_val <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        ll current_sum <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> m <span class="token-operator">+</span> <span class="token-number">1</span>; i<span class="token-operator">++</span>) head[i] <span class="token-operator">=</span> <span class="token-operator">-</span><span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        <span class="token-type">int</span> q_indx <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> m; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>            <span class="token-type">int</span> cur <span class="token-operator">=</span> head[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>            <span class="token-keyword">while</span> (cur <span class="token-operator">!=</span> <span class="token-operator">-</span><span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>                cnt[val[cur]]<span class="token-operator">--</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>                cur <span class="token-operator">=</span> nxt[cur];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>            while (max_val &gt; 0 &amp;&amp; cnt[max_val] == 0) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>                max_val--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>            <span class="token-keyword">while</span> (max_val <span class="token-operator">&gt;</span> <span class="token-number">0</span> <span class="token-operator">&amp;&amp;</span> cnt[max_val] <span class="token-operator">==</span> <span class="token-number">0</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>                max_val<span class="token-operator">--</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>            int dpi = max_val + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>            current_sum += dpi;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>            <span class="token-type">int</span> dpi <span class="token-operator">=</span> max_val <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>            current_sum <span class="token-operator">+</span><span class="token-operator">=</span> dpi;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>            while (q_indx &lt; current_q.size() &amp;&amp; current_q[q_indx].first - l + 1 == i) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">75</span><span>                ans[current_q[q_indx].second] = current_sum;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">76</span><span>                q_indx++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>            <span class="token-keyword">while</span> (q_indx <span class="token-operator">&lt;</span> current_q.<span class="token-function">size</span>() <span class="token-operator">&amp;&amp;</span> current_q[q_indx].first <span class="token-operator">-</span> l <span class="token-operator">+</span> <span class="token-number">1</span> <span class="token-operator">==</span> i) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">75</span><span>                ans[current_q[q_indx].second] <span class="token-operator">=</span> current_sum;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">76</span><span>                q_indx<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">77</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">78</span><span>            if (i &lt; m &amp;&amp; Z[i] &gt; 0) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">79</span><span>                cnt[dpi]++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">80</span><span>                if (dpi &gt; max_val) max_val = dpi;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">81</span><span>                int exp = i + Z[i] + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">82</span><span>                if (exp &lt;= m) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">83</span><span>                    val[i] = dpi;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">84</span><span>                    nxt[i] = head[exp];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">85</span><span>                    head[exp] = i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">78</span><span>            <span class="token-keyword">if</span> (i <span class="token-operator">&lt;</span> m <span class="token-operator">&amp;&amp;</span> <span class="token-constant">Z</span>[i] <span class="token-operator">&gt;</span> <span class="token-number">0</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">79</span><span>                cnt[dpi]<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">80</span><span>                <span class="token-keyword">if</span> (dpi <span class="token-operator">&gt;</span> max_val) max_val <span class="token-operator">=</span> dpi;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">81</span><span>                <span class="token-type">int</span> exp <span class="token-operator">=</span> i <span class="token-operator">+</span> <span class="token-constant">Z</span>[i] <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">82</span><span>                <span class="token-keyword">if</span> (exp <span class="token-operator">&lt;=</span> m) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">83</span><span>                    val[i] <span class="token-operator">=</span> dpi;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">84</span><span>                    nxt[i] <span class="token-operator">=</span> head[exp];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">85</span><span>                    head[exp] <span class="token-operator">=</span> i;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">86</span><span>                }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">87</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">88</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">89</span><span>        for (int i = 0; i &lt;= max_val; i++) cnt[i] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">90</span><span>        q_head[l] = -1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">89</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;=</span> max_val; i<span class="token-operator">++</span>) cnt[i] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">90</span><span>        q_head[l] <span class="token-operator">=</span> <span class="token-operator">-</span><span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">91</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">92</span><span>    for (int i = 0; i &lt; q; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">93</span><span>        cout &lt;&lt; ans[i] &lt;&lt; &#39;\n&#39;;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">92</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> q; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">93</span><span>        cout <span class="token-operator">&lt;&lt;</span> ans[i] <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">94</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">95</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">96</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">97</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">98</span><span>    int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">99</span><span>    while (t--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">100</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">96</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">97</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">98</span><span>    <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">99</span><span>    <span class="token-keyword">while</span> (t<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">100</span><span>        <span class="token-function">solve</span>();</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">101</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">102</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">102</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">103</span><span>}</span></span>
         </code></pre>
       </article>

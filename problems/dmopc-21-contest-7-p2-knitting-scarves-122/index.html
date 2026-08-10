@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="DMOPC &#39;21 Contest 7 P2 - Knitting Scarves: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="DMOPC &#39;21 Contest 7 P2 - Knitting Scarves, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="DMOPC &#39;21 Contest 7 P2 - Knitting Scarves solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="DMOPC &#39;21 Contest 7 P2 - Knitting Scarves, dmopc21c7p2, Other, Simulation, C++ solution, DMOJ" />
     <meta property="og:title" content="DMOPC &#39;21 Contest 7 P2 - Knitting Scarves — C++ Solution" />
-    <meta property="og:description" content="DMOPC &#39;21 Contest 7 P2 - Knitting Scarves: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="DMOPC &#39;21 Contest 7 P2 - Knitting Scarves solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/dmopc-21-contest-7-p2-knitting-scarves-122" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/dmopc-21-contest-7-p2-knitting-scarves-122" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>DMOPC &#39;21 Contest 7 P2 - Knitting Scarves — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DMOPC '21 Contest 7 P2 - Knitting Scarves — C++ Solution","description":"DMOPC '21 Contest 7 P2 - Knitting Scarves: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/dmopc-21-contest-7-p2-knitting-scarves-122","keywords":["DMOPC '21 Contest 7 P2 - Knitting Scarves","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>DMOPC &#39;21 Contest 7 P2 - Knitting Scarves — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DMOPC '21 Contest 7 P2 - Knitting Scarves — C++ Solution","description":"DMOPC '21 Contest 7 P2 - Knitting Scarves solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/dmopc-21-contest-7-p2-knitting-scarves-122","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["DMOPC '21 Contest 7 P2 - Knitting Scarves","dmopc21c7p2","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/dmopc-21-contest-7-p2-knitting-scarves-122","sameAs":"https://dmoj.ca/problem/dmopc21c7p2","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-122">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · dmopc21c7p2</p>
           <h1>DMOPC &#39;21 Contest 7 P2 - Knitting Scarves</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for DMOPC &#39;21 Contest 7 P2 - Knitting Scarves, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>64 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>122</strong><small>of 245</small></div>
@@ -85,69 +87,69 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n, q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin &gt;&gt; n &gt;&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    vector&lt;int&gt; next(n + 1), pre(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for(int i = 1; i &lt;= n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        if(i != n) next[i] = i + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        else next[i] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        pre[i] = i - 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">int</span> n, q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">next</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>), <span class="token-function">pre</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        <span class="token-keyword">if</span>(i <span class="token-operator">!=</span> n) next[i] <span class="token-operator">=</span> i <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        <span class="token-keyword">else</span> next[i] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        pre[i] <span class="token-operator">=</span> i <span class="token-operator">-</span> <span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    int head = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    while(q--){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        int l, r, k;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        cin &gt;&gt; l &gt;&gt; r &gt;&gt; k;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        if(l == r){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            //detatch l</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            int x = pre[l], y = next[l];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            if(x) next[x] = y; // set x - 1 = x + 1</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            else head = y; </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            if(y) pre[y] = x; </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            //insert</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            if(k == 0){ // move to front</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>                pre[l] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>                next[l]= head;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>                if(head) pre[head] = l;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>                head = l;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            } else { // after k</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>                int next_k = next[k];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                next[k] = l;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>                pre[l] = k;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>                next[l] = next_k;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>                if(next_k) pre[next_k] = l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-type">int</span> head <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-keyword">while</span>(q<span class="token-operator">--</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        <span class="token-type">int</span> l, r, k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        cin <span class="token-operator">&gt;&gt;</span> l <span class="token-operator">&gt;&gt;</span> r <span class="token-operator">&gt;&gt;</span> k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        <span class="token-keyword">if</span>(l <span class="token-operator">==</span> r){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            <span class="token-comment">//detatch l</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            <span class="token-type">int</span> x <span class="token-operator">=</span> pre[l], y <span class="token-operator">=</span> next[l];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            <span class="token-keyword">if</span>(x) next[x] <span class="token-operator">=</span> y; <span class="token-comment">// set x - 1 = x + 1</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            <span class="token-keyword">else</span> head <span class="token-operator">=</span> y; </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            <span class="token-keyword">if</span>(y) pre[y] <span class="token-operator">=</span> x; </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            <span class="token-comment">//insert</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            <span class="token-keyword">if</span>(k <span class="token-operator">==</span> <span class="token-number">0</span>){ <span class="token-comment">// move to front</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>                pre[l] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>                next[l]<span class="token-operator">=</span> head;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>                <span class="token-keyword">if</span>(head) pre[head] <span class="token-operator">=</span> l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>                head <span class="token-operator">=</span> l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            } <span class="token-keyword">else</span> { <span class="token-comment">// after k</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>                <span class="token-type">int</span> next_k <span class="token-operator">=</span> next[k];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                next[k] <span class="token-operator">=</span> l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>                pre[l] <span class="token-operator">=</span> k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>                next[l] <span class="token-operator">=</span> next_k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>                <span class="token-keyword">if</span>(next_k) pre[next_k] <span class="token-operator">=</span> l;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            //detached [l, r]</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            int prev_l = pre[l], next_r = next[r];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            if(prev_l) next[prev_l] = next_r;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>            else head = next_r;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>            if(next_r) pre[next_r] = prev_l;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            //insert</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>            if(k == 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>                pre[l] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>                next[r] = head;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>                if(head) pre[head] = r;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>                head = l;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>                int next_k = next[k];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>                next[k] = l;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>                pre[l] = k;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>                next[r] = next_k;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>                if(next_k) pre[next_k] = r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            <span class="token-comment">//detached [l, r]</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            <span class="token-type">int</span> prev_l <span class="token-operator">=</span> pre[l], next_r <span class="token-operator">=</span> next[r];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            <span class="token-keyword">if</span>(prev_l) next[prev_l] <span class="token-operator">=</span> next_r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>            <span class="token-keyword">else</span> head <span class="token-operator">=</span> next_r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>            <span class="token-keyword">if</span>(next_r) pre[next_r] <span class="token-operator">=</span> prev_l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            <span class="token-comment">//insert</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>            <span class="token-keyword">if</span>(k <span class="token-operator">==</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>                pre[l] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>                next[r] <span class="token-operator">=</span> head;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>                <span class="token-keyword">if</span>(head) pre[head] <span class="token-operator">=</span> r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>                head <span class="token-operator">=</span> l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>                <span class="token-type">int</span> next_k <span class="token-operator">=</span> next[k];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>                next[k] <span class="token-operator">=</span> l;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>                pre[l] <span class="token-operator">=</span> k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>                next[r] <span class="token-operator">=</span> next_k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>                <span class="token-keyword">if</span>(next_k) pre[next_k] <span class="token-operator">=</span> r;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    for(int i = head; i; i = next[i]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        cout &lt;&lt; i &lt;&lt; (next[i] ? &quot; &quot; : &quot;\n&quot;);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> head; i; i <span class="token-operator">=</span> next[i]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        cout <span class="token-operator">&lt;&lt;</span> i <span class="token-operator">&lt;&lt;</span> (next[i] <span class="token-operator">?</span> <span class="token-string">&quot; &quot;</span> <span class="token-operator">:</span> <span class="token-string">&quot;\n&quot;</span>);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>}</span></span>
         </code></pre>
       </article>

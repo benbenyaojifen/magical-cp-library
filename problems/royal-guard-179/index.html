@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Royal Guard: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Royal Guard, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Royal Guard solution: a verified C++ approach using binary search, with complexity analysis and implementation." />
+    <meta name="keywords" content="Royal Guard, mockccc15j5, Other, Binary search, C++ solution, DMOJ" />
     <meta property="og:title" content="Royal Guard — C++ Solution" />
-    <meta property="og:description" content="Royal Guard: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Royal Guard solution: a verified C++ approach using binary search, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/royal-guard-179" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/royal-guard-179" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Royal Guard — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Royal Guard — C++ Solution","description":"Royal Guard: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/royal-guard-179","keywords":["Royal Guard","Other","Binary search","Binary search","Monotonic search","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Royal Guard — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Royal Guard — C++ Solution","description":"Royal Guard solution: a verified C++ approach using binary search, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/royal-guard-179","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Royal Guard","mockccc15j5","Other","Binary search","Binary search","Monotonic search","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/royal-guard-179","sameAs":"https://dmoj.ca/problem/mockccc15j5","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-179">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · mockccc15j5</p>
           <h1>Royal Guard</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Royal Guard, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Binary search</span><span>C++</span><span>51 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>179</strong><small>of 245</small></div>
@@ -85,56 +87,56 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>#define int long long </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-preprocessor">#define int long long </span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>signed main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    int n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    unordered_map&lt;int, vector&lt;int&gt;&gt; row, col;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        int x, y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        cin &gt;&gt; x &gt;&gt; y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        row[y].push_back(x); col[x].push_back(y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">signed</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">int</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-type">unordered_map</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> row, col;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        <span class="token-type">int</span> x, y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        cin <span class="token-operator">&gt;&gt;</span> x <span class="token-operator">&gt;&gt;</span> y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        row[y].<span class="token-function">push_back</span>(x); col[x].<span class="token-function">push_back</span>(y);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    }  </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    for(auto &amp;r : row){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        auto &amp;v = r.second;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        sort(v.begin(), v.end());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-keyword">for</span>(<span class="token-type">auto</span> <span class="token-operator">&amp;</span>r <span class="token-operator">:</span> row){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        <span class="token-type">auto</span> <span class="token-operator">&amp;</span>v <span class="token-operator">=</span> r.second;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        <span class="token-function">sort</span>(v.<span class="token-function">begin</span>(), v.<span class="token-function">end</span>());</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    for(auto &amp;c : col){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        auto &amp;v = c.second;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        sort(v.begin(), v.end());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-keyword">for</span>(<span class="token-type">auto</span> <span class="token-operator">&amp;</span>c <span class="token-operator">:</span> col){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        <span class="token-type">auto</span> <span class="token-operator">&amp;</span>v <span class="token-operator">=</span> c.second;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        <span class="token-function">sort</span>(v.<span class="token-function">begin</span>(), v.<span class="token-function">end</span>());</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    int m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    cin &gt;&gt; m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    int x, y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    cin &gt;&gt; x &gt;&gt; y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    int cnt = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    for(int i = 1; i &lt; m; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        int nx, ny;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        cin &gt;&gt; nx &gt;&gt; ny;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        if(x == nx){ </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            int lo = min(ny, y), hi = max(ny, y);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>            if(col.count(nx)){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>                const auto &amp;v = col[nx];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>                cnt += upper_bound(v.begin(), v.end(), hi) - lower_bound(v.begin(), v.end(), lo);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-type">int</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    cin <span class="token-operator">&gt;&gt;</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    <span class="token-type">int</span> x, y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    cin <span class="token-operator">&gt;&gt;</span> x <span class="token-operator">&gt;&gt;</span> y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    <span class="token-type">int</span> cnt <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        <span class="token-type">int</span> nx, ny;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        cin <span class="token-operator">&gt;&gt;</span> nx <span class="token-operator">&gt;&gt;</span> ny;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        <span class="token-keyword">if</span>(x <span class="token-operator">==</span> nx){ </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            <span class="token-type">int</span> lo <span class="token-operator">=</span> <span class="token-function">min</span>(ny, y), hi <span class="token-operator">=</span> <span class="token-function">max</span>(ny, y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>            <span class="token-keyword">if</span>(col.<span class="token-function">count</span>(nx)){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>                <span class="token-keyword">const</span> <span class="token-type">auto</span> <span class="token-operator">&amp;</span>v <span class="token-operator">=</span> col[nx];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>                cnt <span class="token-operator">+</span><span class="token-operator">=</span> <span class="token-function">upper_bound</span>(v.<span class="token-function">begin</span>(), v.<span class="token-function">end</span>(), hi) <span class="token-operator">-</span> <span class="token-function">lower_bound</span>(v.<span class="token-function">begin</span>(), v.<span class="token-function">end</span>(), lo);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        } else { </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            int lo = min(nx, x), hi = max(nx, x);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            if(row.count(ny)){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>                const auto &amp;v = row[ny];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>                cnt += upper_bound(v.begin(), v.end(), hi) - lower_bound(v.begin(), v.end(), lo);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        } <span class="token-keyword">else</span> { </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            <span class="token-type">int</span> lo <span class="token-operator">=</span> <span class="token-function">min</span>(nx, x), hi <span class="token-operator">=</span> <span class="token-function">max</span>(nx, x);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            <span class="token-keyword">if</span>(row.<span class="token-function">count</span>(ny)){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>                <span class="token-keyword">const</span> <span class="token-type">auto</span> <span class="token-operator">&amp;</span>v <span class="token-operator">=</span> row[ny];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>                cnt <span class="token-operator">+</span><span class="token-operator">=</span> <span class="token-function">upper_bound</span>(v.<span class="token-function">begin</span>(), v.<span class="token-function">end</span>(), hi) <span class="token-operator">-</span> <span class="token-function">lower_bound</span>(v.<span class="token-function">begin</span>(), v.<span class="token-function">end</span>(), lo);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        x = nx; y = ny;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        x <span class="token-operator">=</span> nx; y <span class="token-operator">=</span> ny;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    cout &lt;&lt; cnt &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    cout <span class="token-operator">&lt;&lt;</span> cnt <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>}</span></span>
         </code></pre>
       </article>

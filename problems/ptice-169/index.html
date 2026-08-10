@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Ptice: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Ptice, Other, C++, competitive programming solution, Kattis" />
+    <meta name="description" content="Ptice solution: a verified C++ approach using string processing, with complexity analysis and implementation." />
+    <meta name="keywords" content="Ptice, ptice, Other, String processing, C++ solution, Kattis" />
     <meta property="og:title" content="Ptice — C++ Solution" />
-    <meta property="og:description" content="Ptice: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Ptice solution: a verified C++ approach using string processing, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/ptice-169" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/ptice-169" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Ptice — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Ptice — C++ Solution","description":"Ptice: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/ptice-169","keywords":["Ptice","Other","String processing","String processing","Strings","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Ptice — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Ptice — C++ Solution","description":"Ptice solution: a verified C++ approach using string processing, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/ptice-169","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Ptice","ptice","Other","String processing","String processing","Strings","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/ptice-169","sameAs":"https://open.kattis.com/problems/ptice","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-169">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">Kattis · ptice</p>
           <h1>Ptice</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Ptice, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>String processing</span><span>C++</span><span>52 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>169</strong><small>of 245</small></div>
@@ -85,57 +87,57 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>typedef long long ll;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int INF = 0x3f3f3f3f; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    vector&lt;int&gt; v(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    vector&lt;int&gt; a(n), b(n), c(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    for (int i = 0, p = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        if (p &lt; 2) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            c[i] = 2;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        } else if (p &lt; 4) c[i] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        else c[i] = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        p = (p + 1) % 6;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">typedef</span> <span class="token-type">long</span> <span class="token-type">long</span> ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">0x3f3f3f3f</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">v</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">a</span>(n), <span class="token-function">b</span>(n), <span class="token-function">c</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>, p <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        <span class="token-keyword">if</span> (p <span class="token-operator">&lt;</span> <span class="token-number">2</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            c[i] <span class="token-operator">=</span> <span class="token-number">2</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        } <span class="token-keyword">else</span> <span class="token-keyword">if</span> (p <span class="token-operator">&lt;</span> <span class="token-number">4</span>) c[i] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        <span class="token-keyword">else</span> c[i] <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        p <span class="token-operator">=</span> (p <span class="token-operator">+</span> <span class="token-number">1</span>) <span class="token-operator">%</span> <span class="token-number">6</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    bool good = false;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    for (int i = 0, k = 0; i &lt; n; i++, k++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        if (k % 2 == 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            good = !good;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            b[i] = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            good ? b[i] = 0 : b[i] = 2;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-type">bool</span> good <span class="token-operator">=</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>, k <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>, k<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        <span class="token-keyword">if</span> (k <span class="token-operator">%</span> <span class="token-number">2</span> <span class="token-operator">==</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            good <span class="token-operator">=</span> <span class="token-operator">!</span>good;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            b[i] <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            good <span class="token-operator">?</span> b[i] <span class="token-operator">=</span> <span class="token-number">0</span> <span class="token-operator">:</span> b[i] <span class="token-operator">=</span> <span class="token-number">2</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    for (int i = 0, cnt = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        a[i] = cnt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        cnt = (cnt + 1) % 3;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>, cnt <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        a[i] <span class="token-operator">=</span> cnt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        cnt <span class="token-operator">=</span> (cnt <span class="token-operator">+</span> <span class="token-number">1</span>) <span class="token-operator">%</span> <span class="token-number">3</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        char c; cin &gt;&gt; c;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        if(c == &#39;A&#39;) v[i] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        else if (c == &#39;B&#39;) v[i] = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        else v[i] = 2;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        <span class="token-type">char</span> c; cin <span class="token-operator">&gt;&gt;</span> c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        <span class="token-keyword">if</span>(c <span class="token-operator">==</span> <span class="token-string">&#39;A&#39;</span>) v[i] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        <span class="token-keyword">else</span> <span class="token-keyword">if</span> (c <span class="token-operator">==</span> <span class="token-string">&#39;B&#39;</span>) v[i] <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        <span class="token-keyword">else</span> v[i] <span class="token-operator">=</span> <span class="token-number">2</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    int ac = 0, bc = 0, cc = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        if (a[i] == v[i]) ac++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        if (b[i] == v[i]) bc++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        if (c[i] == v[i]) cc++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    <span class="token-type">int</span> ac <span class="token-operator">=</span> <span class="token-number">0</span>, bc <span class="token-operator">=</span> <span class="token-number">0</span>, cc <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-keyword">if</span> (a[i] <span class="token-operator">==</span> v[i]) ac<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        <span class="token-keyword">if</span> (b[i] <span class="token-operator">==</span> v[i]) bc<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        <span class="token-keyword">if</span> (c[i] <span class="token-operator">==</span> v[i]) cc<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    vector&lt;string&gt; ans;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    int mx = max({ac, bc, cc});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    if(ac == mx) ans.push_back(&quot;Adrian&quot;);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    if(bc == mx) ans.push_back(&quot;Bruno&quot;);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    if(cc == mx) ans.push_back(&quot;Goran&quot;);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    cout &lt;&lt; mx &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    for (int i = 0; i &lt; ans.size(); i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        cout &lt;&lt; ans[i] &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">string</span><span class="token-operator">&gt;</span> ans;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    <span class="token-type">int</span> mx <span class="token-operator">=</span> <span class="token-function">max</span>({ac, bc, cc});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    <span class="token-keyword">if</span>(ac <span class="token-operator">==</span> mx) ans.<span class="token-function">push_back</span>(<span class="token-string">&quot;Adrian&quot;</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    <span class="token-keyword">if</span>(bc <span class="token-operator">==</span> mx) ans.<span class="token-function">push_back</span>(<span class="token-string">&quot;Bruno&quot;</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    <span class="token-keyword">if</span>(cc <span class="token-operator">==</span> mx) ans.<span class="token-function">push_back</span>(<span class="token-string">&quot;Goran&quot;</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    cout <span class="token-operator">&lt;&lt;</span> mx <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> ans.<span class="token-function">size</span>(); i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        cout <span class="token-operator">&lt;&lt;</span> ans[i] <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>}</span></span>
         </code></pre>
       </article>

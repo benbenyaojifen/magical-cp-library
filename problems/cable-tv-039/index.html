@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Cable TV: a C++ competitive programming solution using shortest paths. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Cable TV, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Cable TV solution: a verified C++ approach using shortest paths, with complexity analysis and implementation." />
+    <meta name="keywords" content="Cable TV, graph3p3, Other, Shortest paths, C++ solution, DMOJ" />
     <meta property="og:title" content="Cable TV — C++ Solution" />
-    <meta property="og:description" content="Cable TV: a C++ competitive programming solution using shortest paths. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Cable TV solution: a verified C++ approach using shortest paths, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/cable-tv-039" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/cable-tv-039" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Cable TV — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Cable TV — C++ Solution","description":"Cable TV: a C++ competitive programming solution using shortest paths. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/cable-tv-039","keywords":["Cable TV","Other","Shortest paths","Shortest paths","Priority queue","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Cable TV — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Cable TV — C++ Solution","description":"Cable TV solution: a verified C++ approach using shortest paths, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/cable-tv-039","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Cable TV","graph3p3","Other","Shortest paths","Shortest paths","Priority queue","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/cable-tv-039","sameAs":"https://dmoj.ca/problem/graph3p3","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-039">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · graph3p3</p>
           <h1>Cable TV</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Cable TV, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Shortest paths</span><span>C++</span><span>49 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>039</strong><small>of 245</small></div>
@@ -85,53 +87,53 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>map&lt;pair&lt;int, int&gt;, int&gt; cost;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int INF = 0x3f3f3f3f;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>struct cmp {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    bool operator()(const tuple&lt;int,int,int&gt; &amp;a, const tuple&lt;int,int,int&gt; &amp;b) const {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        int af = get&lt;0&gt;(a), bf = get&lt;0&gt;(b);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        int au = get&lt;1&gt;(a), bu = get&lt;1&gt;(b);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        int ap = get&lt;2&gt;(a), bp = get&lt;2&gt;(b);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        if(af == INF &amp;&amp; bf == INF) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            int ca = cost[{au, ap}];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            int cb = cost[{bu, bp}];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            return ca &gt; cb;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">map</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;</span>, <span class="token-type">int</span><span class="token-operator">&gt;</span> cost;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">0x3f3f3f3f</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">struct</span> cmp {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-type">bool</span> <span class="token-function">operator</span>()(<span class="token-keyword">const</span> tuple<span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-operator">&amp;</span>a, <span class="token-keyword">const</span> tuple<span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-operator">&amp;</span>b) <span class="token-keyword">const</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        <span class="token-type">int</span> af <span class="token-operator">=</span> get<span class="token-operator">&lt;</span><span class="token-number">0</span><span class="token-operator">&gt;</span>(a), bf <span class="token-operator">=</span> get<span class="token-operator">&lt;</span><span class="token-number">0</span><span class="token-operator">&gt;</span>(b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        <span class="token-type">int</span> au <span class="token-operator">=</span> get<span class="token-operator">&lt;</span><span class="token-number">1</span><span class="token-operator">&gt;</span>(a), bu <span class="token-operator">=</span> get<span class="token-operator">&lt;</span><span class="token-number">1</span><span class="token-operator">&gt;</span>(b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        <span class="token-type">int</span> ap <span class="token-operator">=</span> get<span class="token-operator">&lt;</span><span class="token-number">2</span><span class="token-operator">&gt;</span>(a), bp <span class="token-operator">=</span> get<span class="token-operator">&lt;</span><span class="token-number">2</span><span class="token-operator">&gt;</span>(b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        <span class="token-keyword">if</span>(af <span class="token-operator">==</span> <span class="token-constant">INF</span> <span class="token-operator">&amp;&amp;</span> bf <span class="token-operator">==</span> <span class="token-constant">INF</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            <span class="token-type">int</span> ca <span class="token-operator">=</span> cost[{au, ap}];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            <span class="token-type">int</span> cb <span class="token-operator">=</span> cost[{bu, bp}];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            <span class="token-keyword">return</span> ca <span class="token-operator">&gt;</span> cb;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        return af &gt; bf;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        <span class="token-keyword">return</span> af <span class="token-operator">&gt;</span> bf;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>};</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    int n, m; cin &gt;&gt; n &gt;&gt; m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    vector&lt;vector&lt;pair&lt;int, int&gt;&gt;&gt; adj(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    for(int i = 0; i &lt; m; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        int a, b, c, d; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c &gt;&gt; d;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        cost[{a, b}] = c;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        cost[{b, a}] = c;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        if(d) c = INF;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-type">int</span> n, m; cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span><span class="token-operator">&gt;</span> <span class="token-function">adj</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        <span class="token-type">int</span> a, b, c, d; cin <span class="token-operator">&gt;&gt;</span> a <span class="token-operator">&gt;&gt;</span> b <span class="token-operator">&gt;&gt;</span> c <span class="token-operator">&gt;&gt;</span> d;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        cost[{a, b}] <span class="token-operator">=</span> c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        cost[{b, a}] <span class="token-operator">=</span> c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        <span class="token-keyword">if</span>(d) c <span class="token-operator">=</span> <span class="token-constant">INF</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        adj[a].emplace_back(c, b);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        adj[b].emplace_back(c, a);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        adj[a].<span class="token-function">emplace_back</span>(c, b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        adj[b].<span class="token-function">emplace_back</span>(c, a);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    priority_queue&lt;tuple&lt;int,int,int&gt;, vector&lt;tuple&lt;int,int,int&gt;&gt;, cmp&gt; pq;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    pq.push({0, 1, 1});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    vector&lt;bool&gt; vis(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    int dan_cnt = 0, ans = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    while(!pq.empty()){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        auto [c, u, pre] = pq.top(); pq.pop();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        if(vis[u]) continue;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        vis[u] = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        dan_cnt += (c == INF);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        ans += (u == 1 ? 0 : cost[{u, pre}]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        for(auto [cc, v] : adj[u]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            if(!vis[v]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>                pq.push({cc, v, u});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    <span class="token-type">priority_queue</span><span class="token-operator">&lt;</span>tuple<span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;</span>, <span class="token-type">vector</span><span class="token-operator">&lt;</span>tuple<span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;&gt;</span>, cmp<span class="token-operator">&gt;</span> pq;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    pq.<span class="token-function">push</span>({<span class="token-number">0</span>, <span class="token-number">1</span>, <span class="token-number">1</span>});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">bool</span><span class="token-operator">&gt;</span> <span class="token-function">vis</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    <span class="token-type">int</span> dan_cnt <span class="token-operator">=</span> <span class="token-number">0</span>, ans <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    <span class="token-keyword">while</span>(<span class="token-operator">!</span>pq.<span class="token-function">empty</span>()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        <span class="token-type">auto</span> [c, u, pre] <span class="token-operator">=</span> pq.<span class="token-function">top</span>(); pq.<span class="token-function">pop</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        <span class="token-keyword">if</span>(vis[u]) <span class="token-keyword">continue</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        vis[u] <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        dan_cnt <span class="token-operator">+</span><span class="token-operator">=</span> (c <span class="token-operator">==</span> <span class="token-constant">INF</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        ans <span class="token-operator">+</span><span class="token-operator">=</span> (u <span class="token-operator">==</span> <span class="token-number">1</span> <span class="token-operator">?</span> <span class="token-number">0</span> <span class="token-operator">:</span> cost[{u, pre}]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        <span class="token-keyword">for</span>(<span class="token-type">auto</span> [cc, v] <span class="token-operator">:</span> adj[u]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            <span class="token-keyword">if</span>(<span class="token-operator">!</span>vis[v]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>                pq.<span class="token-function">push</span>({cc, v, u});</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    cout &lt;&lt; dan_cnt &lt;&lt; &quot; &quot; &lt;&lt; ans &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    cout <span class="token-operator">&lt;&lt;</span> dan_cnt <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot; &quot;</span> <span class="token-operator">&lt;&lt;</span> ans <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span> </span></span>
         </code></pre>

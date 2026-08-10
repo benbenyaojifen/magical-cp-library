@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Tree Practice 1: a C++ competitive programming solution using shortest paths. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Tree Practice 1, Graphs &amp; trees, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Tree Practice 1 solution: a verified C++ approach using shortest paths, with complexity analysis and implementation." />
+    <meta name="keywords" content="Tree Practice 1, treepractice1, Graphs &amp; trees, Shortest paths, C++ solution, DMOJ" />
     <meta property="og:title" content="Tree Practice 1 — C++ Solution" />
-    <meta property="og:description" content="Tree Practice 1: a C++ competitive programming solution using shortest paths. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Tree Practice 1 solution: a verified C++ approach using shortest paths, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/tree-practice-1-226" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/tree-practice-1-226" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Tree Practice 1 — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Tree Practice 1 — C++ Solution","description":"Tree Practice 1: a C++ competitive programming solution using shortest paths. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/tree-practice-1-226","keywords":["Tree Practice 1","Graphs & trees","Shortest paths","Shortest paths","Priority queue","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Tree Practice 1 — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Tree Practice 1 — C++ Solution","description":"Tree Practice 1 solution: a verified C++ approach using shortest paths, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/tree-practice-1-226","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Tree Practice 1","treepractice1","Graphs & trees","Shortest paths","Shortest paths","Priority queue","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/tree-practice-1-226","sameAs":"https://dmoj.ca/problem/treepractice1","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-226">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · treepractice1</p>
           <h1>Tree Practice 1</h1>
-          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <p class="summary">Verified C++ solution for Tree Practice 1, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Graphs &amp; trees</span><span>Shortest paths</span><span>C++</span><span>60 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>226</strong><small>of 245</small></div>
@@ -85,64 +87,64 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>const long long INF = 4e18;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>int n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>vector&lt;vector&lt;pair&lt;int, int&gt;&gt;&gt; adj;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>vector&lt;long long&gt; dijkstra(int start) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    vector&lt;long long&gt; dist(n + 1, INF);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    priority_queue&lt;pair&lt;long long, int&gt;, vector&lt;pair&lt;long long, int&gt;&gt;, greater&lt;pair&lt;long long, int&gt;&gt;&gt; pq;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    dist[start] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    pq.push({0, start});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    while (!pq.empty()){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        auto cur = pq.top();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        pq.pop();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        long long d = cur.first;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        int u = cur.second;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        if (d != dist[u]) continue;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        for (auto edge : adj[u]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            int v = edge.first;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            int w = edge.second;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            long long nd = d + w;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            if (nd &lt; dist[v]) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>                dist[v] = nd;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>                pq.push({nd, v});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">4e18</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-type">int</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span><span class="token-operator">&gt;</span> adj;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span><span class="token-operator">&gt;</span> <span class="token-function">dijkstra</span>(<span class="token-type">int</span> start) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span><span class="token-operator">&gt;</span> <span class="token-function">dist</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>, <span class="token-constant">INF</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">priority_queue</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span>, <span class="token-type">int</span><span class="token-operator">&gt;</span>, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span>, greater<span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span><span class="token-operator">&gt;</span> pq;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    dist[start] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    pq.<span class="token-function">push</span>({<span class="token-number">0</span>, start});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">while</span> (<span class="token-operator">!</span>pq.<span class="token-function">empty</span>()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        <span class="token-type">auto</span> cur <span class="token-operator">=</span> pq.<span class="token-function">top</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        pq.<span class="token-function">pop</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        <span class="token-type">long</span> <span class="token-type">long</span> d <span class="token-operator">=</span> cur.first;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        <span class="token-type">int</span> u <span class="token-operator">=</span> cur.second;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        <span class="token-keyword">if</span> (d <span class="token-operator">!=</span> dist[u]) <span class="token-keyword">continue</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        <span class="token-keyword">for</span> (<span class="token-type">auto</span> edge <span class="token-operator">:</span> adj[u]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            <span class="token-type">int</span> v <span class="token-operator">=</span> edge.first;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            <span class="token-type">int</span> w <span class="token-operator">=</span> edge.second;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            <span class="token-type">long</span> <span class="token-type">long</span> nd <span class="token-operator">=</span> d <span class="token-operator">+</span> w;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            <span class="token-keyword">if</span> (nd <span class="token-operator">&lt;</span> dist[v]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>                dist[v] <span class="token-operator">=</span> nd;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>                pq.<span class="token-function">push</span>({nd, v});</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    return dist;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    <span class="token-keyword">return</span> dist;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    adj.assign(n + 1, {});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    for (int i = 0; i &lt; n - 1; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        int u, v, w;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        adj[u].push_back({v, w});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        adj[v].push_back({u, w});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    adj.<span class="token-function">assign</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>, {});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n <span class="token-operator">-</span> <span class="token-number">1</span>; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        <span class="token-type">int</span> u, v, w;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        cin <span class="token-operator">&gt;&gt;</span> u <span class="token-operator">&gt;&gt;</span> v <span class="token-operator">&gt;&gt;</span> w;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        adj[u].<span class="token-function">push_back</span>({v, w});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        adj[v].<span class="token-function">push_back</span>({u, w});</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    vector&lt;long long&gt; dist1 = dijkstra(1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    int A = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    for (int i = 1; i &lt;= n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        if (dist1[i] &gt; dist1[A]) A = i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span><span class="token-operator">&gt;</span> dist1 <span class="token-operator">=</span> <span class="token-function">dijkstra</span>(<span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    <span class="token-type">int</span> <span class="token-constant">A</span> <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        <span class="token-keyword">if</span> (dist1[i] <span class="token-operator">&gt;</span> dist1[<span class="token-constant">A</span>]) <span class="token-constant">A</span> <span class="token-operator">=</span> i;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    vector&lt;long long&gt; distA = dijkstra(A);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    int B = A;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    for (int i = 1; i &lt;= n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        if (distA[i] &gt; distA[B]) B = i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span><span class="token-operator">&gt;</span> distA <span class="token-operator">=</span> <span class="token-function">dijkstra</span>(<span class="token-constant">A</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    <span class="token-type">int</span> <span class="token-constant">B</span> <span class="token-operator">=</span> <span class="token-constant">A</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        <span class="token-keyword">if</span> (distA[i] <span class="token-operator">&gt;</span> distA[<span class="token-constant">B</span>]) <span class="token-constant">B</span> <span class="token-operator">=</span> i;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    long long diameter = distA[B];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    vector&lt;long long&gt; distB = dijkstra(B);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    long long radius = INF;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        long long ecc = max(distA[i], distB[i]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        if (ecc &lt; radius) radius = ecc;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    <span class="token-type">long</span> <span class="token-type">long</span> diameter <span class="token-operator">=</span> distA[<span class="token-constant">B</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span><span class="token-operator">&gt;</span> distB <span class="token-operator">=</span> <span class="token-function">dijkstra</span>(<span class="token-constant">B</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    <span class="token-type">long</span> <span class="token-type">long</span> radius <span class="token-operator">=</span> <span class="token-constant">INF</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        <span class="token-type">long</span> <span class="token-type">long</span> ecc <span class="token-operator">=</span> <span class="token-function">max</span>(distA[i], distB[i]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        <span class="token-keyword">if</span> (ecc <span class="token-operator">&lt;</span> radius) radius <span class="token-operator">=</span> ecc;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>    cout &lt;&lt; diameter &lt;&lt; &quot;\n&quot; &lt;&lt; radius &lt;&lt; &quot;\n&quot;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>    cout <span class="token-operator">&lt;&lt;</span> diameter <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;\n&quot;</span> <span class="token-operator">&lt;&lt;</span> radius <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;\n&quot;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span> </span></span>
         </code></pre>

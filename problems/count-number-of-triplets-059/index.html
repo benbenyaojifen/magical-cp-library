@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Count Number of Triplets: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Count Number of Triplets, Math, C++, competitive programming solution, C++" />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Count Number of Triplets solution: a C++ approach using binary search, with complexity analysis and implementation." />
+    <meta name="keywords" content="Count Number of Triplets, Solution, Math, Binary search, C++ solution, C++" />
     <meta property="og:title" content="Count Number of Triplets — C++ Solution" />
-    <meta property="og:description" content="Count Number of Triplets: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Count Number of Triplets solution: a C++ approach using binary search, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/count-number-of-triplets-059" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/count-number-of-triplets-059" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Count Number of Triplets — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Count Number of Triplets — C++ Solution","description":"Count Number of Triplets: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/count-number-of-triplets-059","keywords":["Count Number of Triplets","Math","Binary search","Binary search","Monotonic search","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Count Number of Triplets — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Count Number of Triplets — C++ Solution","description":"Count Number of Triplets solution: a C++ approach using binary search, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/count-number-of-triplets-059","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Count Number of Triplets","Solution","Math","Binary search","Binary search","Monotonic search","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/count-number-of-triplets-059","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-059">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">C++ · Solution</p>
           <h1>Count Number of Triplets</h1>
-          <p class="summary">C++ solution for a competitive programming problem in math.</p>
+          <p class="summary">Verified C++ solution for Count Number of Triplets, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Math</span><span>Binary search</span><span>C++</span><span>40 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>059</strong><small>of 245</small></div>
@@ -86,44 +88,44 @@
         </div>
         <pre aria-label="C++ solution code"><code>
     <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>struct triplet{</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    int x, y, z;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    triplet(int a, int b, int c) : x(a), y(b), z(c){}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    bool operator&lt;(const triplet &amp;o) const{</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        if(x != o.x) return x &lt; o.x;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        if(y != o.y) return y &lt; o.y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        return z &lt; o.z;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-keyword">struct</span> triplet{</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">int</span> x, y, z;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-function">triplet</span>(<span class="token-type">int</span> a, <span class="token-type">int</span> b, <span class="token-type">int</span> c) <span class="token-operator">:</span> <span class="token-function">x</span>(a), <span class="token-function">y</span>(b), <span class="token-function">z</span>(c){}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-type">bool</span> operator<span class="token-operator">&lt;</span>(<span class="token-keyword">const</span> triplet <span class="token-operator">&amp;</span>o) <span class="token-keyword">const</span>{</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        <span class="token-keyword">if</span>(x <span class="token-operator">!=</span> o.x) <span class="token-keyword">return</span> x <span class="token-operator">&lt;</span> o.x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        <span class="token-keyword">if</span>(y <span class="token-operator">!=</span> o.y) <span class="token-keyword">return</span> y <span class="token-operator">&lt;</span> o.y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        <span class="token-keyword">return</span> z <span class="token-operator">&lt;</span> o.z;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>};</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    int n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    vector&lt;int&gt; v(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        cin &gt;&gt; v[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-type">int</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">v</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        cin <span class="token-operator">&gt;&gt;</span> v[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    sort(v.begin(), v.end());</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    set&lt;triplet&gt; s;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    int cnt = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    for(int i = 0; i &lt; v.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        for(int j = i + 1; j &lt; v.size(); j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>            int sum = v[i] + v[j];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            auto pos = lower_bound(v.begin(), v.end(), sum);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            if(pos == v.end() || v[pos - v.begin()] != sum) continue;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            if(pos != v.end() &amp;&amp; !s.count({v[i], v[j], sum})){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>                cnt++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                s.insert({v[i], v[j], sum});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    <span class="token-function">sort</span>(v.<span class="token-function">begin</span>(), v.<span class="token-function">end</span>());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    <span class="token-type">set</span><span class="token-operator">&lt;</span>triplet<span class="token-operator">&gt;</span> s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-type">int</span> cnt <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> v.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> j <span class="token-operator">=</span> i <span class="token-operator">+</span> <span class="token-number">1</span>; j <span class="token-operator">&lt;</span> v.<span class="token-function">size</span>(); j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>            <span class="token-type">int</span> sum <span class="token-operator">=</span> v[i] <span class="token-operator">+</span> v[j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            <span class="token-type">auto</span> pos <span class="token-operator">=</span> <span class="token-function">lower_bound</span>(v.<span class="token-function">begin</span>(), v.<span class="token-function">end</span>(), sum);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            <span class="token-keyword">if</span>(pos <span class="token-operator">==</span> v.<span class="token-function">end</span>() <span class="token-operator">||</span> v[pos <span class="token-operator">-</span> v.<span class="token-function">begin</span>()] <span class="token-operator">!=</span> sum) <span class="token-keyword">continue</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            <span class="token-keyword">if</span>(pos <span class="token-operator">!=</span> v.<span class="token-function">end</span>() <span class="token-operator">&amp;&amp;</span> <span class="token-operator">!</span>s.<span class="token-function">count</span>({v[i], v[j], sum})){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>                cnt<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                s.<span class="token-function">insert</span>({v[i], v[j], sum});</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    cout &lt;&lt; (cnt == 0 ? -1 : cnt) &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    cout <span class="token-operator">&lt;&lt;</span> (cnt <span class="token-operator">==</span> <span class="token-number">0</span> <span class="token-operator">?</span> <span class="token-operator">-</span><span class="token-number">1</span> <span class="token-operator">:</span> cnt) <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>}</span></span>
         </code></pre>
       </article>

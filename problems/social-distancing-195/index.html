@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Social Distancing: a C++ competitive programming solution using range queries. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Social Distancing, Other, C++, competitive programming solution, USACO" />
+    <meta name="description" content="Social Distancing solution: a verified C++ approach using range queries, with complexity analysis and implementation." />
+    <meta name="keywords" content="Social Distancing, 1038, Other, Range queries, C++ solution, USACO" />
     <meta property="og:title" content="Social Distancing — C++ Solution" />
-    <meta property="og:description" content="Social Distancing: a C++ competitive programming solution using range queries. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Social Distancing solution: a verified C++ approach using range queries, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/social-distancing-195" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/social-distancing-195" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Social Distancing — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Social Distancing — C++ Solution","description":"Social Distancing: a C++ competitive programming solution using range queries. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/social-distancing-195","keywords":["Social Distancing","Other","Range queries","Range queries","Segment tree","Data structures","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Social Distancing — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Social Distancing — C++ Solution","description":"Social Distancing solution: a verified C++ approach using range queries, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/social-distancing-195","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Social Distancing","1038","Other","Range queries","Range queries","Segment tree","Data structures","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/social-distancing-195","sameAs":"https://usaco.org/index.php?page=viewproblem2&cpid=1038","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-195">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">USACO · 1038</p>
           <h1>Social Distancing</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Social Distancing, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Range queries</span><span>C++</span><span>45 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>195</strong><small>of 245</small></div>
@@ -85,49 +87,49 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>bool good(long long d, int n, vector&lt;pair&lt;long long, long long&gt;&gt;&amp; seg){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    long long cows = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>        long long last = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>        bool has_last = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        for (auto &amp;p : seg) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>            long long a = p.first, b = p.second;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>            long long start;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>            if (!has_last) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>                start = a;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>                start = max(a, last + d);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">bool</span> <span class="token-function">good</span>(<span class="token-type">long</span> <span class="token-type">long</span> d, <span class="token-type">int</span> n, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span>, <span class="token-type">long</span> <span class="token-type">long</span><span class="token-operator">&gt;&gt;</span><span class="token-operator">&amp;</span> seg){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    <span class="token-type">long</span> <span class="token-type">long</span> cows <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>        <span class="token-type">long</span> <span class="token-type">long</span> last <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>        <span class="token-type">bool</span> has_last <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        <span class="token-keyword">for</span> (<span class="token-type">auto</span> <span class="token-operator">&amp;</span>p <span class="token-operator">:</span> seg) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>            <span class="token-type">long</span> <span class="token-type">long</span> a <span class="token-operator">=</span> p.first, b <span class="token-operator">=</span> p.second;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>            <span class="token-type">long</span> <span class="token-type">long</span> start;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>            <span class="token-keyword">if</span> (<span class="token-operator">!</span>has_last) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>                start <span class="token-operator">=</span> a;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>                start <span class="token-operator">=</span> <span class="token-function">max</span>(a, last <span class="token-operator">+</span> d);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            if (start &gt; b) continue;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            long long diff = b - start;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            long long cnt = 1 + diff / d;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            cows += cnt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            if (cows &gt;= n) return true;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            long long new_last = start + (cnt - 1) * d;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            last = new_last;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            has_last = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            <span class="token-keyword">if</span> (start <span class="token-operator">&gt;</span> b) <span class="token-keyword">continue</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            <span class="token-type">long</span> <span class="token-type">long</span> diff <span class="token-operator">=</span> b <span class="token-operator">-</span> start;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            <span class="token-type">long</span> <span class="token-type">long</span> cnt <span class="token-operator">=</span> <span class="token-number">1</span> <span class="token-operator">+</span> diff <span class="token-operator">/</span> d;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            cows <span class="token-operator">+</span><span class="token-operator">=</span> cnt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            <span class="token-keyword">if</span> (cows <span class="token-operator">&gt;=</span> n) <span class="token-keyword">return</span> <span class="token-keyword">true</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            <span class="token-type">long</span> <span class="token-type">long</span> new_last <span class="token-operator">=</span> start <span class="token-operator">+</span> (cnt <span class="token-operator">-</span> <span class="token-number">1</span>) <span class="token-operator">*</span> d;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            last <span class="token-operator">=</span> new_last;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            has_last <span class="token-operator">=</span> <span class="token-keyword">true</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        return cows &gt;= n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        <span class="token-keyword">return</span> cows <span class="token-operator">&gt;=</span> n;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    int n, m; cin &gt;&gt; n &gt;&gt; m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    vector&lt;pair&lt;long long, long long&gt;&gt; seg(m);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    for (int i = 0; i &lt; m; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        long long a, b; cin &gt;&gt; a &gt;&gt; b;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        seg[i] = {a, b};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    <span class="token-type">int</span> n, m; cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">long</span> <span class="token-type">long</span>, <span class="token-type">long</span> <span class="token-type">long</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">seg</span>(m);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        <span class="token-type">long</span> <span class="token-type">long</span> a, b; cin <span class="token-operator">&gt;&gt;</span> a <span class="token-operator">&gt;&gt;</span> b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        seg[i] <span class="token-operator">=</span> {a, b};</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    sort(seg.begin(), seg.end());</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    long long lo = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    long long hi = 1e18;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    while (lo &lt; hi) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        long long mid = lo + (hi - lo + 1) / 2;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        if (good(mid, n, seg)) lo = mid;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        else hi = mid - 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    <span class="token-function">sort</span>(seg.<span class="token-function">begin</span>(), seg.<span class="token-function">end</span>());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    <span class="token-type">long</span> <span class="token-type">long</span> lo <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    <span class="token-type">long</span> <span class="token-type">long</span> hi <span class="token-operator">=</span> <span class="token-number">1e18</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    <span class="token-keyword">while</span> (lo <span class="token-operator">&lt;</span> hi) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-type">long</span> <span class="token-type">long</span> mid <span class="token-operator">=</span> lo <span class="token-operator">+</span> (hi <span class="token-operator">-</span> lo <span class="token-operator">+</span> <span class="token-number">1</span>) <span class="token-operator">/</span> <span class="token-number">2</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        <span class="token-keyword">if</span> (<span class="token-function">good</span>(mid, n, seg)) lo <span class="token-operator">=</span> mid;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        <span class="token-keyword">else</span> hi <span class="token-operator">=</span> mid <span class="token-operator">-</span> <span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    cout &lt;&lt; lo &lt;&lt; &quot;\n&quot;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    cout <span class="token-operator">&lt;&lt;</span> lo <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;\n&quot;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span> </span></span>
         </code></pre>

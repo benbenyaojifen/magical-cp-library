@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="AND-array: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="AND-array, Data structures, C++, competitive programming solution, Codeforces" />
+    <meta name="description" content="AND-array solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="AND-array, 2211D, Data structures, Simulation, C++ solution, Codeforces" />
     <meta property="og:title" content="AND-array — C++ Solution" />
-    <meta property="og:description" content="AND-array: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="AND-array solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/and-array-014" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/and-array-014" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>AND-array — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"AND-array — C++ Solution","description":"AND-array: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/and-array-014","keywords":["AND-array","Data structures","Simulation","Simulation","Data structures","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>AND-array — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"AND-array — C++ Solution","description":"AND-array solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/and-array-014","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["AND-array","2211D","Data structures","Simulation","Simulation","Data structures","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/and-array-014","sameAs":"https://codeforces.com/problemset/problem/2211/D","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-014">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">Codeforces · 2211D</p>
           <h1>AND-array</h1>
-          <p class="summary">C++ solution for a competitive programming problem in data structures.</p>
+          <p class="summary">Verified C++ solution for AND-array, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Data structures</span><span>Simulation</span><span>C++</span><span>73 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>014</strong><small>of 245</small></div>
@@ -85,78 +87,78 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e18; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>const int mod = 1000000007;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>const int MM = 100000 + 5;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>ll fac[MM], ifac[MM];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>ll power(ll a, ll b) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    ll res = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    while (b) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        if (b &amp; 1) res = res * a % mod;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        a = a * a % mod;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        b &gt;&gt;= 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">using</span> i128 <span class="token-operator">=</span> __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-keyword">const</span> ll <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e18</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> mod <span class="token-operator">=</span> <span class="token-number">1000000007</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> <span class="token-constant">MM</span> <span class="token-operator">=</span> <span class="token-number">100000</span> <span class="token-operator">+</span> <span class="token-number">5</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>ll fac[<span class="token-constant">MM</span>], ifac[<span class="token-constant">MM</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>ll <span class="token-function">power</span>(ll a, ll b) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    ll res <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-keyword">while</span> (b) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        <span class="token-keyword">if</span> (b <span class="token-operator">&amp;</span> <span class="token-number">1</span>) res <span class="token-operator">=</span> res <span class="token-operator">*</span> a <span class="token-operator">%</span> mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        a <span class="token-operator">=</span> a <span class="token-operator">*</span> a <span class="token-operator">%</span> mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        b <span class="token-operator">&gt;&gt;</span><span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    return res;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-keyword">return</span> res;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>void solve() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    vector&lt;ll&gt; b(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        cin &gt;&gt; b[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span><span class="token-type">void</span> <span class="token-function">solve</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span>ll<span class="token-operator">&gt;</span> <span class="token-function">b</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        cin <span class="token-operator">&gt;&gt;</span> b[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    vector&lt;pair&lt;int, ll&gt;&gt; v;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    auto cal = [&amp;] (int n, int k) -&gt; ll {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        if (k &lt; 0 || k &gt; n) return 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        return fac[n] * ifac[k] % mod * ifac[n - k] % mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, ll<span class="token-operator">&gt;&gt;</span> v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-type">auto</span> cal <span class="token-operator">=</span> [<span class="token-operator">&amp;</span>] (<span class="token-type">int</span> n, <span class="token-type">int</span> k) <span class="token-operator">-&gt;</span> ll {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        <span class="token-keyword">if</span> (k <span class="token-operator">&lt;</span> <span class="token-number">0</span> <span class="token-operator">||</span> k <span class="token-operator">&gt;</span> n) <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        <span class="token-keyword">return</span> fac[n] <span class="token-operator">*</span> ifac[k] <span class="token-operator">%</span> mod <span class="token-operator">*</span> ifac[n <span class="token-operator">-</span> k] <span class="token-operator">%</span> mod;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    };</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    for (int i = n; i &gt;= 1; i--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        ll cur = b[i];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        for (auto[j, wj] : v) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>            cur = (cur - 1LL * wj * cal(j, i)) % mod;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            if (cur &lt; 0) cur += mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> n; i <span class="token-operator">&gt;=</span> <span class="token-number">1</span>; i<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        ll cur <span class="token-operator">=</span> b[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        <span class="token-keyword">for</span> (<span class="token-type">auto</span>[j, wj] <span class="token-operator">:</span> v) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>            cur <span class="token-operator">=</span> (cur <span class="token-operator">-</span> 1LL <span class="token-operator">*</span> wj <span class="token-operator">*</span> <span class="token-function">cal</span>(j, i)) <span class="token-operator">%</span> mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            <span class="token-keyword">if</span> (cur <span class="token-operator">&lt;</span> <span class="token-number">0</span>) cur <span class="token-operator">+</span><span class="token-operator">=</span> mod;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        if (cur != 0) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>            v.emplace_back(i, cur);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        <span class="token-keyword">if</span> (cur <span class="token-operator">!=</span> <span class="token-number">0</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>            v.<span class="token-function">emplace_back</span>(i, cur);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    vector&lt;int&gt; cnt(29);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    for (auto[j, wj] : v) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        for (int bit = 0; bit &lt; 29; bit++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>            if ((wj &gt;&gt; bit) &amp; 1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>                cnt[bit] = j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">cnt</span>(<span class="token-number">29</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    <span class="token-keyword">for</span> (<span class="token-type">auto</span>[j, wj] <span class="token-operator">:</span> v) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> bit <span class="token-operator">=</span> <span class="token-number">0</span>; bit <span class="token-operator">&lt;</span> <span class="token-number">29</span>; bit<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>            <span class="token-keyword">if</span> ((wj <span class="token-operator">&gt;&gt;</span> bit) <span class="token-operator">&amp;</span> <span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>                cnt[bit] <span class="token-operator">=</span> j;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    vector&lt;int&gt; a(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    for (int bit = 0; bit &lt; 29; bit++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>        for (int i = 0; i &lt; cnt[bit]; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            a[i] |= (1 &lt;&lt; bit);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">a</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> bit <span class="token-operator">=</span> <span class="token-number">0</span>; bit <span class="token-operator">&lt;</span> <span class="token-number">29</span>; bit<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> cnt[bit]; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            a[i] <span class="token-operator">|</span><span class="token-operator">=</span> (<span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> bit);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        cout &lt;&lt; a[i] &lt;&lt; (i == n - 1 ? &#39;\n&#39; : &#39; &#39;);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        cout <span class="token-operator">&lt;&lt;</span> a[i] <span class="token-operator">&lt;&lt;</span> (i <span class="token-operator">==</span> n <span class="token-operator">-</span> <span class="token-number">1</span> <span class="token-operator">?</span> <span class="token-string">&#39;\n&#39;</span> <span class="token-operator">:</span> <span class="token-string">&#39; &#39;</span>);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    fac[0] = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    for (int i = 1; i &lt; MM; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        fac[i] = fac[i - 1] * i % mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    fac[<span class="token-number">0</span>] <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;</span> <span class="token-constant">MM</span>; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        fac[i] <span class="token-operator">=</span> fac[i <span class="token-operator">-</span> <span class="token-number">1</span>] <span class="token-operator">*</span> i <span class="token-operator">%</span> mod;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>    ifac[MM - 1] = power(fac[MM - 1], mod - 2);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>    for (int i = MM - 2; i &gt;= 0; i--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>        ifac[i] = ifac[i + 1] * (i + 1) % mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>    ifac[<span class="token-constant">MM</span> <span class="token-operator">-</span> <span class="token-number">1</span>] <span class="token-operator">=</span> <span class="token-function">power</span>(fac[<span class="token-constant">MM</span> <span class="token-operator">-</span> <span class="token-number">1</span>], mod <span class="token-operator">-</span> <span class="token-number">2</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-constant">MM</span> <span class="token-operator">-</span> <span class="token-number">2</span>; i <span class="token-operator">&gt;=</span> <span class="token-number">0</span>; i<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>        ifac[i] <span class="token-operator">=</span> ifac[i <span class="token-operator">+</span> <span class="token-number">1</span>] <span class="token-operator">*</span> (i <span class="token-operator">+</span> <span class="token-number">1</span>) <span class="token-operator">%</span> mod;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>    int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>    while (t--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>    <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>    <span class="token-keyword">while</span> (t<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>        <span class="token-function">solve</span>();</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>}</span></span>
         </code></pre>
       </article>

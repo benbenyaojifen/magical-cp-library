@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Round Trip II: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Round Trip II, Other, C++, competitive programming solution, CSES" />
+    <meta name="description" content="Round Trip II solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
+    <meta name="keywords" content="Round Trip II, 1678, Other, Graph traversal, C++ solution, CSES" />
     <meta property="og:title" content="Round Trip II — C++ Solution" />
-    <meta property="og:description" content="Round Trip II: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Round Trip II solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/round-trip-ii-178" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/round-trip-ii-178" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Round Trip II — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Round Trip II — C++ Solution","description":"Round Trip II: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/round-trip-ii-178","keywords":["Round Trip II","Other","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Round Trip II — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Round Trip II — C++ Solution","description":"Round Trip II solution: a verified C++ approach using graph traversal, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/round-trip-ii-178","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Round Trip II","1678","Other","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/round-trip-ii-178","sameAs":"https://cses.fi/problemset/task/1678/","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-178">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">CSES · 1678</p>
           <h1>Round Trip II</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Round Trip II, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Graph traversal</span><span>C++</span><span>67 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>178</strong><small>of 245</small></div>
@@ -85,72 +87,72 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>void dfs(int u, vector&lt;vector&lt;int&gt;&gt; &amp;adj, vector&lt;int&gt; &amp;parent, vector&lt;int&gt; &amp; colour, vector&lt;int&gt;&amp; cycle, bool &amp;found){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    if(found) return;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    colour[u] = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    for(int nxt : adj[u]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        if(found) return;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        if(colour[nxt] == 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>            parent[nxt] = u;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            dfs(nxt, adj, parent, colour, cycle, found);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        } else if(colour[nxt] == 1){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            // find parent and build cycle</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            int cur = u;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            cycle.push_back(nxt);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            while(cur != nxt){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>                cycle.push_back(cur);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>                cur = parent[cur];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-type">void</span> <span class="token-function">dfs</span>(<span class="token-type">int</span> u, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-operator">&amp;</span>adj, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-operator">&amp;</span>parent, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-operator">&amp;</span> colour, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span><span class="token-operator">&amp;</span> cycle, <span class="token-type">bool</span> <span class="token-operator">&amp;</span>found){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    <span class="token-keyword">if</span>(found) <span class="token-keyword">return</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    colour[u] <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> nxt <span class="token-operator">:</span> adj[u]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        <span class="token-keyword">if</span>(found) <span class="token-keyword">return</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        <span class="token-keyword">if</span>(colour[nxt] <span class="token-operator">==</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>            parent[nxt] <span class="token-operator">=</span> u;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            <span class="token-function">dfs</span>(nxt, adj, parent, colour, cycle, found);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        } <span class="token-keyword">else</span> <span class="token-keyword">if</span>(colour[nxt] <span class="token-operator">==</span> <span class="token-number">1</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            <span class="token-comment">// find parent and build cycle</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            <span class="token-type">int</span> cur <span class="token-operator">=</span> u;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            cycle.<span class="token-function">push_back</span>(nxt);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            <span class="token-keyword">while</span>(cur <span class="token-operator">!=</span> nxt){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>                cycle.<span class="token-function">push_back</span>(cur);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>                cur <span class="token-operator">=</span> parent[cur];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            reverse(cycle.begin(), cycle.end());</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            found = true; return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            <span class="token-function">reverse</span>(cycle.<span class="token-function">begin</span>(), cycle.<span class="token-function">end</span>());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            found <span class="token-operator">=</span> <span class="token-keyword">true</span>; <span class="token-keyword">return</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    colour[u] = 2;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    colour[u] <span class="token-operator">=</span> <span class="token-number">2</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>vector&lt;int&gt; find_cycle(vector&lt;vector&lt;int&gt;&gt; &amp;adj){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    vector&lt;int&gt; colour(adj.size()), parent(adj.size()); // if colour[i] == 0, it is not visited, colour[1] = visiting, colour[2] = visited</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    vector&lt;int&gt;cycle;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    bool found = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    for(int i = 1; i &lt; adj.size() &amp;&amp; !found; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        if(colour[i] == 0) dfs(i, adj, parent, colour, cycle, found);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">find_cycle</span>(<span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-operator">&amp;</span>adj){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">colour</span>(adj.<span class="token-function">size</span>()), <span class="token-function">parent</span>(adj.<span class="token-function">size</span>()); <span class="token-comment">// if colour[i] == 0, it is not visited, colour[1] = visiting, colour[2] = visited</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span>cycle;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    <span class="token-type">bool</span> found <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;</span> adj.<span class="token-function">size</span>() <span class="token-operator">&amp;&amp;</span> <span class="token-operator">!</span>found; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        <span class="token-keyword">if</span>(colour[i] <span class="token-operator">==</span> <span class="token-number">0</span>) <span class="token-function">dfs</span>(i, adj, parent, colour, cycle, found);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    return cycle;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    <span class="token-keyword">return</span> cycle;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    int n, m; cin &gt;&gt; n &gt;&gt; m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    vector&lt;vector&lt;int&gt;&gt; adj(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    vector&lt;int&gt; indegree(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    for(int i = 0; i &lt; m; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        int a, b; cin &gt;&gt; a &gt;&gt; b;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        adj[a].push_back(b);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        indegree[b]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    <span class="token-type">int</span> n, m; cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">adj</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">indegree</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        <span class="token-type">int</span> a, b; cin <span class="token-operator">&gt;&gt;</span> a <span class="token-operator">&gt;&gt;</span> b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        adj[a].<span class="token-function">push_back</span>(b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        indegree[b]<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    queue&lt;int&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    for(int i = 1; i &lt; indegree.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        if(indegree[i] == 0) q.push(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    <span class="token-type">queue</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;</span> indegree.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        <span class="token-keyword">if</span>(indegree[i] <span class="token-operator">==</span> <span class="token-number">0</span>) q.<span class="token-function">push</span>(i);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    } </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    int visited = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    while(!q.empty()){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>        int cur = q.front(); q.pop(); visited++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>        for(int nxt : adj[cur]){ </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>            if(!(--indegree[nxt])) q.push(nxt);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    <span class="token-type">int</span> visited <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    <span class="token-keyword">while</span>(<span class="token-operator">!</span>q.<span class="token-function">empty</span>()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>        <span class="token-type">int</span> cur <span class="token-operator">=</span> q.<span class="token-function">front</span>(); q.<span class="token-function">pop</span>(); visited<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> nxt <span class="token-operator">:</span> adj[cur]){ </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>            <span class="token-keyword">if</span>(<span class="token-operator">!</span>(<span class="token-operator">--</span>indegree[nxt])) q.<span class="token-function">push</span>(nxt);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    if(visited == n){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>        cout &lt;&lt; &quot;IMPOSSIBLE&quot; &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        vector&lt;int&gt; cycle = find_cycle(adj);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        cout &lt;&lt; cycle.size() + 1 &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        for(int i = 0; i &lt; cycle.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>            cout &lt;&lt; cycle[i] &lt;&lt; &quot; &quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    <span class="token-keyword">if</span>(visited <span class="token-operator">==</span> n){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;IMPOSSIBLE&quot;</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> cycle <span class="token-operator">=</span> <span class="token-function">find_cycle</span>(adj);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        cout <span class="token-operator">&lt;&lt;</span> cycle.<span class="token-function">size</span>() <span class="token-operator">+</span> <span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> cycle.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>            cout <span class="token-operator">&lt;&lt;</span> cycle[i] <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot; &quot;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        cout &lt;&lt; cycle[0] &lt;&lt; &quot;\n&quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        cout <span class="token-operator">&lt;&lt;</span> cycle[<span class="token-number">0</span>] <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;\n&quot;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>}</span></span>
         </code></pre>
       </article>

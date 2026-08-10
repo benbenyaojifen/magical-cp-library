@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="DMOPC &#39;20 Contest 2 P1 - Laugh Graphs: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="DMOPC &#39;20 Contest 2 P1 - Laugh Graphs, Graphs &amp; trees, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="DMOPC &#39;20 Contest 2 P1 - Laugh Graphs solution: a verified C++ approach using string processing, with complexity analysis and implementation." />
+    <meta name="keywords" content="DMOPC &#39;20 Contest 2 P1 - Laugh Graphs, dmopc20c2p1, Graphs &amp; trees, String processing, C++ solution, DMOJ" />
     <meta property="og:title" content="DMOPC &#39;20 Contest 2 P1 - Laugh Graphs — C++ Solution" />
-    <meta property="og:description" content="DMOPC &#39;20 Contest 2 P1 - Laugh Graphs: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="DMOPC &#39;20 Contest 2 P1 - Laugh Graphs solution: a verified C++ approach using string processing, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/dmopc-20-contest-2-p1-laugh-graphs-125" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/dmopc-20-contest-2-p1-laugh-graphs-125" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>DMOPC &#39;20 Contest 2 P1 - Laugh Graphs — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DMOPC '20 Contest 2 P1 - Laugh Graphs — C++ Solution","description":"DMOPC '20 Contest 2 P1 - Laugh Graphs: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/dmopc-20-contest-2-p1-laugh-graphs-125","keywords":["DMOPC '20 Contest 2 P1 - Laugh Graphs","Graphs & trees","String processing","String processing","Strings","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>DMOPC &#39;20 Contest 2 P1 - Laugh Graphs — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DMOPC '20 Contest 2 P1 - Laugh Graphs — C++ Solution","description":"DMOPC '20 Contest 2 P1 - Laugh Graphs solution: a verified C++ approach using string processing, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/dmopc-20-contest-2-p1-laugh-graphs-125","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["DMOPC '20 Contest 2 P1 - Laugh Graphs","dmopc20c2p1","Graphs & trees","String processing","String processing","Strings","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/dmopc-20-contest-2-p1-laugh-graphs-125","sameAs":"https://dmoj.ca/problem/dmopc20c2p1","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-125">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · dmopc20c2p1</p>
           <h1>DMOPC &#39;20 Contest 2 P1 - Laugh Graphs</h1>
-          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <p class="summary">Verified C++ solution for DMOPC &#39;20 Contest 2 P1 - Laugh Graphs, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Graphs &amp; trees</span><span>String processing</span><span>C++</span><span>50 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>125</strong><small>of 245</small></div>
@@ -85,54 +87,54 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n; </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    string s; </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    cin &gt;&gt; s;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    unordered_map&lt;int, vector&lt;pair&lt;int,char&gt;&gt;&gt; rows;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    int r = 0, c = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    int minR = 0, maxR = 0, maxC = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    auto add = [&amp;](int row, int col, char ch){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        rows[row].push_back({col, ch});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        maxC = max(maxC, col);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">int</span> n; </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">string</span> s; </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    cin <span class="token-operator">&gt;&gt;</span> s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-type">unordered_map</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">char</span><span class="token-operator">&gt;&gt;</span><span class="token-operator">&gt;</span> rows;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    <span class="token-type">int</span> r <span class="token-operator">=</span> <span class="token-number">0</span>, c <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-type">int</span> minR <span class="token-operator">=</span> <span class="token-number">0</span>, maxR <span class="token-operator">=</span> <span class="token-number">0</span>, maxC <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-type">auto</span> add <span class="token-operator">=</span> [<span class="token-operator">&amp;</span>](<span class="token-type">int</span> row, <span class="token-type">int</span> col, <span class="token-type">char</span> ch){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        rows[row].<span class="token-function">push_back</span>({col, ch});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        maxC <span class="token-operator">=</span> <span class="token-function">max</span>(maxC, col);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    };</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    for(char p : s) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        if(p == &#39;^&#39;){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            add(r, c, &#39;/&#39;);    </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            c++; r--;      </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        } else if(p == &#39;v&#39;){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            r++;            </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            add(r, c, &#39;\\&#39;);   </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            c++;              </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        } else {        </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>            add(r, c, &#39;_&#39;);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>            c++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-keyword">for</span>(<span class="token-type">char</span> p <span class="token-operator">:</span> s) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        <span class="token-keyword">if</span>(p <span class="token-operator">==</span> <span class="token-string">&#39;^&#39;</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>            <span class="token-function">add</span>(r, c, <span class="token-string">&#39;/&#39;</span>);    </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            c<span class="token-operator">++</span>; r<span class="token-operator">--</span>;      </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        } <span class="token-keyword">else</span> <span class="token-keyword">if</span>(p <span class="token-operator">==</span> <span class="token-string">&#39;v&#39;</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            r<span class="token-operator">++</span>;            </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            <span class="token-function">add</span>(r, c, <span class="token-string">&#39;\\&#39;</span>);   </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            c<span class="token-operator">++</span>;              </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        } <span class="token-keyword">else</span> {        </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>            <span class="token-function">add</span>(r, c, <span class="token-string">&#39;_&#39;</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>            c<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        minR = min(minR, r);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        maxR = max(maxR, r);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        minR <span class="token-operator">=</span> <span class="token-function">min</span>(minR, r);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        maxR <span class="token-operator">=</span> <span class="token-function">max</span>(maxR, r);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    for (int row = minR; row &lt;= maxR; row++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        auto &amp;vec = rows[row];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        if (vec.empty()) continue;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        string line;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        int cur = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        for (auto [col, ch] : vec){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            line.append(col - cur, &#39;.&#39;);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            line.push_back(ch);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            cur = col + 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> row <span class="token-operator">=</span> minR; row <span class="token-operator">&lt;=</span> maxR; row<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        <span class="token-type">auto</span> <span class="token-operator">&amp;</span>vec <span class="token-operator">=</span> rows[row];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        <span class="token-keyword">if</span> (vec.<span class="token-function">empty</span>()) <span class="token-keyword">continue</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        <span class="token-type">string</span> line;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-type">int</span> cur <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        <span class="token-keyword">for</span> (<span class="token-type">auto</span> [col, ch] <span class="token-operator">:</span> vec){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            line.<span class="token-function">append</span>(col <span class="token-operator">-</span> cur, <span class="token-string">&#39;.&#39;</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            line.<span class="token-function">push_back</span>(ch);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            cur <span class="token-operator">=</span> col <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        line.append(n - line.size(), &#39;.&#39;); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        cout &lt;&lt; line &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        line.<span class="token-function">append</span>(n <span class="token-operator">-</span> line.<span class="token-function">size</span>(), <span class="token-string">&#39;.&#39;</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        cout <span class="token-operator">&lt;&lt;</span> line <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span> </span></span>
         </code></pre>

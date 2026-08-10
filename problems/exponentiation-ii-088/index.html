@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Exponentiation II: a C++ competitive programming solution using mathematical reasoning. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Exponentiation II, Math, C++, competitive programming solution, CSES" />
+    <meta name="description" content="Exponentiation II solution: a verified C++ approach using mathematical reasoning, with complexity analysis and implementation." />
+    <meta name="keywords" content="Exponentiation II, 1712, Math, Mathematical reasoning, C++ solution, CSES" />
     <meta property="og:title" content="Exponentiation II — C++ Solution" />
-    <meta property="og:description" content="Exponentiation II: a C++ competitive programming solution using mathematical reasoning. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Exponentiation II solution: a verified C++ approach using mathematical reasoning, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/exponentiation-ii-088" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/exponentiation-ii-088" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Exponentiation II — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Exponentiation II — C++ Solution","description":"Exponentiation II: a C++ competitive programming solution using mathematical reasoning. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/exponentiation-ii-088","keywords":["Exponentiation II","Math","Mathematical reasoning","Mathematical reasoning","Mathematics","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Exponentiation II — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Exponentiation II — C++ Solution","description":"Exponentiation II solution: a verified C++ approach using mathematical reasoning, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/exponentiation-ii-088","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Exponentiation II","1712","Math","Mathematical reasoning","Mathematical reasoning","Mathematics","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/exponentiation-ii-088","sameAs":"https://cses.fi/problemset/task/1712","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-088">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">CSES · 1712</p>
           <h1>Exponentiation II</h1>
-          <p class="summary">C++ solution for a competitive programming problem in math.</p>
+          <p class="summary">Verified C++ solution for Exponentiation II, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Math</span><span>Mathematical reasoning</span><span>C++</span><span>30 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>088</strong><small>of 245</small></div>
@@ -85,35 +87,35 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e18; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>ll power(ll a, ll b, int mod) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ll res = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    a %= mod;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    while (b) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        if (b &amp; 1) res = ((res % mod) * (a % mod)) % mod;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        a = ((a % mod) * (a % mod)) % mod;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        b &gt;&gt;= 1LL;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">using</span> i128 <span class="token-operator">=</span> __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-keyword">const</span> ll <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e18</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>ll <span class="token-function">power</span>(ll a, ll b, <span class="token-type">int</span> mod) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ll res <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    a <span class="token-operator">%</span><span class="token-operator">=</span> mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-keyword">while</span> (b) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        <span class="token-keyword">if</span> (b <span class="token-operator">&amp;</span> <span class="token-number">1</span>) res <span class="token-operator">=</span> ((res <span class="token-operator">%</span> mod) <span class="token-operator">*</span> (a <span class="token-operator">%</span> mod)) <span class="token-operator">%</span> mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        a <span class="token-operator">=</span> ((a <span class="token-operator">%</span> mod) <span class="token-operator">*</span> (a <span class="token-operator">%</span> mod)) <span class="token-operator">%</span> mod;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        b <span class="token-operator">&gt;&gt;</span><span class="token-operator">=</span> 1LL;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    return res;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-keyword">return</span> res;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    while (n--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        ll a, b, c; cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        if (b == 0 &amp;&amp; c == 0) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            cout &lt;&lt; a &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            continue;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-keyword">while</span> (n<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        ll a, b, c; cin <span class="token-operator">&gt;&gt;</span> a <span class="token-operator">&gt;&gt;</span> b <span class="token-operator">&gt;&gt;</span> c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        <span class="token-keyword">if</span> (b <span class="token-operator">==</span> <span class="token-number">0</span> <span class="token-operator">&amp;&amp;</span> c <span class="token-operator">==</span> <span class="token-number">0</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            cout <span class="token-operator">&lt;&lt;</span> a <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            <span class="token-keyword">continue</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        ll p = power(b, c, 1e9 + 6); // by fermats little theorem</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        cout &lt;&lt; power(a, p, 1e9 + 7) &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        ll p <span class="token-operator">=</span> <span class="token-function">power</span>(b, c, <span class="token-number">1e9</span> <span class="token-operator">+</span> <span class="token-number">6</span>); <span class="token-comment">// by fermats little theorem</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-function">power</span>(a, p, <span class="token-number">1e9</span> <span class="token-operator">+</span> <span class="token-number">7</span>) <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>}</span></span>
         </code></pre>
       </article>

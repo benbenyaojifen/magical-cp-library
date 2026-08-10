@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="DMOPC &#39;14 Exam Time P4 - Exam Delay: a C++ competitive programming solution using shortest paths. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="DMOPC &#39;14 Exam Time P4 - Exam Delay, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="DMOPC &#39;14 Exam Time P4 - Exam Delay solution: a verified C++ approach using shortest paths, with complexity analysis and implementation." />
+    <meta name="keywords" content="DMOPC &#39;14 Exam Time P4 - Exam Delay, dmopc14ce1p4, Other, Shortest paths, C++ solution, DMOJ" />
     <meta property="og:title" content="DMOPC &#39;14 Exam Time P4 - Exam Delay — C++ Solution" />
-    <meta property="og:description" content="DMOPC &#39;14 Exam Time P4 - Exam Delay: a C++ competitive programming solution using shortest paths. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="DMOPC &#39;14 Exam Time P4 - Exam Delay solution: a verified C++ approach using shortest paths, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/dmopc-14-exam-time-p4-exam-delay-086" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/dmopc-14-exam-time-p4-exam-delay-086" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>DMOPC &#39;14 Exam Time P4 - Exam Delay — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DMOPC '14 Exam Time P4 - Exam Delay — C++ Solution","description":"DMOPC '14 Exam Time P4 - Exam Delay: a C++ competitive programming solution using shortest paths. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/dmopc-14-exam-time-p4-exam-delay-086","keywords":["DMOPC '14 Exam Time P4 - Exam Delay","Other","Shortest paths","Shortest paths","Priority queue","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>DMOPC &#39;14 Exam Time P4 - Exam Delay — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"DMOPC '14 Exam Time P4 - Exam Delay — C++ Solution","description":"DMOPC '14 Exam Time P4 - Exam Delay solution: a verified C++ approach using shortest paths, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/dmopc-14-exam-time-p4-exam-delay-086","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["DMOPC '14 Exam Time P4 - Exam Delay","dmopc14ce1p4","Other","Shortest paths","Shortest paths","Priority queue","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/dmopc-14-exam-time-p4-exam-delay-086","sameAs":"https://dmoj.ca/problem/dmopc14ce1p4","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-086">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · dmopc14ce1p4</p>
           <h1>DMOPC &#39;14 Exam Time P4 - Exam Delay</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for DMOPC &#39;14 Exam Time P4 - Exam Delay, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Shortest paths</span><span>C++</span><span>39 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>086</strong><small>of 245</small></div>
@@ -85,44 +87,44 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>typedef long long ll;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const long long INF = 1e17; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n, m; cin &gt;&gt; n &gt;&gt; m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    vector&lt;vector&lt;pair&lt;double, int&gt;&gt;&gt; adj(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    for (int i = 0; i &lt; m; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        int u, v, d, s; cin &gt;&gt; u &gt;&gt; v &gt;&gt; d &gt;&gt; s;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        double w = (double) d / (double) s * (double) 60; //minute</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        adj[u].emplace_back(w, v);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        adj[v].emplace_back(w, u);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">typedef</span> <span class="token-type">long</span> <span class="token-type">long</span> ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e17</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">int</span> n, m; cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">double</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span><span class="token-operator">&gt;</span> <span class="token-function">adj</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        <span class="token-type">int</span> u, v, d, s; cin <span class="token-operator">&gt;&gt;</span> u <span class="token-operator">&gt;&gt;</span> v <span class="token-operator">&gt;&gt;</span> d <span class="token-operator">&gt;&gt;</span> s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        <span class="token-type">double</span> w <span class="token-operator">=</span> (<span class="token-type">double</span>) d <span class="token-operator">/</span> (<span class="token-type">double</span>) s <span class="token-operator">*</span> (<span class="token-type">double</span>) <span class="token-number">60</span>; <span class="token-comment">//minute</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        adj[u].<span class="token-function">emplace_back</span>(w, v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        adj[v].<span class="token-function">emplace_back</span>(w, u);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    vector&lt;pair&lt;double, int&gt;&gt; dist(n + 1, make_pair(inf, inf));</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    dist[1] = {(double) 0, 0};</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    priority_queue&lt;tuple&lt;double, int, int&gt;, vector&lt;tuple&lt;double, int, int&gt;&gt;, greater&lt;tuple&lt;double, int, int&gt;&gt;&gt; pq;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    // same dist, same edge count</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    pq.emplace(0, 0, 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    while (!pq.empty()) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>         auto[w, e, u] = pq.top(); pq.pop();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>         if (u == n) break;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        //  if (w &gt; dist[u].first) continue;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>         for (auto[wt, v] : adj[u]) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            if (dist[v].first &gt; wt + w) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>                dist[v].first = wt + w;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>                dist[v].second = e + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>                pq.emplace(dist[v].first, e + 1, v);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            } else if(dist[v].first == wt + w &amp;&amp; e + 1 &lt; dist[v].second) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>                dist[v].second = e + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>                pq.emplace(dist[v].first, e + 1, v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">double</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">dist</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>, <span class="token-function">make_pair</span>(inf, inf));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    dist[<span class="token-number">1</span>] <span class="token-operator">=</span> {(<span class="token-type">double</span>) <span class="token-number">0</span>, <span class="token-number">0</span>};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-type">priority_queue</span><span class="token-operator">&lt;</span>tuple<span class="token-operator">&lt;</span><span class="token-type">double</span>, <span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;</span>, <span class="token-type">vector</span><span class="token-operator">&lt;</span>tuple<span class="token-operator">&lt;</span><span class="token-type">double</span>, <span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span>, greater<span class="token-operator">&lt;</span>tuple<span class="token-operator">&lt;</span><span class="token-type">double</span>, <span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span><span class="token-operator">&gt;</span> pq;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-comment">// same dist, same edge count</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    pq.<span class="token-function">emplace</span>(<span class="token-number">0</span>, <span class="token-number">0</span>, <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-keyword">while</span> (<span class="token-operator">!</span>pq.<span class="token-function">empty</span>()) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>         <span class="token-type">auto</span>[w, e, u] <span class="token-operator">=</span> pq.<span class="token-function">top</span>(); pq.<span class="token-function">pop</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>         <span class="token-keyword">if</span> (u <span class="token-operator">==</span> n) <span class="token-keyword">break</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        <span class="token-comment">//  if (w &gt; dist[u].first) continue;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>         <span class="token-keyword">for</span> (<span class="token-type">auto</span>[wt, v] <span class="token-operator">:</span> adj[u]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            <span class="token-keyword">if</span> (dist[v].first <span class="token-operator">&gt;</span> wt <span class="token-operator">+</span> w) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>                dist[v].first <span class="token-operator">=</span> wt <span class="token-operator">+</span> w;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>                dist[v].second <span class="token-operator">=</span> e <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>                pq.<span class="token-function">emplace</span>(dist[v].first, e <span class="token-operator">+</span> <span class="token-number">1</span>, v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            } <span class="token-keyword">else</span> <span class="token-keyword">if</span>(dist[v].first <span class="token-operator">==</span> wt <span class="token-operator">+</span> w <span class="token-operator">&amp;&amp;</span> e <span class="token-operator">+</span> <span class="token-number">1</span> <span class="token-operator">&lt;</span> dist[v].second) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>                dist[v].second <span class="token-operator">=</span> e <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>                pq.<span class="token-function">emplace</span>(dist[v].first, e <span class="token-operator">+</span> <span class="token-number">1</span>, v);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>         }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    cout &lt;&lt; dist[n].second &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    cout &lt;&lt; round(dist[n].first / 3) &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    cout <span class="token-operator">&lt;&lt;</span> dist[n].second <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    cout <span class="token-operator">&lt;&lt;</span> <span class="token-function">round</span>(dist[n].first <span class="token-operator">/</span> <span class="token-number">3</span>) <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>}</span></span>
         </code></pre>
       </article>

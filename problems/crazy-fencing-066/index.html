@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Crazy Fencing: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Crazy Fencing, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="CCC 2021 S1 solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="Crazy Fencing, ccc21s1, CCC 2021 S1, ccc2021s1, Other, Simulation, C++ solution, DMOJ" />
     <meta property="og:title" content="Crazy Fencing — C++ Solution" />
-    <meta property="og:description" content="Crazy Fencing: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="CCC 2021 S1 solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/crazy-fencing-066" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/crazy-fencing-066" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Crazy Fencing — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Crazy Fencing — C++ Solution","description":"Crazy Fencing: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/crazy-fencing-066","keywords":["Crazy Fencing","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Crazy Fencing — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Crazy Fencing — C++ Solution","description":"CCC 2021 S1 solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/crazy-fencing-066","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Crazy Fencing","ccc21s1","CCC 2021 S1","ccc2021s1","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/crazy-fencing-066","sameAs":"https://dmoj.ca/problem/ccc21s1","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-066">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · ccc21s1</p>
           <h1>Crazy Fencing</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for CCC 2021 S1, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>22 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>066</strong><small>of 245</small></div>
@@ -85,27 +87,27 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &quot;stdc.h&quot;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &quot;stdc.h&quot;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    int n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    vector&lt;int&gt; w (n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    for(int i = 0; i &lt; w.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        cin &gt;&gt; w[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    <span class="token-type">int</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">w</span> (n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> w.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        cin <span class="token-operator">&gt;&gt;</span> w[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    vector&lt;int&gt; h(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for(int i = 0; i &lt; h.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        cin &gt;&gt; h[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">h</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> h.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        cin <span class="token-operator">&gt;&gt;</span> h[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    int index = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    double ans = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    for(int i = 0; i &lt; w.size() - 1; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        ans += h[index] * (w[i] + w[i + 1]) / 2.0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        index++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-type">int</span> index <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-type">double</span> ans <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> w.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        ans <span class="token-operator">+</span><span class="token-operator">=</span> h[index] <span class="token-operator">*</span> (w[i] <span class="token-operator">+</span> w[i <span class="token-operator">+</span> <span class="token-number">1</span>]) <span class="token-operator">/</span> <span class="token-number">2.0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        index<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    cout &lt;&lt; fixed &lt;&lt; setprecision(6) &lt;&lt; ans &lt;&lt; endl;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    cout <span class="token-operator">&lt;&lt;</span> fixed <span class="token-operator">&lt;&lt;</span> <span class="token-function">setprecision</span>(<span class="token-number">6</span>) <span class="token-operator">&lt;&lt;</span> ans <span class="token-operator">&lt;&lt;</span> endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>}</span></span>
         </code></pre>
       </article>

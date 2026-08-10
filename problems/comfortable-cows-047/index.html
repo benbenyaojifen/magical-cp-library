@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Comfortable Cows: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Comfortable Cows, Other, C++, competitive programming solution, USACO" />
+    <meta name="description" content="Comfortable Cows solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="Comfortable Cows, 1110, Other, Simulation, C++ solution, USACO" />
     <meta property="og:title" content="Comfortable Cows — C++ Solution" />
-    <meta property="og:description" content="Comfortable Cows: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Comfortable Cows solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/comfortable-cows-047" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/comfortable-cows-047" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Comfortable Cows — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Comfortable Cows — C++ Solution","description":"Comfortable Cows: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/comfortable-cows-047","keywords":["Comfortable Cows","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Comfortable Cows — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Comfortable Cows — C++ Solution","description":"Comfortable Cows solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/comfortable-cows-047","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Comfortable Cows","1110","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/comfortable-cows-047","sameAs":"https://usaco.org/index.php?page=viewproblem2&cpid=1110","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-047">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">USACO · 1110</p>
           <h1>Comfortable Cows</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Comfortable Cows, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>41 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>047</strong><small>of 245</small></div>
@@ -85,44 +87,44 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>#define f first</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>#define s second</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int dx[4] = {1,0,-1,0}, dy[4] = {0,1,0,-1};</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>bool present[3000][3000]; // which locations contain cows</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>	int N; cin &gt;&gt; N;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>	queue&lt;pair&lt;int,int&gt;&gt; cows_to_place;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>	int total_cows = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>	for (int initial_cows = 1; initial_cows &lt;= N; ++initial_cows) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>		pair&lt;int,int&gt; p; cin &gt;&gt; p.f &gt;&gt; p.s;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>		p.f += 1000, p.s += 1000;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>		cows_to_place.push(p);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>		auto re_evaluate = [&amp;](int x, int y) { </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>			// if cow adjacent to exactly three others</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>			// add fourth location to queue</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>			if (!present[x][y]) return;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>			int num_adj = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>			for (int d = 0; d &lt; 4; ++d) </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>				num_adj += present[x+dx[d]][y+dy[d]];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>			if (num_adj == 3)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>				for (int d = 0; d &lt; 4; ++d) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>					pair&lt;int,int&gt; nex{x+dx[d],y+dy[d]};</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>					if (!present[nex.f][nex.s])</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>						cows_to_place.push(nex);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-preprocessor">#define f first</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-preprocessor">#define s second</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> dx[<span class="token-number">4</span>] <span class="token-operator">=</span> {<span class="token-number">1</span>,<span class="token-number">0</span>,<span class="token-operator">-</span><span class="token-number">1</span>,<span class="token-number">0</span>}, dy[<span class="token-number">4</span>] <span class="token-operator">=</span> {<span class="token-number">0</span>,<span class="token-number">1</span>,<span class="token-number">0</span>,<span class="token-operator">-</span><span class="token-number">1</span>};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-type">bool</span> present[<span class="token-number">3000</span>][<span class="token-number">3000</span>]; <span class="token-comment">// which locations contain cows</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>	<span class="token-type">int</span> <span class="token-constant">N</span>; cin <span class="token-operator">&gt;&gt;</span> <span class="token-constant">N</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>	<span class="token-type">queue</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> cows_to_place;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>	<span class="token-type">int</span> total_cows <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>	<span class="token-keyword">for</span> (<span class="token-type">int</span> initial_cows <span class="token-operator">=</span> <span class="token-number">1</span>; initial_cows <span class="token-operator">&lt;=</span> <span class="token-constant">N</span>; <span class="token-operator">++</span>initial_cows) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>		<span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;</span> p; cin <span class="token-operator">&gt;&gt;</span> p.f <span class="token-operator">&gt;&gt;</span> p.s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>		p.f <span class="token-operator">+</span><span class="token-operator">=</span> <span class="token-number">1000</span>, p.s <span class="token-operator">+</span><span class="token-operator">=</span> <span class="token-number">1000</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>		cows_to_place.<span class="token-function">push</span>(p);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>		<span class="token-type">auto</span> re_evaluate <span class="token-operator">=</span> [<span class="token-operator">&amp;</span>](<span class="token-type">int</span> x, <span class="token-type">int</span> y) { </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>			<span class="token-comment">// if cow adjacent to exactly three others</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>			<span class="token-comment">// add fourth location to queue</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>			<span class="token-keyword">if</span> (<span class="token-operator">!</span>present[x][y]) <span class="token-keyword">return</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>			<span class="token-type">int</span> num_adj <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>			<span class="token-keyword">for</span> (<span class="token-type">int</span> d <span class="token-operator">=</span> <span class="token-number">0</span>; d <span class="token-operator">&lt;</span> <span class="token-number">4</span>; <span class="token-operator">++</span>d) </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>				num_adj <span class="token-operator">+</span><span class="token-operator">=</span> present[x<span class="token-operator">+</span>dx[d]][y<span class="token-operator">+</span>dy[d]];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>			<span class="token-keyword">if</span> (num_adj <span class="token-operator">==</span> <span class="token-number">3</span>)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>				<span class="token-keyword">for</span> (<span class="token-type">int</span> d <span class="token-operator">=</span> <span class="token-number">0</span>; d <span class="token-operator">&lt;</span> <span class="token-number">4</span>; <span class="token-operator">++</span>d) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>					<span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;</span> nex{x<span class="token-operator">+</span>dx[d],y<span class="token-operator">+</span>dy[d]};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>					<span class="token-keyword">if</span> (<span class="token-operator">!</span>present[nex.f][nex.s])</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>						cows_to_place.<span class="token-function">push</span>(nex);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>				}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>		};</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>		while (!cows_to_place.empty()) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>			pair&lt;int,int&gt; loc = cows_to_place.front(); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>			cows_to_place.pop();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>			if (present[loc.f][loc.s]) continue;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>			++ total_cows; present[loc.f][loc.s] = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>			re_evaluate(loc.f,loc.s);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>			for (int d = 0; d &lt; 4; ++d) </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>				re_evaluate(loc.f+dx[d],loc.s+dy[d]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>		<span class="token-keyword">while</span> (<span class="token-operator">!</span>cows_to_place.<span class="token-function">empty</span>()) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>			<span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;</span> loc <span class="token-operator">=</span> cows_to_place.<span class="token-function">front</span>(); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>			cows_to_place.<span class="token-function">pop</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>			<span class="token-keyword">if</span> (present[loc.f][loc.s]) <span class="token-keyword">continue</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>			<span class="token-operator">++</span> total_cows; present[loc.f][loc.s] <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>			<span class="token-function">re_evaluate</span>(loc.f,loc.s);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>			<span class="token-keyword">for</span> (<span class="token-type">int</span> d <span class="token-operator">=</span> <span class="token-number">0</span>; d <span class="token-operator">&lt;</span> <span class="token-number">4</span>; <span class="token-operator">++</span>d) </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>				<span class="token-function">re_evaluate</span>(loc.f<span class="token-operator">+</span>dx[d],loc.s<span class="token-operator">+</span>dy[d]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>		}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>		cout &lt;&lt; total_cows-initial_cows &lt;&lt; &quot;\n&quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>		cout <span class="token-operator">&lt;&lt;</span> total_cows<span class="token-operator">-</span>initial_cows <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;\n&quot;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>	}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span> </span></span>

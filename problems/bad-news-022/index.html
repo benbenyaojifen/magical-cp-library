@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Bad News: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Bad News, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Bad News solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
+    <meta name="keywords" content="Bad News, mwc15c3p3, Other, Graph traversal, C++ solution, DMOJ" />
     <meta property="og:title" content="Bad News — C++ Solution" />
-    <meta property="og:description" content="Bad News: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Bad News solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/bad-news-022" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/bad-news-022" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Bad News — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Bad News — C++ Solution","description":"Bad News: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/bad-news-022","keywords":["Bad News","Other","Graph traversal","Graph traversal","Depth-first search","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Bad News — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Bad News — C++ Solution","description":"Bad News solution: a verified C++ approach using graph traversal, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/bad-news-022","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Bad News","mwc15c3p3","Other","Graph traversal","Graph traversal","Depth-first search","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/bad-news-022","sameAs":"https://dmoj.ca/problem/mwc15c3p3","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-022">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · mwc15c3p3</p>
           <h1>Bad News</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Bad News, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Graph traversal</span><span>C++</span><span>64 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>022</strong><small>of 245</small></div>
@@ -85,69 +87,69 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int n, q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>vector&lt;vector&lt;char&gt;&gt; grid;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>vector&lt;vector&lt;bool&gt;&gt; visited; </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>const vector&lt;pair&lt;int,int&gt;&gt; dirs = {{-1, -1}, {-1, 0}, {-1, 1},{0, -1},{0, 1},{1, -1}, {1, 0}, {1, 1}};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">int</span> n, q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">char</span><span class="token-operator">&gt;&gt;</span> grid;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">bool</span><span class="token-operator">&gt;&gt;</span> visited; </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span><span class="token-keyword">const</span> <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> dirs <span class="token-operator">=</span> {{<span class="token-operator">-</span><span class="token-number">1</span>, <span class="token-operator">-</span><span class="token-number">1</span>}, {<span class="token-operator">-</span><span class="token-number">1</span>, <span class="token-number">0</span>}, {<span class="token-operator">-</span><span class="token-number">1</span>, <span class="token-number">1</span>},{<span class="token-number">0</span>, <span class="token-operator">-</span><span class="token-number">1</span>},{<span class="token-number">0</span>, <span class="token-number">1</span>},{<span class="token-number">1</span>, <span class="token-operator">-</span><span class="token-number">1</span>}, {<span class="token-number">1</span>, <span class="token-number">0</span>}, {<span class="token-number">1</span>, <span class="token-number">1</span>}};</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>bool dfs(int x, int y, const string &amp;w, int idx) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    visited[x][y] = true;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    if (idx == (int) w.size() - 1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        visited[x][y] = false;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        return true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span><span class="token-type">bool</span> <span class="token-function">dfs</span>(<span class="token-type">int</span> x, <span class="token-type">int</span> y, <span class="token-keyword">const</span> <span class="token-type">string</span> <span class="token-operator">&amp;</span>w, <span class="token-type">int</span> idx) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    visited[x][y] <span class="token-operator">=</span> <span class="token-keyword">true</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-keyword">if</span> (idx <span class="token-operator">==</span> (<span class="token-type">int</span>) w.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        visited[x][y] <span class="token-operator">=</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        <span class="token-keyword">return</span> <span class="token-keyword">true</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    for (auto [dx, dy] : dirs) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        int nx = x + dx;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        int ny = y + dy;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        if (nx &lt; 0 || nx &gt;= n || ny &lt; 0 || ny &gt;= n || visited[nx][ny] || grid[nx][ny] != w[idx + 1]) </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            continue;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        if (dfs(nx, ny, w, idx + 1)) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            visited[x][y] = false;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            return true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-keyword">for</span> (<span class="token-type">auto</span> [dx, dy] <span class="token-operator">:</span> dirs) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        <span class="token-type">int</span> nx <span class="token-operator">=</span> x <span class="token-operator">+</span> dx;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        <span class="token-type">int</span> ny <span class="token-operator">=</span> y <span class="token-operator">+</span> dy;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        <span class="token-keyword">if</span> (nx <span class="token-operator">&lt;</span> <span class="token-number">0</span> <span class="token-operator">||</span> nx <span class="token-operator">&gt;=</span> n <span class="token-operator">||</span> ny <span class="token-operator">&lt;</span> <span class="token-number">0</span> <span class="token-operator">||</span> ny <span class="token-operator">&gt;=</span> n <span class="token-operator">||</span> visited[nx][ny] <span class="token-operator">||</span> grid[nx][ny] <span class="token-operator">!=</span> w[idx <span class="token-operator">+</span> <span class="token-number">1</span>]) </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            <span class="token-keyword">continue</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        <span class="token-keyword">if</span> (<span class="token-function">dfs</span>(nx, ny, w, idx <span class="token-operator">+</span> <span class="token-number">1</span>)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            visited[x][y] <span class="token-operator">=</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            <span class="token-keyword">return</span> <span class="token-keyword">true</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    // does not exist</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    visited[x][y] = false;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    return false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-comment">// does not exist</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    visited[x][y] <span class="token-operator">=</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    <span class="token-keyword">return</span> <span class="token-keyword">false</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    cin &gt;&gt; n &gt;&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    grid.resize(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    for(int i = 0; i &lt; n; i++)grid[i].resize(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    visited.assign(n, vector&lt;bool&gt;(n, false));</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        for(int j = 0; j &lt; n; j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            cin &gt;&gt; grid[i][j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    grid.<span class="token-function">resize</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>)grid[i].<span class="token-function">resize</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    visited.<span class="token-function">assign</span>(n, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">bool</span><span class="token-operator">&gt;</span>(n, <span class="token-keyword">false</span>));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">0</span>; j <span class="token-operator">&lt;</span> n; j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            cin <span class="token-operator">&gt;&gt;</span> grid[i][j];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    string _;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    getline(cin, _);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    while(q--&gt; 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        string word;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        getline(cin, word);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        for (char &amp;c : word) c = tolower(c);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        bool found = false;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        for (int i = 0; i &lt; n &amp;&amp; !found; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>            for (int j = 0; j &lt; n &amp;&amp; !found; j++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>                if (grid[i][j] == word[0]) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>                    // reset visited</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>                    for (auto &amp;k : visited) </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>                        fill(k.begin(), k.end(), false);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>                    if (dfs(i, j, word, 0)) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>                        found = true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    <span class="token-type">string</span> _;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    <span class="token-function">getline</span>(cin, _);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    <span class="token-keyword">while</span>(q<span class="token-operator">--</span><span class="token-operator">&gt;</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        <span class="token-type">string</span> word;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        <span class="token-function">getline</span>(cin, word);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        <span class="token-keyword">for</span> (<span class="token-type">char</span> <span class="token-operator">&amp;</span>c <span class="token-operator">:</span> word) c <span class="token-operator">=</span> <span class="token-function">tolower</span>(c);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        <span class="token-type">bool</span> found <span class="token-operator">=</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n <span class="token-operator">&amp;&amp;</span> <span class="token-operator">!</span>found; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>            <span class="token-keyword">for</span> (<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">0</span>; j <span class="token-operator">&lt;</span> n <span class="token-operator">&amp;&amp;</span> <span class="token-operator">!</span>found; j<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>                <span class="token-keyword">if</span> (grid[i][j] <span class="token-operator">==</span> word[<span class="token-number">0</span>]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>                    <span class="token-comment">// reset visited</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>                    <span class="token-keyword">for</span> (<span class="token-type">auto</span> <span class="token-operator">&amp;</span>k <span class="token-operator">:</span> visited) </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>                        <span class="token-function">fill</span>(k.<span class="token-function">begin</span>(), k.<span class="token-function">end</span>(), <span class="token-keyword">false</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>                    <span class="token-keyword">if</span> (<span class="token-function">dfs</span>(i, j, word, <span class="token-number">0</span>)) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>                        found <span class="token-operator">=</span> <span class="token-keyword">true</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>                    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>                }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        cout &lt;&lt; (found ? &quot;good puzzle!\n&quot; : &quot;bad puzzle!&quot;) &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        cout <span class="token-operator">&lt;&lt;</span> (found <span class="token-operator">?</span> <span class="token-string">&quot;good puzzle!\n&quot;</span> <span class="token-operator">:</span> <span class="token-string">&quot;bad puzzle!&quot;</span>) <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>}</span></span>
         </code></pre>
       </article>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="The Great Revegetation: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="The Great Revegetation, Other, C++, competitive programming solution, USACO" />
+    <meta name="description" content="The Great Revegetation solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="The Great Revegetation, 916, Other, Simulation, C++ solution, USACO" />
     <meta property="og:title" content="The Great Revegetation — C++ Solution" />
-    <meta property="og:description" content="The Great Revegetation: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="The Great Revegetation solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/the-great-revegetation-217" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/the-great-revegetation-217" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>The Great Revegetation — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The Great Revegetation — C++ Solution","description":"The Great Revegetation: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/the-great-revegetation-217","keywords":["The Great Revegetation","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>The Great Revegetation — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The Great Revegetation — C++ Solution","description":"The Great Revegetation solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/the-great-revegetation-217","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["The Great Revegetation","916","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/the-great-revegetation-217","sameAs":"https://usaco.org/index.php?page=viewproblem2&cpid=916","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-217">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">USACO · 916</p>
           <h1>The Great Revegetation</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for The Great Revegetation, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>32 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>217</strong><small>of 245</small></div>
@@ -85,37 +87,37 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    int n, m; cin &gt;&gt; n &gt;&gt; m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    vector&lt;int&gt; node(n + 1, -1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    vector&lt;vector&lt;int&gt;&gt; adj(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    for(int i = 0; i &lt; m; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        int a, b; cin &gt;&gt; a &gt;&gt; b;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        adj[a].push_back(b);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        adj[b].push_back(a);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-type">int</span> n, m; cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">node</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>, <span class="token-operator">-</span><span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">adj</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        <span class="token-type">int</span> a, b; cin <span class="token-operator">&gt;&gt;</span> a <span class="token-operator">&gt;&gt;</span> b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        adj[a].<span class="token-function">push_back</span>(b);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        adj[b].<span class="token-function">push_back</span>(a);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    for(int i = 1; i &lt;= n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        vector&lt;bool&gt; used(5);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        for(int c : adj[i]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            if(node[c] != -1){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>                used[node[c]] = 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">bool</span><span class="token-operator">&gt;</span> <span class="token-function">used</span>(<span class="token-number">5</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> c <span class="token-operator">:</span> adj[i]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            <span class="token-keyword">if</span>(node[c] <span class="token-operator">!=</span> <span class="token-operator">-</span><span class="token-number">1</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>                used[node[c]] <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        for(int j = 1; j &lt;= 4; j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            if(!used[j]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>                node[i] = j;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>                break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">1</span>; j <span class="token-operator">&lt;=</span> <span class="token-number">4</span>; j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            <span class="token-keyword">if</span>(<span class="token-operator">!</span>used[j]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>                node[i] <span class="token-operator">=</span> j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>                <span class="token-keyword">break</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    for(int i = 1; i &lt;= n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        cout &lt;&lt; node[i] &lt;&lt; (i == n ? &quot;\n&quot; : &quot;&quot;);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        cout <span class="token-operator">&lt;&lt;</span> node[i] <span class="token-operator">&lt;&lt;</span> (i <span class="token-operator">==</span> n <span class="token-operator">?</span> <span class="token-string">&quot;\n&quot;</span> <span class="token-operator">:</span> <span class="token-string">&quot;&quot;</span>);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>}</span></span>
         </code></pre>
       </article>

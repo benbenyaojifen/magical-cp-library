@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Cycle Sort: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Cycle Sort, Graphs &amp; trees, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Cycle Sort solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="Cycle Sort, dmopc21c10p2, Graphs &amp; trees, Simulation, C++ solution, DMOJ" />
     <meta property="og:title" content="Cycle Sort — C++ Solution" />
-    <meta property="og:description" content="Cycle Sort: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Cycle Sort solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/cycle-sort-068" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/cycle-sort-068" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Cycle Sort — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Cycle Sort — C++ Solution","description":"Cycle Sort: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/cycle-sort-068","keywords":["Cycle Sort","Graphs & trees","Simulation","Simulation","Graphs & trees","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Cycle Sort — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Cycle Sort — C++ Solution","description":"Cycle Sort solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/cycle-sort-068","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Cycle Sort","dmopc21c10p2","Graphs & trees","Simulation","Simulation","Graphs & trees","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/cycle-sort-068","sameAs":"https://dmoj.ca/problem/dmopc21c10p2","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-068">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · dmopc21c10p2</p>
           <h1>Cycle Sort</h1>
-          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <p class="summary">Verified C++ solution for Cycle Sort, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Graphs &amp; trees</span><span>Simulation</span><span>C++</span><span>68 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>068</strong><small>of 245</small></div>
@@ -85,72 +87,72 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>int n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>vector&lt;int&gt; arr;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-type">int</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> arr;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>// put the right numbers after 1</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>vector&lt;int&gt; solve1(vector&lt;int&gt; a) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    a.insert(a.end(), a.begin(), a.end());</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    int idx1 = find(a.begin(), a.end(), 1) - a.begin();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    vector&lt;int&gt; b(a.begin() + idx1, a.end());</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        if (b[i] != i + 1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            int miss = find(b.begin(), b.end(), i + 1) - b.begin();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            swap(b[i], b[miss]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-comment">// put the right numbers after 1</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">solve1</span>(<span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> a) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    a.<span class="token-function">insert</span>(a.<span class="token-function">end</span>(), a.<span class="token-function">begin</span>(), a.<span class="token-function">end</span>());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">int</span> idx1 <span class="token-operator">=</span> <span class="token-function">find</span>(a.<span class="token-function">begin</span>(), a.<span class="token-function">end</span>(), <span class="token-number">1</span>) <span class="token-operator">-</span> a.<span class="token-function">begin</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">b</span>(a.<span class="token-function">begin</span>() <span class="token-operator">+</span> idx1, a.<span class="token-function">end</span>());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        <span class="token-keyword">if</span> (b[i] <span class="token-operator">!=</span> i <span class="token-operator">+</span> <span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            <span class="token-type">int</span> miss <span class="token-operator">=</span> <span class="token-function">find</span>(b.<span class="token-function">begin</span>(), b.<span class="token-function">end</span>(), i <span class="token-operator">+</span> <span class="token-number">1</span>) <span class="token-operator">-</span> b.<span class="token-function">begin</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            <span class="token-function">swap</span>(b[i], b[miss]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            <span class="token-keyword">break</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    b.resize(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    return b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    b.<span class="token-function">resize</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-keyword">return</span> b;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>// move the 1 in front of the 2</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>vector&lt;int&gt; solve2(vector&lt;int&gt; a) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    int pos2 = find(a.begin(), a.end(), 2) - a.begin();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    int pos1 = find(a.begin(), a.end(), 1) - a.begin();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    // swap 1 into the slot just before 2</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    swap(a[(pos2 - 1 + n) % n], a[pos1]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    // rotate so that 1 is at front</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    int start = find(a.begin(), a.end(), 1) - a.begin();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    vector&lt;int&gt; b;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    b.reserve(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    for (int i = 0; i &lt; n; i++)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        b.push_back(a[(start + i) % n]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    return b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span><span class="token-comment">// move the 1 in front of the 2</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">solve2</span>(<span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> a) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    <span class="token-type">int</span> pos2 <span class="token-operator">=</span> <span class="token-function">find</span>(a.<span class="token-function">begin</span>(), a.<span class="token-function">end</span>(), <span class="token-number">2</span>) <span class="token-operator">-</span> a.<span class="token-function">begin</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-type">int</span> pos1 <span class="token-operator">=</span> <span class="token-function">find</span>(a.<span class="token-function">begin</span>(), a.<span class="token-function">end</span>(), <span class="token-number">1</span>) <span class="token-operator">-</span> a.<span class="token-function">begin</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    <span class="token-comment">// swap 1 into the slot just before 2</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    <span class="token-function">swap</span>(a[(pos2 <span class="token-operator">-</span> <span class="token-number">1</span> <span class="token-operator">+</span> n) <span class="token-operator">%</span> n], a[pos1]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    <span class="token-comment">// rotate so that 1 is at front</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    <span class="token-type">int</span> start <span class="token-operator">=</span> <span class="token-function">find</span>(a.<span class="token-function">begin</span>(), a.<span class="token-function">end</span>(), <span class="token-number">1</span>) <span class="token-operator">-</span> a.<span class="token-function">begin</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    b.<span class="token-function">reserve</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        b.<span class="token-function">push_back</span>(a[(start <span class="token-operator">+</span> i) <span class="token-operator">%</span> n]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    <span class="token-keyword">return</span> b;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>// if 1 is already right after 2, just swap them</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>vector&lt;int&gt; solve3(vector&lt;int&gt; a) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    int pos2 = find(a.begin(), a.end(), 2) - a.begin();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    vector&lt;int&gt; b(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    for (int i = 0; i &lt; n; i++)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        b[i] = a[(pos2 + i) % n];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    if (b[1] == 1)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        swap(b[0], b[1]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    return b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span><span class="token-comment">// if 1 is already right after 2, just swap them</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">solve3</span>(<span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> a) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    <span class="token-type">int</span> pos2 <span class="token-operator">=</span> <span class="token-function">find</span>(a.<span class="token-function">begin</span>(), a.<span class="token-function">end</span>(), <span class="token-number">2</span>) <span class="token-operator">-</span> a.<span class="token-function">begin</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">b</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        b[i] <span class="token-operator">=</span> a[(pos2 <span class="token-operator">+</span> i) <span class="token-operator">%</span> n];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    <span class="token-keyword">if</span> (b[<span class="token-number">1</span>] <span class="token-operator">==</span> <span class="token-number">1</span>)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        <span class="token-function">swap</span>(b[<span class="token-number">0</span>], b[<span class="token-number">1</span>]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    <span class="token-keyword">return</span> b;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    arr.resize(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>    for (int i = 0; i &lt; n; i++)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        cin &gt;&gt; arr[i];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>    if (n == 1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>        cout &lt;&lt; &quot;1&quot; &lt;&lt; &quot;\n&quot;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>        return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    arr.<span class="token-function">resize</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        cin <span class="token-operator">&gt;&gt;</span> arr[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>    <span class="token-keyword">if</span> (n <span class="token-operator">==</span> <span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;1&quot;</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;\n&quot;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>        <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    auto a1 = solve1(arr);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    auto a2 = solve2(arr);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    auto a3 = solve3(arr);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>    // pick lexicographically smallest</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    vector&lt;int&gt; ans = min(min(a1, a2), a3);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>    for (int i = 0; i &lt; n; i++)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>        cout &lt;&lt; ans[i] &lt;&lt; (i + 1 == n ? &#39;\n&#39; : &#39; &#39;);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    <span class="token-type">auto</span> a1 <span class="token-operator">=</span> <span class="token-function">solve1</span>(arr);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>    <span class="token-type">auto</span> a2 <span class="token-operator">=</span> <span class="token-function">solve2</span>(arr);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    <span class="token-type">auto</span> a3 <span class="token-operator">=</span> <span class="token-function">solve3</span>(arr);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>    <span class="token-comment">// pick lexicographically smallest</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> ans <span class="token-operator">=</span> <span class="token-function">min</span>(<span class="token-function">min</span>(a1, a2), a3);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>        cout <span class="token-operator">&lt;&lt;</span> ans[i] <span class="token-operator">&lt;&lt;</span> (i <span class="token-operator">+</span> <span class="token-number">1</span> <span class="token-operator">==</span> n <span class="token-operator">?</span> <span class="token-string">&#39;\n&#39;</span> <span class="token-operator">:</span> <span class="token-string">&#39; &#39;</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span> </span></span>
         </code></pre>

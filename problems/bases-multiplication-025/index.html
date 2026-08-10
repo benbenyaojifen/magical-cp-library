@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Bases Multiplication: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Bases Multiplication, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Bases Multiplication solution: a verified C++ approach using string processing, with complexity analysis and implementation." />
+    <meta name="keywords" content="Bases Multiplication, wc96p6, Other, String processing, C++ solution, DMOJ" />
     <meta property="og:title" content="Bases Multiplication — C++ Solution" />
-    <meta property="og:description" content="Bases Multiplication: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Bases Multiplication solution: a verified C++ approach using string processing, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/bases-multiplication-025" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/bases-multiplication-025" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Bases Multiplication — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Bases Multiplication — C++ Solution","description":"Bases Multiplication: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/bases-multiplication-025","keywords":["Bases Multiplication","Other","String processing","String processing","Strings","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Bases Multiplication — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Bases Multiplication — C++ Solution","description":"Bases Multiplication solution: a verified C++ approach using string processing, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/bases-multiplication-025","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Bases Multiplication","wc96p6","Other","String processing","String processing","Strings","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/bases-multiplication-025","sameAs":"https://dmoj.ca/problem/wc96p6","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-025">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · wc96p6</p>
           <h1>Bases Multiplication</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Bases Multiplication, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>String processing</span><span>C++</span><span>54 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>025</strong><small>of 245</small></div>
@@ -85,59 +87,59 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>string convert_base(long long num, long long base){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    vector&lt;int&gt; remainder;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    if(num == 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        return &quot;0&quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-type">string</span> <span class="token-function">convert_base</span>(<span class="token-type">long</span> <span class="token-type">long</span> num, <span class="token-type">long</span> <span class="token-type">long</span> base){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> remainder;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-keyword">if</span>(num <span class="token-operator">==</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        <span class="token-keyword">return</span> <span class="token-string">&quot;0&quot;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    while(num != 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        remainder.push_back(num % base);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        num /= base;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-keyword">while</span>(num <span class="token-operator">!=</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        remainder.<span class="token-function">push_back</span>(num <span class="token-operator">%</span> base);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        num <span class="token-operator">/</span><span class="token-operator">=</span> base;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    string temp;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    for(int i = remainder.size() -1; i &gt;= 0; i--){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        temp += (char) (&#39;0&#39; + remainder[i]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    <span class="token-type">string</span> temp;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> remainder.<span class="token-function">size</span>() <span class="token-operator">-</span><span class="token-number">1</span>; i <span class="token-operator">&gt;=</span> <span class="token-number">0</span>; i<span class="token-operator">--</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        temp <span class="token-operator">+</span><span class="token-operator">=</span> (<span class="token-type">char</span>) (<span class="token-string">&#39;0&#39;</span> <span class="token-operator">+</span> remainder[i]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    return temp;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-keyword">return</span> temp;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>long long p(long long base, long long exp){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    if(exp == 0) return 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    long long temp = p(base, exp / 2);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    if(exp &amp; 1){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        return temp * temp * base;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        return temp * temp;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span><span class="token-type">long</span> <span class="token-type">long</span> <span class="token-function">p</span>(<span class="token-type">long</span> <span class="token-type">long</span> base, <span class="token-type">long</span> <span class="token-type">long</span> exp){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-keyword">if</span>(exp <span class="token-operator">==</span> <span class="token-number">0</span>) <span class="token-keyword">return</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-type">long</span> <span class="token-type">long</span> temp <span class="token-operator">=</span> <span class="token-function">p</span>(base, exp <span class="token-operator">/</span> <span class="token-number">2</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-keyword">if</span>(exp <span class="token-operator">&amp;</span> <span class="token-number">1</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        <span class="token-keyword">return</span> temp <span class="token-operator">*</span> temp <span class="token-operator">*</span> base;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        <span class="token-keyword">return</span> temp <span class="token-operator">*</span> temp;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    int tt = 5;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    while(tt--){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        long long n1, b1, n2, b2, tar;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        cin &gt;&gt; n1 &gt;&gt; b1 &gt;&gt; n2 &gt;&gt; b2 &gt;&gt; tar;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        string s1 = to_string(n1), s2 = to_string(n2);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        long long a1 = 0, a2 = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        int digit = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        for(int i = s1.size() - 1; i &gt;= 0; i--){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            long long pow = p(b1, digit);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            a1 += (s1[i] - &#39;0&#39;) * pow;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            digit++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    <span class="token-type">int</span> tt <span class="token-operator">=</span> <span class="token-number">5</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    <span class="token-keyword">while</span>(tt<span class="token-operator">--</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        <span class="token-type">long</span> <span class="token-type">long</span> n1, b1, n2, b2, tar;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        cin <span class="token-operator">&gt;&gt;</span> n1 <span class="token-operator">&gt;&gt;</span> b1 <span class="token-operator">&gt;&gt;</span> n2 <span class="token-operator">&gt;&gt;</span> b2 <span class="token-operator">&gt;&gt;</span> tar;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        <span class="token-type">string</span> s1 <span class="token-operator">=</span> <span class="token-function">to_string</span>(n1), s2 <span class="token-operator">=</span> <span class="token-function">to_string</span>(n2);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        <span class="token-type">long</span> <span class="token-type">long</span> a1 <span class="token-operator">=</span> <span class="token-number">0</span>, a2 <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        <span class="token-type">int</span> digit <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> s1.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>; i <span class="token-operator">&gt;=</span> <span class="token-number">0</span>; i<span class="token-operator">--</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            <span class="token-type">long</span> <span class="token-type">long</span> pow <span class="token-operator">=</span> <span class="token-function">p</span>(b1, digit);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            a1 <span class="token-operator">+</span><span class="token-operator">=</span> (s1[i] <span class="token-operator">-</span> <span class="token-string">&#39;0&#39;</span>) <span class="token-operator">*</span> pow;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            digit<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        digit = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        for(int i = s2.size() - 1; i &gt;= 0; i--){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            long long pow = p(b2, digit);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>            a2 += (s2[i] - &#39;0&#39;) * pow;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>            digit++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        digit <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> s2.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>; i <span class="token-operator">&gt;=</span> <span class="token-number">0</span>; i<span class="token-operator">--</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            <span class="token-type">long</span> <span class="token-type">long</span> pow <span class="token-operator">=</span> <span class="token-function">p</span>(b2, digit);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>            a2 <span class="token-operator">+</span><span class="token-operator">=</span> (s2[i] <span class="token-operator">-</span> <span class="token-string">&#39;0&#39;</span>) <span class="token-operator">*</span> pow;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>            digit<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        long long ans = a1 * a2;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>        string out = convert_base(ans, tar);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>        cout &lt;&lt; out &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        <span class="token-type">long</span> <span class="token-type">long</span> ans <span class="token-operator">=</span> a1 <span class="token-operator">*</span> a2;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>        <span class="token-type">string</span> out <span class="token-operator">=</span> <span class="token-function">convert_base</span>(ans, tar);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>        cout <span class="token-operator">&lt;&lt;</span> out <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>}</span></span>
         </code></pre>
       </article>

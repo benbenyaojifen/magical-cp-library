@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Deconstruct Chocolate: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Deconstruct Chocolate, Other, C++, competitive programming solution, AtCoder" />
+    <meta name="description" content="Deconstruct Chocolate solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="Deconstruct Chocolate, abc449_b, Other, Simulation, C++ solution, AtCoder" />
     <meta property="og:title" content="Deconstruct Chocolate — C++ Solution" />
-    <meta property="og:description" content="Deconstruct Chocolate: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Deconstruct Chocolate solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/deconstruct-chocolate-071" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/deconstruct-chocolate-071" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Deconstruct Chocolate — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Deconstruct Chocolate — C++ Solution","description":"Deconstruct Chocolate: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/deconstruct-chocolate-071","keywords":["Deconstruct Chocolate","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Deconstruct Chocolate — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Deconstruct Chocolate — C++ Solution","description":"Deconstruct Chocolate solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/deconstruct-chocolate-071","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Deconstruct Chocolate","abc449_b","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/deconstruct-chocolate-071","sameAs":"https://atcoder.jp/contests/abc449/tasks/abc449_b","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-071">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">AtCoder · abc449_b</p>
           <h1>Deconstruct Chocolate</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Deconstruct Chocolate, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>22 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>071</strong><small>of 245</small></div>
@@ -85,27 +87,27 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e18; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    int h, w; cin &gt;&gt; h &gt;&gt; w;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    int q; cin &gt;&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for (int i = 0; i &lt; q; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        int x, v; cin &gt;&gt; x &gt;&gt; v;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        if (x == 1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            cout &lt;&lt; v * w &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            h -= v;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            cout &lt;&lt; v * h &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            w -= v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">using</span> i128 <span class="token-operator">=</span> __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-keyword">const</span> ll <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e18</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-type">int</span> h, w; cin <span class="token-operator">&gt;&gt;</span> h <span class="token-operator">&gt;&gt;</span> w;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">int</span> q; cin <span class="token-operator">&gt;&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> q; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        <span class="token-type">int</span> x, v; cin <span class="token-operator">&gt;&gt;</span> x <span class="token-operator">&gt;&gt;</span> v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        <span class="token-keyword">if</span> (x <span class="token-operator">==</span> <span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            cout <span class="token-operator">&lt;&lt;</span> v <span class="token-operator">*</span> w <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            h <span class="token-operator">-</span><span class="token-operator">=</span> v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            cout <span class="token-operator">&lt;&lt;</span> v <span class="token-operator">*</span> h <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            w <span class="token-operator">-</span><span class="token-operator">=</span> v;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>}</span></span>
         </code></pre>
       </article>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="CCC &#39;22 S3 - Good Samples: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="CCC &#39;22 S3 - Good Samples, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="CCC 2022 S3 solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="CCC &#39;22 S3 - Good Samples, ccc22s3, CCC 2022 S3, ccc2022s3, Other, Simulation, C++ solution, DMOJ" />
     <meta property="og:title" content="CCC &#39;22 S3 - Good Samples — C++ Solution" />
-    <meta property="og:description" content="CCC &#39;22 S3 - Good Samples: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="CCC 2022 S3 solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/ccc-22-s3-good-samples-101" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/ccc-22-s3-good-samples-101" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>CCC &#39;22 S3 - Good Samples — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"CCC '22 S3 - Good Samples — C++ Solution","description":"CCC '22 S3 - Good Samples: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/ccc-22-s3-good-samples-101","keywords":["CCC '22 S3 - Good Samples","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>CCC &#39;22 S3 - Good Samples — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"CCC '22 S3 - Good Samples — C++ Solution","description":"CCC 2022 S3 solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/ccc-22-s3-good-samples-101","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["CCC '22 S3 - Good Samples","ccc22s3","CCC 2022 S3","ccc2022s3","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/ccc-22-s3-good-samples-101","sameAs":"https://dmoj.ca/problem/ccc22s3","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-101">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · ccc22s3</p>
           <h1>CCC &#39;22 S3 - Good Samples</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for CCC 2022 S3, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>75 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>101</strong><small>of 245</small></div>
@@ -85,80 +87,80 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>typedef long long ll;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const long long INF = 1e17; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    int n, m;              </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">typedef</span> <span class="token-type">long</span> <span class="token-type">long</span> ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e17</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">int</span> n, m;              </span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ll k;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    m = min(n, m);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    vector&lt;int&gt; ans(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    int cur = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    int index = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    bool all = true;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    //first m distinct pitch</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    for(int i = 0; i &lt; m; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        // this checks if we can still place it or not since we have to remain the slots for placing one -&gt; each slot must place at least one</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        if(n - (i + 1) + i + 1 &gt; k){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            all = false;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m <span class="token-operator">&gt;&gt;</span> k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    m <span class="token-operator">=</span> <span class="token-function">min</span>(n, m);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">ans</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-type">int</span> cur <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    <span class="token-type">int</span> index <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-type">bool</span> all <span class="token-operator">=</span> <span class="token-keyword">true</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-comment">//first m distinct pitch</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        <span class="token-comment">// this checks if we can still place it or not since we have to remain the slots for placing one -&gt; each slot must place at least one</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        <span class="token-keyword">if</span>(n <span class="token-operator">-</span> (i <span class="token-operator">+</span> <span class="token-number">1</span>) <span class="token-operator">+</span> i <span class="token-operator">+</span> <span class="token-number">1</span> <span class="token-operator">&gt;</span> k){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            all <span class="token-operator">=</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            <span class="token-keyword">break</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        ans[i] = i + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        index++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        k -= i + 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        ans[i] <span class="token-operator">=</span> i <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        index<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        k <span class="token-operator">-</span><span class="token-operator">=</span> i <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    } </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    // cout &lt;&lt; k &lt;&lt; endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-comment">// cout &lt;&lt; k &lt;&lt; endl;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    //cannot place anything </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    if(index == 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        cout &lt;&lt; -1 &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    <span class="token-comment">//cannot place anything </span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    <span class="token-keyword">if</span>(index <span class="token-operator">==</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-operator">-</span><span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    } </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    //reset to form cycle </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    while(index &lt; n &amp;&amp; k &gt; 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        // check if we can place the current pitch without going over -(n - index - 1) to account for the ones that we must place at the end</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        if(k - m - (n - index - 1) &gt;= 0 &amp;&amp; all){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>            ans[index] = cur;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>            index++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            cur++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            if(cur &gt; m) cur = 1;// the ensure it is distinct we do 1 to m repeatedly</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            //every time we place a distinct pitch we add m good samples</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            k -= m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>            // cout &lt;&lt; &quot;run&quot; &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            // we cannot place distinct pitch anymore</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>            int remain = n - index - 1; // how many ones that we must place at the end </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>            int need = k - remain;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>            int place = ans[index - need];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>            ans[index] = place;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>            k -= need;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            index++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>            // cout &lt;&lt; remain &lt;&lt; &quot; &quot; &lt;&lt; need &lt;&lt; &quot; &quot; &lt;&lt; place &lt;&lt; endl;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>            break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    <span class="token-comment">//reset to form cycle </span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    <span class="token-keyword">while</span>(index <span class="token-operator">&lt;</span> n <span class="token-operator">&amp;&amp;</span> k <span class="token-operator">&gt;</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        <span class="token-comment">// check if we can place the current pitch without going over -(n - index - 1) to account for the ones that we must place at the end</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        <span class="token-keyword">if</span>(k <span class="token-operator">-</span> m <span class="token-operator">-</span> (n <span class="token-operator">-</span> index <span class="token-operator">-</span> <span class="token-number">1</span>) <span class="token-operator">&gt;=</span> <span class="token-number">0</span> <span class="token-operator">&amp;&amp;</span> all){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>            ans[index] <span class="token-operator">=</span> cur;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>            index<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            cur<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            <span class="token-keyword">if</span>(cur <span class="token-operator">&gt;</span> m) cur <span class="token-operator">=</span> <span class="token-number">1</span>;<span class="token-comment">// the ensure it is distinct we do 1 to m repeatedly</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            <span class="token-comment">//every time we place a distinct pitch we add m good samples</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            k <span class="token-operator">-</span><span class="token-operator">=</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>            <span class="token-comment">// cout &lt;&lt; &quot;run&quot; &lt;&lt; &#39;\n&#39;;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>        } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>            <span class="token-comment">// we cannot place distinct pitch anymore</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>            <span class="token-type">int</span> remain <span class="token-operator">=</span> n <span class="token-operator">-</span> index <span class="token-operator">-</span> <span class="token-number">1</span>; <span class="token-comment">// how many ones that we must place at the end </span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>            <span class="token-type">int</span> need <span class="token-operator">=</span> k <span class="token-operator">-</span> remain;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>            <span class="token-type">int</span> place <span class="token-operator">=</span> ans[index <span class="token-operator">-</span> need];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>            ans[index] <span class="token-operator">=</span> place;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>            k <span class="token-operator">-</span><span class="token-operator">=</span> need;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            index<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>            <span class="token-comment">// cout &lt;&lt; remain &lt;&lt; &quot; &quot; &lt;&lt; need &lt;&lt; &quot; &quot; &lt;&lt; place &lt;&lt; endl;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>            <span class="token-keyword">break</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        // cout &lt;&lt; k &lt;&lt; endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        <span class="token-comment">// cout &lt;&lt; k &lt;&lt; endl;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>    // for(int i = 0; i &lt; ans.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    //     cout &lt;&lt; ans[i] &lt;&lt; (i == ans.size() - 1 ? &quot;\n&quot; : &quot; &quot;);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    // }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>     //place the ones </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    while(index &lt; n){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        ans[index] = ans[index - 1];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>        index++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        k--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>    <span class="token-comment">// for(int i = 0; i &lt; ans.size(); i++){</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>    <span class="token-comment">//     cout &lt;&lt; ans[i] &lt;&lt; (i == ans.size() - 1 ? &quot;\n&quot; : &quot; &quot;);</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    <span class="token-comment">// }</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>     <span class="token-comment">//place the ones </span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>    <span class="token-keyword">while</span>(index <span class="token-operator">&lt;</span> n){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        ans[index] <span class="token-operator">=</span> ans[index <span class="token-operator">-</span> <span class="token-number">1</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>        index<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        k<span class="token-operator">--</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    // cout &lt;&lt; k &lt;&lt; endl;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>    if(k != 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>        cout &lt;&lt; -1 &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>        return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    <span class="token-comment">// cout &lt;&lt; k &lt;&lt; endl;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>    <span class="token-keyword">if</span>(k <span class="token-operator">!=</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-operator">-</span><span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>        <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>    for(int i = 0; i &lt; ans.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>        cout &lt;&lt; ans[i] &lt;&lt; &quot; \n&quot;[i == ans.size() - 1];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> ans.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>        cout <span class="token-operator">&lt;&lt;</span> ans[i] <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot; \n&quot;</span>[i <span class="token-operator">==</span> ans.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">75</span><span>}</span></span>
         </code></pre>
       </article>

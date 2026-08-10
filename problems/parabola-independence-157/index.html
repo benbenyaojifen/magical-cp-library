@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Parabola Independence: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Parabola Independence, Other, C++, competitive programming solution, Codeforces" />
+    <meta name="description" content="Parabola Independence solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
+    <meta name="keywords" content="Parabola Independence, 2195F, Other, Graph traversal, C++ solution, Codeforces" />
     <meta property="og:title" content="Parabola Independence — C++ Solution" />
-    <meta property="og:description" content="Parabola Independence: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Parabola Independence solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/parabola-independence-157" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/parabola-independence-157" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Parabola Independence — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Parabola Independence — C++ Solution","description":"Parabola Independence: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/parabola-independence-157","keywords":["Parabola Independence","Other","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Parabola Independence — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Parabola Independence — C++ Solution","description":"Parabola Independence solution: a verified C++ approach using graph traversal, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/parabola-independence-157","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Parabola Independence","2195F","Other","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/parabola-independence-157","sameAs":"https://codeforces.com/problemset/problem/2195/F","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-157">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">Codeforces · 2195F</p>
           <h1>Parabola Independence</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Parabola Independence, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Graph traversal</span><span>C++</span><span>74 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>157</strong><small>of 245</small></div>
@@ -85,79 +87,79 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const long long INF = 1e17; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>void solve() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    vector&lt;ll&gt; a(n), b(n), c(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        cin &gt;&gt; a[i] &gt;&gt; b[i] &gt;&gt; c[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e17</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-type">void</span> <span class="token-function">solve</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span>ll<span class="token-operator">&gt;</span> <span class="token-function">a</span>(n), <span class="token-function">b</span>(n), <span class="token-function">c</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        cin <span class="token-operator">&gt;&gt;</span> a[i] <span class="token-operator">&gt;&gt;</span> b[i] <span class="token-operator">&gt;&gt;</span> c[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    vector&lt;vector&lt;int&gt;&gt; adj(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    vector&lt;int&gt; indegree(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    auto change = [&amp;] (ll ai, ll bi, ll ci, ll aj, ll bj, ll cj, int &amp;d) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        ll a = ai - aj, b = bi - bj, c = ci - cj;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        if (a == 0) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            if (b != 0) return false;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            d = (c &lt; 0 ? -1 : 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            return true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">adj</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">indegree</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-type">auto</span> change <span class="token-operator">=</span> [<span class="token-operator">&amp;</span>] (ll ai, ll bi, ll ci, ll aj, ll bj, ll cj, <span class="token-type">int</span> <span class="token-operator">&amp;</span>d) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        ll a <span class="token-operator">=</span> ai <span class="token-operator">-</span> aj, b <span class="token-operator">=</span> bi <span class="token-operator">-</span> bj, c <span class="token-operator">=</span> ci <span class="token-operator">-</span> cj;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        <span class="token-keyword">if</span> (a <span class="token-operator">==</span> <span class="token-number">0</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            <span class="token-keyword">if</span> (b <span class="token-operator">!=</span> <span class="token-number">0</span>) <span class="token-keyword">return</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            d <span class="token-operator">=</span> (c <span class="token-operator">&lt;</span> <span class="token-number">0</span> <span class="token-operator">?</span> <span class="token-operator">-</span><span class="token-number">1</span> <span class="token-operator">:</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>            <span class="token-keyword">return</span> <span class="token-keyword">true</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        ll dis = b * b - 4LL * a * c;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        if (dis &gt;= 0) return false;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        d = (a &lt; 0 ? -1 : 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        return true;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        ll dis <span class="token-operator">=</span> b <span class="token-operator">*</span> b <span class="token-operator">-</span> 4LL <span class="token-operator">*</span> a <span class="token-operator">*</span> c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        <span class="token-keyword">if</span> (dis <span class="token-operator">&gt;=</span> <span class="token-number">0</span>) <span class="token-keyword">return</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        d <span class="token-operator">=</span> (a <span class="token-operator">&lt;</span> <span class="token-number">0</span> <span class="token-operator">?</span> <span class="token-operator">-</span><span class="token-number">1</span> <span class="token-operator">:</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        <span class="token-keyword">return</span> <span class="token-keyword">true</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    };</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        for (int j = i + 1; j &lt; n; j++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>           int d = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>           if (!change(a[i], b[i], c[i], a[j], b[j], c[j], d)) continue;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>           if (d == -1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>                adj[i].push_back(j);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>                indegree[j]++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>           } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                adj[j].push_back(i);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>                indegree[i]++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> j <span class="token-operator">=</span> i <span class="token-operator">+</span> <span class="token-number">1</span>; j <span class="token-operator">&lt;</span> n; j<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>           <span class="token-type">int</span> d <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>           <span class="token-keyword">if</span> (<span class="token-operator">!</span><span class="token-function">change</span>(a[i], b[i], c[i], a[j], b[j], c[j], d)) <span class="token-keyword">continue</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>           <span class="token-keyword">if</span> (d <span class="token-operator">==</span> <span class="token-operator">-</span><span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>                adj[i].<span class="token-function">push_back</span>(j);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>                indegree[j]<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>           } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                adj[j].<span class="token-function">push_back</span>(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>                indegree[i]<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>           }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    queue&lt;int&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        if (indegree[i] == 0) q.push(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    <span class="token-type">queue</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        <span class="token-keyword">if</span> (indegree[i] <span class="token-operator">==</span> <span class="token-number">0</span>) q.<span class="token-function">push</span>(i);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    vector&lt;int&gt; topo;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    while (!q.empty()) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        int u = q.front(); q.pop();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        topo.push_back(u);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        for (int v : adj[u]) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>            if (--indegree[v] == 0) q.push(v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> topo;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    <span class="token-keyword">while</span> (<span class="token-operator">!</span>q.<span class="token-function">empty</span>()) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        <span class="token-type">int</span> u <span class="token-operator">=</span> q.<span class="token-function">front</span>(); q.<span class="token-function">pop</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>        topo.<span class="token-function">push_back</span>(u);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> v <span class="token-operator">:</span> adj[u]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>            <span class="token-keyword">if</span> (<span class="token-operator">--</span>indegree[v] <span class="token-operator">==</span> <span class="token-number">0</span>) q.<span class="token-function">push</span>(v);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    vector&lt;int&gt; dp1(n, 1), dp2(n, 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    for (int u : topo) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>        for (int v : adj[u]) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>           dp2[v] = max(dp2[v], dp2[u] + 1); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">dp1</span>(n, <span class="token-number">1</span>), <span class="token-function">dp2</span>(n, <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> u <span class="token-operator">:</span> topo) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> v <span class="token-operator">:</span> adj[u]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>           dp2[v] <span class="token-operator">=</span> <span class="token-function">max</span>(dp2[v], dp2[u] <span class="token-operator">+</span> <span class="token-number">1</span>); </span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>    for (int i = topo.size() - 1; i &gt;= 0; i--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>        int u = topo[i];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        for (int v : adj[u]) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>            dp1[u] = max(dp1[u], dp1[v] + 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> topo.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>; i <span class="token-operator">&gt;=</span> <span class="token-number">0</span>; i<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>        <span class="token-type">int</span> u <span class="token-operator">=</span> topo[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> v <span class="token-operator">:</span> adj[u]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>            dp1[u] <span class="token-operator">=</span> <span class="token-function">max</span>(dp1[u], dp1[v] <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        cout &lt;&lt; dp1[i] + dp2[i] - 1 &lt;&lt; &quot; \n&quot;[i == n - 1];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        cout <span class="token-operator">&lt;&lt;</span> dp1[i] <span class="token-operator">+</span> dp2[i] <span class="token-operator">-</span> <span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot; \n&quot;</span>[i <span class="token-operator">==</span> n <span class="token-operator">-</span> <span class="token-number">1</span>];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>    int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>    while (t--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>    <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>    <span class="token-keyword">while</span> (t<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>        <span class="token-function">solve</span>();</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>}</span></span>
         </code></pre>
       </article>

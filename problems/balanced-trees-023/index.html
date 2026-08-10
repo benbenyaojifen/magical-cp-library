@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Balanced Trees: a C++ competitive programming solution using dynamic programming. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Balanced Trees, Graphs &amp; trees, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="CCC 2018 S4 solution: a verified C++ approach using dynamic programming, with complexity analysis and implementation." />
+    <meta name="keywords" content="Balanced Trees, ccc18s4, CCC 2018 S4, ccc2018s4, Graphs &amp; trees, Dynamic programming, C++ solution, DMOJ" />
     <meta property="og:title" content="Balanced Trees — C++ Solution" />
-    <meta property="og:description" content="Balanced Trees: a C++ competitive programming solution using dynamic programming. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="CCC 2018 S4 solution: a verified C++ approach using dynamic programming, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/balanced-trees-023" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/balanced-trees-023" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Balanced Trees — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Balanced Trees — C++ Solution","description":"Balanced Trees: a C++ competitive programming solution using dynamic programming. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/balanced-trees-023","keywords":["Balanced Trees","Graphs & trees","Dynamic programming","Dynamic programming","State transitions","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Balanced Trees — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Balanced Trees — C++ Solution","description":"CCC 2018 S4 solution: a verified C++ approach using dynamic programming, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/balanced-trees-023","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Balanced Trees","ccc18s4","CCC 2018 S4","ccc2018s4","Graphs & trees","Dynamic programming","Dynamic programming","State transitions","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/balanced-trees-023","sameAs":"https://dmoj.ca/problem/ccc18s4","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-023">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · ccc18s4</p>
           <h1>Balanced Trees</h1>
-          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <p class="summary">Verified C++ solution for CCC 2018 S4, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Graphs &amp; trees</span><span>Dynamic programming</span><span>C++</span><span>25 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>023</strong><small>of 245</small></div>
@@ -85,30 +87,30 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const long long INF = 1e17; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>unordered_map&lt;ll, ll&gt; memo;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>ll solve(ll n) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    if (n == 1) return 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    if (memo.count(n)) return memo[n];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    ll ans = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for (ll i = 2; i &lt;= n;) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        ll branch_weight = n / i;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        ll nxt = n / branch_weight + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        ans += (nxt - i) * solve(branch_weight);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        i = nxt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e17</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-type">unordered_map</span><span class="token-operator">&lt;</span>ll, ll<span class="token-operator">&gt;</span> memo;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>ll <span class="token-function">solve</span>(ll n) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-keyword">if</span> (n <span class="token-operator">==</span> <span class="token-number">1</span>) <span class="token-keyword">return</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-keyword">if</span> (memo.<span class="token-function">count</span>(n)) <span class="token-keyword">return</span> memo[n];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    ll ans <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">for</span> (ll i <span class="token-operator">=</span> <span class="token-number">2</span>; i <span class="token-operator">&lt;=</span> n;) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        ll branch_weight <span class="token-operator">=</span> n <span class="token-operator">/</span> i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        ll nxt <span class="token-operator">=</span> n <span class="token-operator">/</span> branch_weight <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        ans <span class="token-operator">+</span><span class="token-operator">=</span> (nxt <span class="token-operator">-</span> i) <span class="token-operator">*</span> <span class="token-function">solve</span>(branch_weight);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        i <span class="token-operator">=</span> nxt;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    memo[n] = ans;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    return ans;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    memo[n] <span class="token-operator">=</span> ans;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-keyword">return</span> ans;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    ll weight; cin &gt;&gt; weight;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    cout &lt;&lt; solve(weight) &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    ll weight; cin <span class="token-operator">&gt;&gt;</span> weight;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    cout <span class="token-operator">&lt;&lt;</span> <span class="token-function">solve</span>(weight) <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>}</span></span>
         </code></pre>
       </article>

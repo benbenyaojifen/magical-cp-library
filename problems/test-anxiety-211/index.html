@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Test Anxiety: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Test Anxiety, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Test Anxiety solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="Test Anxiety, ahscc1p1, Other, Simulation, C++ solution, DMOJ" />
     <meta property="og:title" content="Test Anxiety — C++ Solution" />
-    <meta property="og:description" content="Test Anxiety: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Test Anxiety solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/test-anxiety-211" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/test-anxiety-211" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Test Anxiety — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Test Anxiety — C++ Solution","description":"Test Anxiety: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/test-anxiety-211","keywords":["Test Anxiety","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Test Anxiety — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Test Anxiety — C++ Solution","description":"Test Anxiety solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/test-anxiety-211","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Test Anxiety","ahscc1p1","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/test-anxiety-211","sameAs":"https://dmoj.ca/problem/ahscc1p1","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-211">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · ahscc1p1</p>
           <h1>Test Anxiety</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Test Anxiety, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>14 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>211</strong><small>of 245</small></div>
@@ -85,18 +87,18 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    int cur, t; cin &gt;&gt; cur &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    int need = 80 * (t + 1) - (cur * t);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    if(need &lt; 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        cout &lt;&lt; 0 &lt;&lt; endl;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    } else if(need &gt; 100){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        cout &lt;&lt; -1 &lt;&lt; endl;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    } else{</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        cout &lt;&lt; need &lt;&lt; endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    <span class="token-type">int</span> cur, t; cin <span class="token-operator">&gt;&gt;</span> cur <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-type">int</span> need <span class="token-operator">=</span> <span class="token-number">80</span> <span class="token-operator">*</span> (t <span class="token-operator">+</span> <span class="token-number">1</span>) <span class="token-operator">-</span> (cur <span class="token-operator">*</span> t);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-keyword">if</span>(need <span class="token-operator">&lt;</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-number">0</span> <span class="token-operator">&lt;&lt;</span> endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    } <span class="token-keyword">else</span> <span class="token-keyword">if</span>(need <span class="token-operator">&gt;</span> <span class="token-number">100</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-operator">-</span><span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> endl;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    } <span class="token-keyword">else</span>{</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        cout <span class="token-operator">&lt;&lt;</span> need <span class="token-operator">&lt;&lt;</span> endl;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>}</span></span>
         </code></pre>

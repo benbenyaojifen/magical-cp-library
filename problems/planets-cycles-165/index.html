@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Planets Cycles: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Planets Cycles, Graphs &amp; trees, C++, competitive programming solution, CSES" />
+    <meta name="description" content="Planets Cycles solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="Planets Cycles, 1751, Graphs &amp; trees, Simulation, C++ solution, CSES" />
     <meta property="og:title" content="Planets Cycles — C++ Solution" />
-    <meta property="og:description" content="Planets Cycles: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Planets Cycles solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/planets-cycles-165" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/planets-cycles-165" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Planets Cycles — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Planets Cycles — C++ Solution","description":"Planets Cycles: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/planets-cycles-165","keywords":["Planets Cycles","Graphs & trees","Simulation","Simulation","Graphs & trees","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Planets Cycles — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Planets Cycles — C++ Solution","description":"Planets Cycles solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/planets-cycles-165","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Planets Cycles","1751","Graphs & trees","Simulation","Simulation","Graphs & trees","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/planets-cycles-165","sameAs":"https://cses.fi/problemset/task/1751/","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-165">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">CSES · 1751</p>
           <h1>Planets Cycles</h1>
-          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <p class="summary">Verified C++ solution for Planets Cycles, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Graphs &amp; trees</span><span>Simulation</span><span>C++</span><span>48 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>165</strong><small>of 245</small></div>
@@ -85,53 +87,53 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>void floyd_cycle(int x, const vector&lt;int&gt; &amp;succ, vector&lt;int&gt; &amp;ans){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    int a = succ[x], b = succ[succ[x]];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    // meet inside the cycle, but bail if we hit a known node</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    while (a != b) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        if (ans[a] || ans[b]) break;              // &lt;&lt;&lt; early exit if chain already solved</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        a = succ[a]; b = succ[succ[b]];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-type">void</span> <span class="token-function">floyd_cycle</span>(<span class="token-type">int</span> x, <span class="token-keyword">const</span> <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-operator">&amp;</span>succ, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-operator">&amp;</span>ans){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    <span class="token-type">int</span> a <span class="token-operator">=</span> succ[x], b <span class="token-operator">=</span> succ[succ[x]];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-comment">// meet inside the cycle, but bail if we hit a known node</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-keyword">while</span> (a <span class="token-operator">!=</span> b) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>        <span class="token-keyword">if</span> (ans[a] <span class="token-operator">||</span> ans[b]) <span class="token-keyword">break</span>;              <span class="token-comment">// &lt;&lt;&lt; early exit if chain already solved</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        a <span class="token-operator">=</span> succ[a]; b <span class="token-operator">=</span> succ[succ[b]];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    // Only do cycle work if we actually found a *new* cycle</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    if (a == b &amp;&amp; ans[a] == 0) {                  // &lt;&lt;&lt; skip if cycle already labeled</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        // find cycle entry</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        a = x;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        while (a != b) { a = succ[a]; b = succ[b]; }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        int entry = a;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-comment">// Only do cycle work if we actually found a *new* cycle</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-keyword">if</span> (a <span class="token-operator">==</span> b <span class="token-operator">&amp;&amp;</span> ans[a] <span class="token-operator">==</span> <span class="token-number">0</span>) {                  <span class="token-comment">// &lt;&lt;&lt; skip if cycle already labeled</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        <span class="token-comment">// find cycle entry</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        a <span class="token-operator">=</span> x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        <span class="token-keyword">while</span> (a <span class="token-operator">!=</span> b) { a <span class="token-operator">=</span> succ[a]; b <span class="token-operator">=</span> succ[b]; }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        <span class="token-type">int</span> entry <span class="token-operator">=</span> a;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        // find cycle length</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        int len = 1, nxt = succ[entry];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        while (nxt != entry) { nxt = succ[nxt]; len++; }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        <span class="token-comment">// find cycle length</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        <span class="token-type">int</span> len <span class="token-operator">=</span> <span class="token-number">1</span>, nxt <span class="token-operator">=</span> succ[entry];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        <span class="token-keyword">while</span> (nxt <span class="token-operator">!=</span> entry) { nxt <span class="token-operator">=</span> succ[nxt]; len<span class="token-operator">++</span>; }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        // fill cycle nodes</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        int v = entry;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        do { ans[v] = len; v = succ[v]; } while (v != entry);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        <span class="token-comment">// fill cycle nodes</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        <span class="token-type">int</span> v <span class="token-operator">=</span> entry;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        <span class="token-keyword">do</span> { ans[v] <span class="token-operator">=</span> len; v <span class="token-operator">=</span> succ[v]; } <span class="token-keyword">while</span> (v <span class="token-operator">!=</span> entry);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    // fill tail toward the first known node/cycle</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    vector&lt;int&gt; path;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    int v = x;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    while (ans[v] == 0) { path.push_back(v); v = succ[v]; }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    for (int i = (int)path.size() - 1; i &gt;= 0; --i)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        ans[path[i]] = ans[succ[path[i]]] + 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-comment">// fill tail toward the first known node/cycle</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> path;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    <span class="token-type">int</span> v <span class="token-operator">=</span> x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    <span class="token-keyword">while</span> (ans[v] <span class="token-operator">==</span> <span class="token-number">0</span>) { path.<span class="token-function">push_back</span>(v); v <span class="token-operator">=</span> succ[v]; }</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> (<span class="token-type">int</span>)path.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>; i <span class="token-operator">&gt;=</span> <span class="token-number">0</span>; <span class="token-operator">--</span>i)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        ans[path[i]] <span class="token-operator">=</span> ans[succ[path[i]]] <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    vector&lt;int&gt; succ(n + 1), ans(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    for(int i = 1; i &lt;= n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        cin &gt;&gt; succ[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">succ</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>), <span class="token-function">ans</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        cin <span class="token-operator">&gt;&gt;</span> succ[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    for(int i = 1; i &lt;= n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        if(ans[i] == 0) floyd_cycle(i, succ, ans);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        <span class="token-keyword">if</span>(ans[i] <span class="token-operator">==</span> <span class="token-number">0</span>) <span class="token-function">floyd_cycle</span>(i, succ, ans);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    for(int i = 1; i &lt;= n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        cout &lt;&lt; ans[i] &lt;&lt; (i == n ? &quot;\n&quot; : &quot; &quot;);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>        cout <span class="token-operator">&lt;&lt;</span> ans[i] <span class="token-operator">&lt;&lt;</span> (i <span class="token-operator">==</span> n <span class="token-operator">?</span> <span class="token-string">&quot;\n&quot;</span> <span class="token-operator">:</span> <span class="token-string">&quot; &quot;</span>);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>}</span></span>
         </code></pre>
       </article>

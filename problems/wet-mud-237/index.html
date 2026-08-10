@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Wet Mud: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Wet Mud, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Wet Mud solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="Wet Mud, bts17p4, Other, Simulation, C++ solution, DMOJ" />
     <meta property="og:title" content="Wet Mud — C++ Solution" />
-    <meta property="og:description" content="Wet Mud: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Wet Mud solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/wet-mud-237" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/wet-mud-237" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Wet Mud — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Wet Mud — C++ Solution","description":"Wet Mud: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/wet-mud-237","keywords":["Wet Mud","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Wet Mud — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Wet Mud — C++ Solution","description":"Wet Mud solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/wet-mud-237","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Wet Mud","bts17p4","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/wet-mud-237","sameAs":"https://dmoj.ca/problem/bts17p4","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-237">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · bts17p4</p>
           <h1>Wet Mud</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Wet Mud, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>39 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>237</strong><small>of 245</small></div>
@@ -85,44 +87,44 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int INF = 1e9 + 7;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e9</span> <span class="token-operator">+</span> <span class="token-number">7</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    int n, m, j;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    cin &gt;&gt; n &gt;&gt; m &gt;&gt; j;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    vector&lt;int&gt; dry(n + 2, INF);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    dry[0] = dry[n + 1] = 0; </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    for (int i = 0; i &lt; m; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        int p, t; cin &gt;&gt; p &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        dry[p] = t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">int</span> n, m, j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m <span class="token-operator">&gt;&gt;</span> j;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">dry</span>(n <span class="token-operator">+</span> <span class="token-number">2</span>, <span class="token-constant">INF</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    dry[<span class="token-number">0</span>] <span class="token-operator">=</span> dry[n <span class="token-operator">+</span> <span class="token-number">1</span>] <span class="token-operator">=</span> <span class="token-number">0</span>; </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        <span class="token-type">int</span> p, t; cin <span class="token-operator">&gt;&gt;</span> p <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        dry[p] <span class="token-operator">=</span> t;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    vector&lt;int&gt; v(n + 2, INF);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    v[0] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    deque&lt;int&gt; dq;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    dq.push_back(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    for (int i = 1; i &lt;= n + 1; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        while (!dq.empty() &amp;&amp; dq.front() &lt; i - j) dq.pop_front();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        if (dry[i] == INF || dq.empty()){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            v[i] = INF;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        }else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            int best = v[dq.front()];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>            if (best == INF) v[i] = INF;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>            else v[i] = max(best, dry[i]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">v</span>(n <span class="token-operator">+</span> <span class="token-number">2</span>, <span class="token-constant">INF</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    v[<span class="token-number">0</span>] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-type">deque</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> dq;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    dq.<span class="token-function">push_back</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n <span class="token-operator">+</span> <span class="token-number">1</span>; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        <span class="token-keyword">while</span> (<span class="token-operator">!</span>dq.<span class="token-function">empty</span>() <span class="token-operator">&amp;&amp;</span> dq.<span class="token-function">front</span>() <span class="token-operator">&lt;</span> i <span class="token-operator">-</span> j) dq.<span class="token-function">pop_front</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        <span class="token-keyword">if</span> (dry[i] <span class="token-operator">==</span> <span class="token-constant">INF</span> <span class="token-operator">||</span> dq.<span class="token-function">empty</span>()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>            v[i] <span class="token-operator">=</span> <span class="token-constant">INF</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        }<span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            <span class="token-type">int</span> best <span class="token-operator">=</span> v[dq.<span class="token-function">front</span>()];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>            <span class="token-keyword">if</span> (best <span class="token-operator">==</span> <span class="token-constant">INF</span>) v[i] <span class="token-operator">=</span> <span class="token-constant">INF</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>            <span class="token-keyword">else</span> v[i] <span class="token-operator">=</span> <span class="token-function">max</span>(best, dry[i]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        if (v[i] != INF) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            while (!dq.empty() &amp;&amp; v[dq.back()] &gt;= v[i]) dq.pop_back();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>            dq.push_back(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        <span class="token-keyword">if</span> (v[i] <span class="token-operator">!=</span> <span class="token-constant">INF</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            <span class="token-keyword">while</span> (<span class="token-operator">!</span>dq.<span class="token-function">empty</span>() <span class="token-operator">&amp;&amp;</span> v[dq.<span class="token-function">back</span>()] <span class="token-operator">&gt;=</span> v[i]) dq.<span class="token-function">pop_back</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>            dq.<span class="token-function">push_back</span>(i);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        if (v[n + 1] == INF) cout &lt;&lt; -1 &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        else cout &lt;&lt; v[n + 1] &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        <span class="token-keyword">if</span> (v[n <span class="token-operator">+</span> <span class="token-number">1</span>] <span class="token-operator">==</span> <span class="token-constant">INF</span>) cout <span class="token-operator">&lt;&lt;</span> <span class="token-operator">-</span><span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        <span class="token-keyword">else</span> cout <span class="token-operator">&lt;&lt;</span> v[n <span class="token-operator">+</span> <span class="token-number">1</span>] <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>}</span></span>
         </code></pre>
       </article>

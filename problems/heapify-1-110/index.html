@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Heapify 1: a C++ competitive programming solution using disjoint set union. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Heapify 1, Data structures, C++, competitive programming solution, Codeforces" />
+    <meta name="description" content="Heapify 1 solution: a verified C++ approach using disjoint set union, with complexity analysis and implementation." />
+    <meta name="keywords" content="Heapify 1, 2195B, Data structures, Disjoint set union, C++ solution, Codeforces" />
     <meta property="og:title" content="Heapify 1 — C++ Solution" />
-    <meta property="og:description" content="Heapify 1: a C++ competitive programming solution using disjoint set union. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Heapify 1 solution: a verified C++ approach using disjoint set union, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/heapify-1-110" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/heapify-1-110" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Heapify 1 — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Heapify 1 — C++ Solution","description":"Heapify 1: a C++ competitive programming solution using disjoint set union. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/heapify-1-110","keywords":["Heapify 1","Data structures","Disjoint set union","Disjoint set union","Connectivity","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Heapify 1 — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Heapify 1 — C++ Solution","description":"Heapify 1 solution: a verified C++ approach using disjoint set union, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/heapify-1-110","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Heapify 1","2195B","Data structures","Disjoint set union","Disjoint set union","Connectivity","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/heapify-1-110","sameAs":"https://codeforces.com/problemset/problem/2195/B","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-110">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">Codeforces · 2195B</p>
           <h1>Heapify 1</h1>
-          <p class="summary">C++ solution for a competitive programming problem in data structures.</p>
+          <p class="summary">Verified C++ solution for Heapify 1, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Data structures</span><span>Disjoint set union</span><span>C++</span><span>50 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>110</strong><small>of 245</small></div>
@@ -85,55 +87,55 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const long long INF = 1e17; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>vector&lt;int&gt; parent;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>int find(int x) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    return x == parent[x] ? x : parent[x] = find(parent[x]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e17</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> parent;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">int</span> <span class="token-function">find</span>(<span class="token-type">int</span> x) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-keyword">return</span> x <span class="token-operator">==</span> parent[x] <span class="token-operator">?</span> x <span class="token-operator">:</span> parent[x] <span class="token-operator">=</span> <span class="token-function">find</span>(parent[x]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>void unite(int x, int y) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    x = find(x); y = find(y);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    parent[x] = y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span><span class="token-type">void</span> <span class="token-function">unite</span>(<span class="token-type">int</span> x, <span class="token-type">int</span> y) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    x <span class="token-operator">=</span> <span class="token-function">find</span>(x); y <span class="token-operator">=</span> <span class="token-function">find</span>(y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    parent[x] <span class="token-operator">=</span> y;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>void solve() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    parent.resize(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    for (int i = 1; i &lt;= n; i++) parent[i] = i;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    vector&lt;int&gt; v(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        cin &gt;&gt; v[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span><span class="token-type">void</span> <span class="token-function">solve</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    parent.<span class="token-function">resize</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>) parent[i] <span class="token-operator">=</span> i;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">v</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        cin <span class="token-operator">&gt;&gt;</span> v[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    for (int i = 1; i &lt;= n / 2; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        unite(i, 2 * i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n <span class="token-operator">/</span> <span class="token-number">2</span>; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        <span class="token-function">unite</span>(i, <span class="token-number">2</span> <span class="token-operator">*</span> i);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    unordered_map&lt;int, vector&lt;int&gt;&gt; indx, val;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        int p = find(i);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        indx[p].push_back(i);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        val[p].push_back(v[i]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    <span class="token-type">unordered_map</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> indx, val;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        <span class="token-type">int</span> p <span class="token-operator">=</span> <span class="token-function">find</span>(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        indx[p].<span class="token-function">push_back</span>(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        val[p].<span class="token-function">push_back</span>(v[i]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    for (auto &amp;a : indx) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        auto &amp;index = a.second;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        auto &amp;value = val[a.first];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        sort(index.begin(), index.end());</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        sort(value.begin(), value.end());</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        if (index != value) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>            cout &lt;&lt; &quot;No&quot; &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>            return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    <span class="token-keyword">for</span> (<span class="token-type">auto</span> <span class="token-operator">&amp;</span>a <span class="token-operator">:</span> indx) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        <span class="token-type">auto</span> <span class="token-operator">&amp;</span>index <span class="token-operator">=</span> a.second;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        <span class="token-type">auto</span> <span class="token-operator">&amp;</span>value <span class="token-operator">=</span> val[a.first];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        <span class="token-function">sort</span>(index.<span class="token-function">begin</span>(), index.<span class="token-function">end</span>());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        <span class="token-function">sort</span>(value.<span class="token-function">begin</span>(), value.<span class="token-function">end</span>());</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        <span class="token-keyword">if</span> (index <span class="token-operator">!=</span> value) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>            cout <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;No&quot;</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>            <span class="token-keyword">return</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    cout &lt;&lt; &quot;Yes&quot; &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    cout <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;Yes&quot;</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    while (t--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    <span class="token-keyword">while</span> (t<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        <span class="token-function">solve</span>();</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>}</span></span>
         </code></pre>
       </article>

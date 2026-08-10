@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Avocado Trees!: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Avocado Trees!, Graphs &amp; trees, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Avocado Trees! solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="Avocado Trees!, avocadotrees, Graphs &amp; trees, Simulation, C++ solution, DMOJ" />
     <meta property="og:title" content="Avocado Trees! — C++ Solution" />
-    <meta property="og:description" content="Avocado Trees!: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Avocado Trees! solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/avocado-trees-019" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/avocado-trees-019" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Avocado Trees! — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Avocado Trees! — C++ Solution","description":"Avocado Trees!: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/avocado-trees-019","keywords":["Avocado Trees!","Graphs & trees","Simulation","Simulation","Graphs & trees","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Avocado Trees! — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Avocado Trees! — C++ Solution","description":"Avocado Trees! solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/avocado-trees-019","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Avocado Trees!","avocadotrees","Graphs & trees","Simulation","Simulation","Graphs & trees","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/avocado-trees-019","sameAs":"https://dmoj.ca/problem/avocadotrees","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-019">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · avocadotrees</p>
           <h1>Avocado Trees!</h1>
-          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <p class="summary">Verified C++ solution for Avocado Trees!, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Graphs &amp; trees</span><span>Simulation</span><span>C++</span><span>32 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>019</strong><small>of 245</small></div>
@@ -85,37 +87,37 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int n, q, h;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin &gt;&gt; n &gt;&gt; q &gt;&gt; h;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    vector&lt;int&gt; v(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        int th, amount;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        cin &gt;&gt; th &gt;&gt; amount;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        if(th &gt; h) amount = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        v[i] = amount;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">int</span> n, q, h;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> q <span class="token-operator">&gt;&gt;</span> h;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">v</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        <span class="token-type">int</span> th, amount;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        cin <span class="token-operator">&gt;&gt;</span> th <span class="token-operator">&gt;&gt;</span> amount;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        <span class="token-keyword">if</span>(th <span class="token-operator">&gt;</span> h) amount <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        v[i] <span class="token-operator">=</span> amount;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    vector&lt;int&gt; psa(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    psa[0] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    for(int i = 0; i &lt; v.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        psa[i + 1] = psa[i] + v[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">psa</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    psa[<span class="token-number">0</span>] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> v.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        psa[i <span class="token-operator">+</span> <span class="token-number">1</span>] <span class="token-operator">=</span> psa[i] <span class="token-operator">+</span> v[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    int ans = INT_MIN;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    while(q--){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        int l, r;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        cin &gt;&gt; l &gt;&gt; r;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        l--; r--;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        int res = psa[r + 1] - psa[l];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        ans = max(ans, res);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-type">int</span> ans <span class="token-operator">=</span> <span class="token-constant">INT_MIN</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    <span class="token-keyword">while</span>(q<span class="token-operator">--</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        <span class="token-type">int</span> l, r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        cin <span class="token-operator">&gt;&gt;</span> l <span class="token-operator">&gt;&gt;</span> r;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        l<span class="token-operator">--</span>; r<span class="token-operator">--</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        <span class="token-type">int</span> res <span class="token-operator">=</span> psa[r <span class="token-operator">+</span> <span class="token-number">1</span>] <span class="token-operator">-</span> psa[l];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        ans <span class="token-operator">=</span> <span class="token-function">max</span>(ans, res);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    cout &lt;&lt; ans &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    cout <span class="token-operator">&lt;&lt;</span> ans <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>}</span></span>
         </code></pre>
       </article>

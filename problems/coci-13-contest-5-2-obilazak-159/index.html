@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="COCI &#39;13 Contest 5 #2 Obilazak: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="COCI &#39;13 Contest 5 #2 Obilazak, Graphs &amp; trees, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="COCI &#39;13 Contest 5 #2 Obilazak solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="COCI &#39;13 Contest 5 #2 Obilazak, coci13c5p2, Graphs &amp; trees, Simulation, C++ solution, DMOJ" />
     <meta property="og:title" content="COCI &#39;13 Contest 5 #2 Obilazak — C++ Solution" />
-    <meta property="og:description" content="COCI &#39;13 Contest 5 #2 Obilazak: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="COCI &#39;13 Contest 5 #2 Obilazak solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/coci-13-contest-5-2-obilazak-159" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/coci-13-contest-5-2-obilazak-159" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>COCI &#39;13 Contest 5 #2 Obilazak — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"COCI '13 Contest 5 #2 Obilazak — C++ Solution","description":"COCI '13 Contest 5 #2 Obilazak: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/coci-13-contest-5-2-obilazak-159","keywords":["COCI '13 Contest 5 #2 Obilazak","Graphs & trees","Simulation","Simulation","Graphs & trees","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>COCI &#39;13 Contest 5 #2 Obilazak — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"COCI '13 Contest 5 #2 Obilazak — C++ Solution","description":"COCI '13 Contest 5 #2 Obilazak solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/coci-13-contest-5-2-obilazak-159","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["COCI '13 Contest 5 #2 Obilazak","coci13c5p2","Graphs & trees","Simulation","Simulation","Graphs & trees","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/coci-13-contest-5-2-obilazak-159","sameAs":"https://dmoj.ca/problem/coci13c5p2","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-159">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · coci13c5p2</p>
           <h1>COCI &#39;13 Contest 5 #2 Obilazak</h1>
-          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <p class="summary">Verified C++ solution for COCI &#39;13 Contest 5 #2 Obilazak, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Graphs &amp; trees</span><span>Simulation</span><span>C++</span><span>46 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>159</strong><small>of 245</small></div>
@@ -85,51 +87,51 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>struct Node {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    int val;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    Node* left;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    Node* right;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    Node(int v) : val(v),left(nullptr), right(nullptr){}</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">struct</span> Node {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-type">int</span> val;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    Node<span class="token-operator">*</span> left;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    Node<span class="token-operator">*</span> right;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-function">Node</span>(<span class="token-type">int</span> v) <span class="token-operator">:</span> <span class="token-function">val</span>(v),<span class="token-function">left</span>(<span class="token-keyword">nullptr</span>), <span class="token-function">right</span>(<span class="token-keyword">nullptr</span>){}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span> </span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>};</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>int height, indx;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>vector&lt;int&gt; seq;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>Node* build(int depth){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    if(depth &gt; height) return nullptr;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    Node* root = new Node(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    root-&gt;left = build(depth + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    root-&gt;val = seq[indx++];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    root-&gt;right = build(depth + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    return root; </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span><span class="token-type">int</span> height, indx;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> seq;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>Node<span class="token-operator">*</span> <span class="token-function">build</span>(<span class="token-type">int</span> depth){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-keyword">if</span>(depth <span class="token-operator">&gt;</span> height) <span class="token-keyword">return</span> <span class="token-keyword">nullptr</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    Node<span class="token-operator">*</span> root <span class="token-operator">=</span> <span class="token-keyword">new</span> <span class="token-function">Node</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    root<span class="token-operator">-&gt;</span>left <span class="token-operator">=</span> <span class="token-function">build</span>(depth <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    root<span class="token-operator">-&gt;</span>val <span class="token-operator">=</span> seq[indx<span class="token-operator">++</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    root<span class="token-operator">-&gt;</span>right <span class="token-operator">=</span> <span class="token-function">build</span>(depth <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-keyword">return</span> root; </span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    cin &gt;&gt; height;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    int total = (1 &lt;&lt; height) - 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    seq.resize(total);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    for(int i = 0; i &lt; total; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        cin &gt;&gt; seq[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    cin <span class="token-operator">&gt;&gt;</span> height;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-type">int</span> total <span class="token-operator">=</span> (<span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> height) <span class="token-operator">-</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    seq.<span class="token-function">resize</span>(total);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> total; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        cin <span class="token-operator">&gt;&gt;</span> seq[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    indx = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    Node* root = build(1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    queue&lt;Node*&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    q.push(root);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    priority_queue&lt;int&gt; pq;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    while(!q.empty()){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        int size = q.size();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        for(int i = 0; i &lt; size; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            Node* cur = q.front(); q.pop();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            cout &lt;&lt; cur-&gt;val &lt;&lt; (i == size - 1 ? &quot;\n&quot; : &quot; &quot;);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            if(cur-&gt;left) q.push(cur-&gt;left);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            if(cur-&gt;right) q.push(cur-&gt;right);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    indx <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    Node<span class="token-operator">*</span> root <span class="token-operator">=</span> <span class="token-function">build</span>(<span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    <span class="token-type">queue</span><span class="token-operator">&lt;</span>Node<span class="token-operator">*</span><span class="token-operator">&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    q.<span class="token-function">push</span>(root);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    <span class="token-type">priority_queue</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> pq;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    <span class="token-keyword">while</span>(<span class="token-operator">!</span>q.<span class="token-function">empty</span>()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        <span class="token-type">int</span> size <span class="token-operator">=</span> q.<span class="token-function">size</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> size; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            Node<span class="token-operator">*</span> cur <span class="token-operator">=</span> q.<span class="token-function">front</span>(); q.<span class="token-function">pop</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            cout <span class="token-operator">&lt;&lt;</span> cur<span class="token-operator">-&gt;</span>val <span class="token-operator">&lt;&lt;</span> (i <span class="token-operator">==</span> size <span class="token-operator">-</span> <span class="token-number">1</span> <span class="token-operator">?</span> <span class="token-string">&quot;\n&quot;</span> <span class="token-operator">:</span> <span class="token-string">&quot; &quot;</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>            <span class="token-keyword">if</span>(cur<span class="token-operator">-&gt;</span>left) q.<span class="token-function">push</span>(cur<span class="token-operator">-&gt;</span>left);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>            <span class="token-keyword">if</span>(cur<span class="token-operator">-&gt;</span>right) q.<span class="token-function">push</span>(cur<span class="token-operator">-&gt;</span>right);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>}</span></span>
         </code></pre>
       </article>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="That Pool: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="That Pool, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="That Pool solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="That Pool, sac22cc1p3, Other, Simulation, C++ solution, DMOJ" />
     <meta property="og:title" content="That Pool — C++ Solution" />
-    <meta property="og:description" content="That Pool: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="That Pool solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/that-pool-212" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/that-pool-212" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>That Pool — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"That Pool — C++ Solution","description":"That Pool: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/that-pool-212","keywords":["That Pool","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>That Pool — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"That Pool — C++ Solution","description":"That Pool solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/that-pool-212","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["That Pool","sac22cc1p3","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/that-pool-212","sameAs":"https://dmoj.ca/problem/sac22cc1p3","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-212">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · sac22cc1p3</p>
           <h1>That Pool</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for That Pool, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>83 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>212</strong><small>of 245</small></div>
@@ -85,87 +87,87 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>void print(vector&lt;vector&lt;char&gt;&gt;&amp; grid){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    for(int i = 0; i &lt; grid.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        for(int j = 0; j &lt; grid[i].size(); j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>            cout &lt;&lt; grid[i][j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">void</span> <span class="token-function">print</span>(<span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">char</span><span class="token-operator">&gt;&gt;</span><span class="token-operator">&amp;</span> grid){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> grid.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">0</span>; j <span class="token-operator">&lt;</span> grid[i].<span class="token-function">size</span>(); j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>            cout <span class="token-operator">&lt;&lt;</span> grid[i][j];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        cout &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>void move_blood(vector&lt;vector&lt;char&gt;&gt;&amp; v){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    //left </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    bool stuck = true;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    while(true){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    stuck = true;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    for(int i = 0; i &lt; v.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        for(int j = 0; j &lt; v[i].size(); j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            if(v[i][j] == &#39;W&#39;){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>                while(j &gt; 0 &amp;&amp; v[i][j - 1] == &#39;.&#39;){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>                   v[i][j - 1] = &#39;W&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>                   v[i][j] = &#39;.&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>                   j--;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>                   stuck = false;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span><span class="token-type">void</span> <span class="token-function">move_blood</span>(<span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">char</span><span class="token-operator">&gt;&gt;</span><span class="token-operator">&amp;</span> v){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-comment">//left </span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-type">bool</span> stuck <span class="token-operator">=</span> <span class="token-keyword">true</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-keyword">while</span>(<span class="token-keyword">true</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    stuck <span class="token-operator">=</span> <span class="token-keyword">true</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> v.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">0</span>; j <span class="token-operator">&lt;</span> v[i].<span class="token-function">size</span>(); j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            <span class="token-keyword">if</span>(v[i][j] <span class="token-operator">==</span> <span class="token-string">&#39;W&#39;</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>                <span class="token-keyword">while</span>(j <span class="token-operator">&gt;</span> <span class="token-number">0</span> <span class="token-operator">&amp;&amp;</span> v[i][j <span class="token-operator">-</span> <span class="token-number">1</span>] <span class="token-operator">==</span> <span class="token-string">&#39;.&#39;</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>                   v[i][j <span class="token-operator">-</span> <span class="token-number">1</span>] <span class="token-operator">=</span> <span class="token-string">&#39;W&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>                   v[i][j] <span class="token-operator">=</span> <span class="token-string">&#39;.&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>                   j<span class="token-operator">--</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>                   stuck <span class="token-operator">=</span> <span class="token-keyword">false</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>                }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    //down </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        vector&lt;pair&lt;int,int&gt;&gt; drop;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        for (int i = 0; i &lt; v.size() - 1; i++)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>            for (int j = 0; j &lt; v[i].size(); j++)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                if (v[i][j] == &#39;W&#39; &amp;&amp; v[i + 1][j] == &#39;.&#39;)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>                    drop.push_back({i, j});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    <span class="token-comment">//down </span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> drop;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> v.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>; i<span class="token-operator">++</span>)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>            <span class="token-keyword">for</span> (<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">0</span>; j <span class="token-operator">&lt;</span> v[i].<span class="token-function">size</span>(); j<span class="token-operator">++</span>)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>                <span class="token-keyword">if</span> (v[i][j] <span class="token-operator">==</span> <span class="token-string">&#39;W&#39;</span> <span class="token-operator">&amp;&amp;</span> v[i <span class="token-operator">+</span> <span class="token-number">1</span>][j] <span class="token-operator">==</span> <span class="token-string">&#39;.&#39;</span>)</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>                    drop.<span class="token-function">push_back</span>({i, j});</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        if (!drop.empty()) stuck = false;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        for (auto [i, j] : drop){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            v[i + 1][j] = &#39;W&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            v[i][j]   = &#39;.&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        <span class="token-keyword">if</span> (<span class="token-operator">!</span>drop.<span class="token-function">empty</span>()) stuck <span class="token-operator">=</span> <span class="token-keyword">false</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-keyword">for</span> (<span class="token-type">auto</span> [i, j] <span class="token-operator">:</span> drop){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>            v[i <span class="token-operator">+</span> <span class="token-number">1</span>][j] <span class="token-operator">=</span> <span class="token-string">&#39;W&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>            v[i][j]   <span class="token-operator">=</span> <span class="token-string">&#39;.&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    if(stuck) break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    <span class="token-keyword">if</span>(stuck) <span class="token-keyword">break</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    int n, m, q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    cin &gt;&gt; n &gt;&gt; m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    vector&lt;vector&lt;char&gt;&gt; pool(n, vector&lt;char&gt;(m));</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>        for(int j = 0; j &lt; m; j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>            cin &gt;&gt; pool[i][j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    <span class="token-type">int</span> n, m, q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>    cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">char</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">pool</span>(n, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">char</span><span class="token-operator">&gt;</span>(m));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">0</span>; j <span class="token-operator">&lt;</span> m; j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>            cin <span class="token-operator">&gt;&gt;</span> pool[i][j];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>    cin &gt;&gt; q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>    cin <span class="token-operator">&gt;&gt;</span> q;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    while(q--){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        int op;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        cin &gt;&gt; op;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        if(op == 2){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>            print(pool);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>            //先处理头 out of bound 消失 down </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>            //Blood can only move to empty cells </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>            //到最左 然后向下 repeat 直到动不了</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>            for(int i = pool.size() - 1; i &gt;= 0; i--){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>                for(int j  = 0; j &lt; pool[i].size(); j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>                    if(pool[i][j] == &#39;X&#39; &amp;&amp; i == pool.size() - 1){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>                        pool[i][j] = &#39;.&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>                    } else if(pool[i][j] == &#39;X&#39;){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>                        pool[i + 1][j] = &#39;X&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>                        pool[i][j] = &#39;.&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>    <span class="token-keyword">while</span>(q<span class="token-operator">--</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>        <span class="token-type">int</span> op;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>        cin <span class="token-operator">&gt;&gt;</span> op;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>        <span class="token-keyword">if</span>(op <span class="token-operator">==</span> <span class="token-number">2</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>            <span class="token-function">print</span>(pool);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>            <span class="token-comment">//先处理头 out of bound 消失 down </span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>            <span class="token-comment">//Blood can only move to empty cells </span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>            <span class="token-comment">//到最左 然后向下 repeat 直到动不了</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>            <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> pool.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>; i <span class="token-operator">&gt;=</span> <span class="token-number">0</span>; i<span class="token-operator">--</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>                <span class="token-keyword">for</span>(<span class="token-type">int</span> j  <span class="token-operator">=</span> <span class="token-number">0</span>; j <span class="token-operator">&lt;</span> pool[i].<span class="token-function">size</span>(); j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>                    <span class="token-keyword">if</span>(pool[i][j] <span class="token-operator">==</span> <span class="token-string">&#39;X&#39;</span> <span class="token-operator">&amp;&amp;</span> i <span class="token-operator">==</span> pool.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>                        pool[i][j] <span class="token-operator">=</span> <span class="token-string">&#39;.&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span>                    } <span class="token-keyword">else</span> <span class="token-keyword">if</span>(pool[i][j] <span class="token-operator">==</span> <span class="token-string">&#39;X&#39;</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>                        pool[i <span class="token-operator">+</span> <span class="token-number">1</span>][j] <span class="token-operator">=</span> <span class="token-string">&#39;X&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>                        pool[i][j] <span class="token-operator">=</span> <span class="token-string">&#39;.&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">75</span><span>                    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">76</span><span>                }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">77</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">78</span><span>            move_blood(pool);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">78</span><span>            <span class="token-function">move_blood</span>(pool);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">79</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">80</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">81</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">81</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">82</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">83</span><span> </span></span>
         </code></pre>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Planets Queries I: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Planets Queries I, Other, C++, competitive programming solution, CSES" />
+    <meta name="description" content="Planets Queries I solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="Planets Queries I, 1750, Other, Simulation, C++ solution, CSES" />
     <meta property="og:title" content="Planets Queries I — C++ Solution" />
-    <meta property="og:description" content="Planets Queries I: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Planets Queries I solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/planets-queries-i-030" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/planets-queries-i-030" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Planets Queries I — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Planets Queries I — C++ Solution","description":"Planets Queries I: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/planets-queries-i-030","keywords":["Planets Queries I","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Planets Queries I — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Planets Queries I — C++ Solution","description":"Planets Queries I solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/planets-queries-i-030","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Planets Queries I","1750","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/planets-queries-i-030","sameAs":"https://cses.fi/problemset/task/1750/","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-030">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">CSES · 1750</p>
           <h1>Planets Queries I</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Planets Queries I, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>25 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>030</strong><small>of 245</small></div>
@@ -85,30 +87,30 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include&lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std; //❄️ idea is to use binary lifting to precompute the jumps(how many teleport)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    int n, q; cin &gt;&gt; n &gt;&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    const int MM = 30; // cuz 2 ^ 30 &gt; k(1e9)</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    vector&lt;vector&lt;int&gt;&gt; jump(MM, vector&lt;int&gt;(n + 1));</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    for(int i = 1; i &lt;= n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        jump[0][i] = t; // jump[i][j] = the planet you reach if you start at j and take 2^i teleports.</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include&lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std; <span class="token-comment">//❄️ idea is to use binary lifting to precompute the jumps(how many teleport)</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    <span class="token-type">int</span> n, q; cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-keyword">const</span> <span class="token-type">int</span> <span class="token-constant">MM</span> <span class="token-operator">=</span> <span class="token-number">30</span>; <span class="token-comment">// cuz 2 ^ 30 &gt; k(1e9)</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">jump</span>(<span class="token-constant">MM</span>, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        jump[<span class="token-number">0</span>][i] <span class="token-operator">=</span> t; <span class="token-comment">// jump[i][j] = the planet you reach if you start at j and take 2^i teleports.</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    for(int i = 1; i &lt; MM; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        for(int j = 1; j &lt;= n; j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            jump[i][j] = jump[i - 1][jump[i - 1][j]];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;</span> <span class="token-constant">MM</span>; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">1</span>; j <span class="token-operator">&lt;=</span> n; j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            jump[i][j] <span class="token-operator">=</span> jump[i <span class="token-operator">-</span> <span class="token-number">1</span>][jump[i <span class="token-operator">-</span> <span class="token-number">1</span>][j]];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    while(q--){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        int x; long long y; cin &gt;&gt; x &gt;&gt; y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        for(int i = 0; i &lt; MM; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            if((y &gt;&gt; i) &amp; 1LL) x = jump[i][x];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-keyword">while</span>(q<span class="token-operator">--</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>        <span class="token-type">int</span> x; <span class="token-type">long</span> <span class="token-type">long</span> y; cin <span class="token-operator">&gt;&gt;</span> x <span class="token-operator">&gt;&gt;</span> y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> <span class="token-constant">MM</span>; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>            <span class="token-keyword">if</span>((y <span class="token-operator">&gt;&gt;</span> i) <span class="token-operator">&amp;</span> 1LL) x <span class="token-operator">=</span> jump[i][x];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        cout &lt;&lt; x &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        cout <span class="token-operator">&lt;&lt;</span> x <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>}</span></span>
         </code></pre>
       </article>

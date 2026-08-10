@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Increasing Subsequence: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Increasing Subsequence, Dynamic programming, C++, competitive programming solution, CSES" />
+    <meta name="description" content="Increasing Subsequence solution: a verified C++ approach using binary search, with complexity analysis and implementation." />
+    <meta name="keywords" content="Increasing Subsequence, 1145, Dynamic programming, Binary search, C++ solution, CSES" />
     <meta property="og:title" content="Increasing Subsequence — C++ Solution" />
-    <meta property="og:description" content="Increasing Subsequence: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Increasing Subsequence solution: a verified C++ approach using binary search, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/increasing-subsequence-132" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/increasing-subsequence-132" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Increasing Subsequence — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Increasing Subsequence — C++ Solution","description":"Increasing Subsequence: a C++ competitive programming solution using binary search. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/increasing-subsequence-132","keywords":["Increasing Subsequence","Dynamic programming","Binary search","Binary search","Monotonic search","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Increasing Subsequence — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Increasing Subsequence — C++ Solution","description":"Increasing Subsequence solution: a verified C++ approach using binary search, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/increasing-subsequence-132","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Increasing Subsequence","1145","Dynamic programming","Binary search","Binary search","Monotonic search","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/increasing-subsequence-132","sameAs":"https://cses.fi/problemset/task/1145","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-132">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">CSES · 1145</p>
           <h1>Increasing Subsequence</h1>
-          <p class="summary">C++ solution for a competitive programming problem in dynamic programming.</p>
+          <p class="summary">Verified C++ solution for Increasing Subsequence, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Dynamic programming</span><span>Binary search</span><span>C++</span><span>23 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>132</strong><small>of 245</small></div>
@@ -85,28 +87,28 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e18; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    vector&lt;int&gt; v(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for (int i = 0; i &lt; n; i++) cin &gt;&gt; v[i];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    vector&lt;int&gt; ans;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        if (ans.empty() || v[i] &gt; ans.back()) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            ans.push_back(v[i]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            int pos = lower_bound(ans.begin(), ans.end(), v[i]) - ans.begin();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            ans[pos] = v[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">using</span> i128 <span class="token-operator">=</span> __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-keyword">const</span> ll <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e18</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">v</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) cin <span class="token-operator">&gt;&gt;</span> v[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> ans;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        <span class="token-keyword">if</span> (ans.<span class="token-function">empty</span>() <span class="token-operator">||</span> v[i] <span class="token-operator">&gt;</span> ans.<span class="token-function">back</span>()) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            ans.<span class="token-function">push_back</span>(v[i]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>            <span class="token-type">int</span> pos <span class="token-operator">=</span> <span class="token-function">lower_bound</span>(ans.<span class="token-function">begin</span>(), ans.<span class="token-function">end</span>(), v[i]) <span class="token-operator">-</span> ans.<span class="token-function">begin</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>            ans[pos] <span class="token-operator">=</span> v[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    cout &lt;&lt; ans.size() &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    cout <span class="token-operator">&lt;&lt;</span> ans.<span class="token-function">size</span>() <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>}</span></span>
         </code></pre>
       </article>

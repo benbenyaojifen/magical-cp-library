@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Running In Circles: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Running In Circles, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Running In Circles solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
+    <meta name="keywords" content="Running In Circles, dwite09c1p5, Other, Graph traversal, C++ solution, DMOJ" />
     <meta property="og:title" content="Running In Circles — C++ Solution" />
-    <meta property="og:description" content="Running In Circles: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Running In Circles solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/running-in-circles-180" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/running-in-circles-180" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Running In Circles — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Running In Circles — C++ Solution","description":"Running In Circles: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/running-in-circles-180","keywords":["Running In Circles","Other","Graph traversal","Graph traversal","Depth-first search","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Running In Circles — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Running In Circles — C++ Solution","description":"Running In Circles solution: a verified C++ approach using graph traversal, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/running-in-circles-180","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Running In Circles","dwite09c1p5","Other","Graph traversal","Graph traversal","Depth-first search","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/running-in-circles-180","sameAs":"https://dmoj.ca/problem/dwite09c1p5","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-180">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · dwite09c1p5</p>
           <h1>Running In Circles</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Running In Circles, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Graph traversal</span><span>C++</span><span>43 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>180</strong><small>of 245</small></div>
@@ -85,47 +87,47 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>vector&lt;vector&lt;int&gt;&gt; adj;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>vector&lt;int&gt; color, depth, parent;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int ans = -1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>void dfs(int u){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    color[u] = 1; // visiting</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    for (int v : adj[u]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        if (ans != -1) return; // cycle already found</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        if (color[v] == 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            parent[v] = u;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            depth[v] = depth[u] + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            dfs(v);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        } else if (color[v] == 1){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            ans = depth[u] - depth[v] + 1; // foudn unique cycle</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> adj;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> color, depth, parent;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">int</span> ans <span class="token-operator">=</span> <span class="token-operator">-</span><span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-type">void</span> <span class="token-function">dfs</span>(<span class="token-type">int</span> u){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    color[u] <span class="token-operator">=</span> <span class="token-number">1</span>; <span class="token-comment">// visiting</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> v <span class="token-operator">:</span> adj[u]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        <span class="token-keyword">if</span> (ans <span class="token-operator">!=</span> <span class="token-operator">-</span><span class="token-number">1</span>) <span class="token-keyword">return</span>; <span class="token-comment">// cycle already found</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        <span class="token-keyword">if</span> (color[v] <span class="token-operator">==</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            parent[v] <span class="token-operator">=</span> u;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            depth[v] <span class="token-operator">=</span> depth[u] <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            <span class="token-function">dfs</span>(v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>        } <span class="token-keyword">else</span> <span class="token-keyword">if</span> (color[v] <span class="token-operator">==</span> <span class="token-number">1</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>            ans <span class="token-operator">=</span> depth[u] <span class="token-operator">-</span> depth[v] <span class="token-operator">+</span> <span class="token-number">1</span>; <span class="token-comment">// foudn unique cycle</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>            <span class="token-keyword">return</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    color[u] = 2; // done</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    color[u] <span class="token-operator">=</span> <span class="token-number">2</span>; <span class="token-comment">// done</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    for (int tc = 0; tc &lt; 5; tc++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        int m; cin &gt;&gt; m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        adj.assign(101, {});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        color.assign(101, 0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        depth.assign(101, 0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        parent.assign(101, -1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        ans = -1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        int start = -1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        for (int i = 0; i &lt; m; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            int u, v; cin &gt;&gt; u &gt;&gt; v;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            if (i == 0) start = u;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>            adj[u].push_back(v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> tc <span class="token-operator">=</span> <span class="token-number">0</span>; tc <span class="token-operator">&lt;</span> <span class="token-number">5</span>; tc<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        <span class="token-type">int</span> m; cin <span class="token-operator">&gt;&gt;</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        adj.<span class="token-function">assign</span>(<span class="token-number">101</span>, {});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        color.<span class="token-function">assign</span>(<span class="token-number">101</span>, <span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        depth.<span class="token-function">assign</span>(<span class="token-number">101</span>, <span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        parent.<span class="token-function">assign</span>(<span class="token-number">101</span>, <span class="token-operator">-</span><span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        ans <span class="token-operator">=</span> <span class="token-operator">-</span><span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        <span class="token-type">int</span> start <span class="token-operator">=</span> <span class="token-operator">-</span><span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            <span class="token-type">int</span> u, v; cin <span class="token-operator">&gt;&gt;</span> u <span class="token-operator">&gt;&gt;</span> v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>            <span class="token-keyword">if</span> (i <span class="token-operator">==</span> <span class="token-number">0</span>) start <span class="token-operator">=</span> u;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>            adj[u].<span class="token-function">push_back</span>(v);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        dfs(start);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>        <span class="token-function">dfs</span>(start);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        cout <span class="token-operator">&lt;&lt;</span> ans <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;\n&quot;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span> </span></span>
         </code></pre>

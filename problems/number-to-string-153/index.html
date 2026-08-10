@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Number to String: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Number to String, Strings, C++, competitive programming solution, C++" />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Number to String solution: a C++ approach using string processing, with complexity analysis and implementation." />
+    <meta name="keywords" content="Number to String, Solution, Strings, String processing, C++ solution, C++" />
     <meta property="og:title" content="Number to String — C++ Solution" />
-    <meta property="og:description" content="Number to String: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Number to String solution: a C++ approach using string processing, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/number-to-string-153" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/number-to-string-153" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Number to String — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Number to String — C++ Solution","description":"Number to String: a C++ competitive programming solution using string processing. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/number-to-string-153","keywords":["Number to String","Strings","String processing","String processing","Strings","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Number to String — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Number to String — C++ Solution","description":"Number to String solution: a C++ approach using string processing, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/number-to-string-153","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Number to String","Solution","Strings","String processing","String processing","Strings","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/number-to-string-153","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-153">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">C++ · Solution</p>
           <h1>Number to String</h1>
-          <p class="summary">C++ solution for a competitive programming problem in strings.</p>
+          <p class="summary">Verified C++ solution for Number to String, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Strings</span><span>String processing</span><span>C++</span><span>46 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>153</strong><small>of 245</small></div>
@@ -85,51 +87,51 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    string s;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin &gt;&gt; s;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    if (s.size() == 1 || s.find_first_not_of(&#39;0&#39;, 1) == -1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        cout &lt;&lt; 0 &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">string</span> s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    cin <span class="token-operator">&gt;&gt;</span> s;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-keyword">if</span> (s.<span class="token-function">size</span>() <span class="token-operator">==</span> <span class="token-number">1</span> <span class="token-operator">||</span> s.<span class="token-function">find_first_not_of</span>(<span class="token-string">&#39;0&#39;</span>, <span class="token-number">1</span>) <span class="token-operator">==</span> <span class="token-operator">-</span><span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-number">0</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    int first = s[0] - &#39;0&#39; + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    string want = to_string(first);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    for(int i = 0; i &lt; s.length() - 1; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        want.append(&quot;0&quot;);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-type">int</span> first <span class="token-operator">=</span> s[<span class="token-number">0</span>] <span class="token-operator">-</span> <span class="token-string">&#39;0&#39;</span> <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-type">string</span> want <span class="token-operator">=</span> <span class="token-function">to_string</span>(first);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> s.<span class="token-function">length</span>() <span class="token-operator">-</span> <span class="token-number">1</span>; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        want.<span class="token-function">append</span>(<span class="token-string">&quot;0&quot;</span>);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    int x = want.length(), y = s.length();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    vector&lt;int&gt; a(x), b(x, 0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    for(int i = 0; i &lt; x; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        a[i] = want[x - 1 - i] - &#39;0&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-type">int</span> x <span class="token-operator">=</span> want.<span class="token-function">length</span>(), y <span class="token-operator">=</span> s.<span class="token-function">length</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">a</span>(x), <span class="token-function">b</span>(x, <span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> x; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        a[i] <span class="token-operator">=</span> want[x <span class="token-operator">-</span> <span class="token-number">1</span> <span class="token-operator">-</span> i] <span class="token-operator">-</span> <span class="token-string">&#39;0&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    for(int i = 0; i &lt; y; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        b[i] = s[y - 1 - i] - &#39;0&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> y; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        b[i] <span class="token-operator">=</span> s[y <span class="token-operator">-</span> <span class="token-number">1</span> <span class="token-operator">-</span> i] <span class="token-operator">-</span> <span class="token-string">&#39;0&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    for(int i = 0; i &lt; x; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        a[i] -= b[i];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        if (a[i] &lt; 0) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            a[i] += 10;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            a[i + 1]--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> x; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        a[i] <span class="token-operator">-</span><span class="token-operator">=</span> b[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        <span class="token-keyword">if</span> (a[i] <span class="token-operator">&lt;</span> <span class="token-number">0</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            a[i] <span class="token-operator">+</span><span class="token-operator">=</span> <span class="token-number">10</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            a[i <span class="token-operator">+</span> <span class="token-number">1</span>]<span class="token-operator">--</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    int pos = x - 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    //remove leading 0</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    while(pos &gt; 0 &amp;&amp; a[pos] == 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        pos--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    <span class="token-type">int</span> pos <span class="token-operator">=</span> x <span class="token-operator">-</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    <span class="token-comment">//remove leading 0</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    <span class="token-keyword">while</span>(pos <span class="token-operator">&gt;</span> <span class="token-number">0</span> <span class="token-operator">&amp;&amp;</span> a[pos] <span class="token-operator">==</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>        pos<span class="token-operator">--</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    string ans;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    while(pos &gt;= 0){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        char temp = (char) (a[pos] + &#39;0&#39;);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        ans.push_back(temp);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        pos--;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    <span class="token-type">string</span> ans;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    <span class="token-keyword">while</span>(pos <span class="token-operator">&gt;=</span> <span class="token-number">0</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>        <span class="token-type">char</span> temp <span class="token-operator">=</span> (<span class="token-type">char</span>) (a[pos] <span class="token-operator">+</span> <span class="token-string">&#39;0&#39;</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>        ans.<span class="token-function">push_back</span>(temp);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>        pos<span class="token-operator">--</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    cout &lt;&lt; ans &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    cout <span class="token-operator">&lt;&lt;</span> ans <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>}   </span></span>
         </code></pre>
       </article>

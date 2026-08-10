@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="BattleCows: a C++ competitive programming solution using range queries. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="BattleCows, Other, C++, competitive programming solution, Codeforces" />
+    <meta name="description" content="BattleCows solution: a verified C++ approach using range queries, with complexity analysis and implementation." />
+    <meta name="keywords" content="BattleCows, 2185F, Other, Range queries, C++ solution, Codeforces" />
     <meta property="og:title" content="BattleCows — C++ Solution" />
-    <meta property="og:description" content="BattleCows: a C++ competitive programming solution using range queries. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="BattleCows solution: a verified C++ approach using range queries, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/battlecows-026" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/battlecows-026" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>BattleCows — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"BattleCows — C++ Solution","description":"BattleCows: a C++ competitive programming solution using range queries. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/battlecows-026","keywords":["BattleCows","Other","Range queries","Range queries","Segment tree","Data structures","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>BattleCows — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"BattleCows — C++ Solution","description":"BattleCows solution: a verified C++ approach using range queries, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/battlecows-026","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["BattleCows","2185F","Other","Range queries","Range queries","Segment tree","Data structures","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/battlecows-026","sameAs":"https://codeforces.com/problemset/problem/2185/F","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-026">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">Codeforces · 2185F</p>
           <h1>BattleCows</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for BattleCows, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Range queries</span><span>C++</span><span>102 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>026</strong><small>of 245</small></div>
@@ -85,107 +87,107 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>typedef long long ll;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const long long INF = 1e17; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>#define int long long</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>struct Node {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">typedef</span> <span class="token-type">long</span> <span class="token-type">long</span> ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e17</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-preprocessor">#define int long long</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-keyword">struct</span> Node {</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ll xr;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>};</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>int N;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>vector&lt;Node&gt; seg;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>vector&lt;ll&gt; A;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span><span class="token-type">int</span> <span class="token-constant">N</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span>Node<span class="token-operator">&gt;</span> seg;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span><span class="token-type">vector</span><span class="token-operator">&lt;</span>ll<span class="token-operator">&gt;</span> <span class="token-constant">A</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>Node mergeNode(const Node &amp;L, const Node &amp;R) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>Node <span class="token-function">mergeNode</span>(<span class="token-keyword">const</span> Node <span class="token-operator">&amp;</span><span class="token-constant">L</span>, <span class="token-keyword">const</span> Node <span class="token-operator">&amp;</span><span class="token-constant">R</span>) {</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    Node res;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    res.xr = L.xr ^ R.xr;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    return res;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    res.xr <span class="token-operator">=</span> <span class="token-constant">L</span>.xr <span class="token-operator">^</span> <span class="token-constant">R</span>.xr;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-keyword">return</span> res;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>void build(int idx, int l, int r) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    if (l == r) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        seg[idx].xr = A[l];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span><span class="token-type">void</span> <span class="token-function">build</span>(<span class="token-type">int</span> idx, <span class="token-type">int</span> l, <span class="token-type">int</span> r) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    <span class="token-keyword">if</span> (l <span class="token-operator">==</span> r) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        seg[idx].xr <span class="token-operator">=</span> <span class="token-constant">A</span>[l];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        <span class="token-keyword">return</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    int mid = (l + r) &gt;&gt; 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    build(idx &lt;&lt; 1, l, mid);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    build(idx &lt;&lt; 1 | 1, mid + 1, r);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    seg[idx] = mergeNode(seg[idx &lt;&lt; 1], seg[idx &lt;&lt; 1 | 1]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>    <span class="token-type">int</span> mid <span class="token-operator">=</span> (l <span class="token-operator">+</span> r) <span class="token-operator">&gt;&gt;</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    <span class="token-function">build</span>(idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span>, l, mid);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    <span class="token-function">build</span>(idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span> <span class="token-operator">|</span> <span class="token-number">1</span>, mid <span class="token-operator">+</span> <span class="token-number">1</span>, r);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    seg[idx] <span class="token-operator">=</span> <span class="token-function">mergeNode</span>(seg[idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span>], seg[idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span> <span class="token-operator">|</span> <span class="token-number">1</span>]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>void update(int idx, int l, int r, int pos, ll val) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    if (l == r) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        seg[idx].xr = val;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        return;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span><span class="token-type">void</span> <span class="token-function">update</span>(<span class="token-type">int</span> idx, <span class="token-type">int</span> l, <span class="token-type">int</span> r, <span class="token-type">int</span> pos, ll val) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    <span class="token-keyword">if</span> (l <span class="token-operator">==</span> r) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        seg[idx].xr <span class="token-operator">=</span> val;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        <span class="token-keyword">return</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    int mid = (l + r) &gt;&gt; 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    if (pos &lt;= mid) update(idx &lt;&lt; 1, l, mid, pos, val);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    else update(idx &lt;&lt; 1 | 1, mid + 1, r, pos, val);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    seg[idx] = mergeNode(seg[idx &lt;&lt; 1], seg[idx &lt;&lt; 1 | 1]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    <span class="token-type">int</span> mid <span class="token-operator">=</span> (l <span class="token-operator">+</span> r) <span class="token-operator">&gt;&gt;</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    <span class="token-keyword">if</span> (pos <span class="token-operator">&lt;=</span> mid) <span class="token-function">update</span>(idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span>, l, mid, pos, val);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    <span class="token-keyword">else</span> <span class="token-function">update</span>(idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span> <span class="token-operator">|</span> <span class="token-number">1</span>, mid <span class="token-operator">+</span> <span class="token-number">1</span>, r, pos, val);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    seg[idx] <span class="token-operator">=</span> <span class="token-function">mergeNode</span>(seg[idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span>], seg[idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span> <span class="token-operator">|</span> <span class="token-number">1</span>]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>}</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>int queryAbove(int pos) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    int idx = 1, l = 0, r = N - 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    int res = 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span><span class="token-type">int</span> <span class="token-function">queryAbove</span>(<span class="token-type">int</span> pos) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    <span class="token-type">int</span> idx <span class="token-operator">=</span> <span class="token-number">1</span>, l <span class="token-operator">=</span> <span class="token-number">0</span>, r <span class="token-operator">=</span> <span class="token-constant">N</span> <span class="token-operator">-</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    <span class="token-type">int</span> res <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    while (l &lt; r) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        int mid = (l + r) &gt;&gt; 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        if (pos &lt;= mid) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>            int leftX = seg[idx &lt;&lt; 1].xr;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>            int rightX = seg[idx &lt;&lt; 1 | 1].xr;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            if (rightX &gt; leftX) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>                res += (r - mid);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    <span class="token-keyword">while</span> (l <span class="token-operator">&lt;</span> r) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        <span class="token-type">int</span> mid <span class="token-operator">=</span> (l <span class="token-operator">+</span> r) <span class="token-operator">&gt;&gt;</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>        <span class="token-keyword">if</span> (pos <span class="token-operator">&lt;=</span> mid) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>            <span class="token-type">int</span> leftX <span class="token-operator">=</span> seg[idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span>].xr;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>            <span class="token-type">int</span> rightX <span class="token-operator">=</span> seg[idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span> <span class="token-operator">|</span> <span class="token-number">1</span>].xr;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">51</span><span>            <span class="token-keyword">if</span> (rightX <span class="token-operator">&gt;</span> leftX) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">52</span><span>                res <span class="token-operator">+</span><span class="token-operator">=</span> (r <span class="token-operator">-</span> mid);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">53</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>            idx = idx &lt;&lt; 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>            r = mid;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>        } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>            int leftX = seg[idx &lt;&lt; 1].xr;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>            int rightX = seg[idx &lt;&lt; 1 | 1].xr;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>            if (leftX &gt;= rightX) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>                res += (mid - l + 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">54</span><span>            idx <span class="token-operator">=</span> idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">55</span><span>            r <span class="token-operator">=</span> mid;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">56</span><span>        } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">57</span><span>            <span class="token-type">int</span> leftX <span class="token-operator">=</span> seg[idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span>].xr;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">58</span><span>            <span class="token-type">int</span> rightX <span class="token-operator">=</span> seg[idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span> <span class="token-operator">|</span> <span class="token-number">1</span>].xr;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">59</span><span>            <span class="token-keyword">if</span> (leftX <span class="token-operator">&gt;=</span> rightX) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">60</span><span>                res <span class="token-operator">+</span><span class="token-operator">=</span> (mid <span class="token-operator">-</span> l <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">61</span><span>            }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>            idx = idx &lt;&lt; 1 | 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>            l = mid + 1;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">62</span><span>            idx <span class="token-operator">=</span> idx <span class="token-operator">&lt;&lt;</span> <span class="token-number">1</span> <span class="token-operator">|</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">63</span><span>            l <span class="token-operator">=</span> mid <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">64</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">65</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    return res;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">66</span><span>    <span class="token-keyword">return</span> res;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">67</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span>void solve() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>    int n, q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>    cin &gt;&gt; n &gt;&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>    N = 1 &lt;&lt; n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">68</span><span><span class="token-type">void</span> <span class="token-function">solve</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">69</span><span>    <span class="token-type">int</span> n, q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">70</span><span>    cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">71</span><span>    <span class="token-constant">N</span> <span class="token-operator">=</span> <span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> n;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">72</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>    A.resize(N);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>    for (int i = 0; i &lt; N; i++) cin &gt;&gt; A[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">73</span><span>    <span class="token-constant">A</span>.<span class="token-function">resize</span>(<span class="token-constant">N</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">74</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> <span class="token-constant">N</span>; i<span class="token-operator">++</span>) cin <span class="token-operator">&gt;&gt;</span> <span class="token-constant">A</span>[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">75</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">76</span><span>    seg.assign(4 * N, {0});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">77</span><span>    build(1, 0, N - 1);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">76</span><span>    seg.<span class="token-function">assign</span>(<span class="token-number">4</span> <span class="token-operator">*</span> <span class="token-constant">N</span>, {<span class="token-number">0</span>});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">77</span><span>    <span class="token-function">build</span>(<span class="token-number">1</span>, <span class="token-number">0</span>, <span class="token-constant">N</span> <span class="token-operator">-</span> <span class="token-number">1</span>);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">78</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">79</span><span>    while (q--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">80</span><span>        int b;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">81</span><span>        int c;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">82</span><span>        cin &gt;&gt; b &gt;&gt; c;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">83</span><span>        --b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">79</span><span>    <span class="token-keyword">while</span> (q<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">80</span><span>        <span class="token-type">int</span> b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">81</span><span>        <span class="token-type">int</span> c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">82</span><span>        cin <span class="token-operator">&gt;&gt;</span> b <span class="token-operator">&gt;&gt;</span> c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">83</span><span>        <span class="token-operator">--</span>b;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">84</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">85</span><span>        int old = A[b];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">86</span><span>        A[b] = c;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">87</span><span>        update(1, 0, N - 1, b, c);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">85</span><span>        <span class="token-type">int</span> old <span class="token-operator">=</span> <span class="token-constant">A</span>[b];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">86</span><span>        <span class="token-constant">A</span>[b] <span class="token-operator">=</span> c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">87</span><span>        <span class="token-function">update</span>(<span class="token-number">1</span>, <span class="token-number">0</span>, <span class="token-constant">N</span> <span class="token-operator">-</span> <span class="token-number">1</span>, b, c);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">88</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">89</span><span>        cout &lt;&lt; queryAbove(b) &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">89</span><span>        cout <span class="token-operator">&lt;&lt;</span> <span class="token-function">queryAbove</span>(b) <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">90</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">91</span><span>        A[b] = old;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">92</span><span>        update(1, 0, N - 1, b, old);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">91</span><span>        <span class="token-constant">A</span>[b] <span class="token-operator">=</span> old;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">92</span><span>        <span class="token-function">update</span>(<span class="token-number">1</span>, <span class="token-number">0</span>, <span class="token-constant">N</span> <span class="token-operator">-</span> <span class="token-number">1</span>, b, old);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">93</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">94</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">95</span><span>signed main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">96</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">97</span><span>    int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">98</span><span>    while (t--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">99</span><span>         solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">95</span><span><span class="token-type">signed</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">96</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">97</span><span>    <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">98</span><span>    <span class="token-keyword">while</span> (t<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">99</span><span>         <span class="token-function">solve</span>();</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">100</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">101</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">101</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">102</span><span>}</span></span>
         </code></pre>
       </article>

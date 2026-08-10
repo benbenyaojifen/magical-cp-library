@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="All-in-one Gun: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="All-in-one Gun, Other, C++, competitive programming solution, Codeforces" />
+    <meta name="description" content="All-in-one Gun solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="All-in-one Gun, 2192C, Other, Simulation, C++ solution, Codeforces" />
     <meta property="og:title" content="All-in-one Gun — C++ Solution" />
-    <meta property="og:description" content="All-in-one Gun: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="All-in-one Gun solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/all-in-one-gun-010" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/all-in-one-gun-010" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>All-in-one Gun — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"All-in-one Gun — C++ Solution","description":"All-in-one Gun: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/all-in-one-gun-010","keywords":["All-in-one Gun","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>All-in-one Gun — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"All-in-one Gun — C++ Solution","description":"All-in-one Gun solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/all-in-one-gun-010","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["All-in-one Gun","2192C","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/all-in-one-gun-010","sameAs":"https://codeforces.com/problemset/problem/2192/C","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-010">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">Codeforces · 2192C</p>
           <h1>All-in-one Gun</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for All-in-one Gun, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>43 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>010</strong><small>of 245</small></div>
@@ -85,48 +87,48 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using ll = long long;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>using i128 = __int128;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>const ll INF = 1e18; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>void solve() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ll n, h, k; cin &gt;&gt; n &gt;&gt; h &gt;&gt; k;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    ll sum = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    vector&lt;ll&gt; v(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        cin &gt;&gt; v[i];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        sum += v[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> ll <span class="token-operator">=</span> <span class="token-type">long</span> <span class="token-type">long</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">using</span> i128 <span class="token-operator">=</span> __int128;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-keyword">const</span> ll <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e18</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span><span class="token-type">void</span> <span class="token-function">solve</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    ll n, h, k; cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> h <span class="token-operator">&gt;&gt;</span> k;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    ll sum <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span>ll<span class="token-operator">&gt;</span> <span class="token-function">v</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>        cin <span class="token-operator">&gt;&gt;</span> v[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        sum <span class="token-operator">+</span><span class="token-operator">=</span> v[i];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    ll cycles = (h - 1) / sum;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    ll r = (h - 1) % sum + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    vector&lt;ll&gt; max_s(n + 1, 0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    for (int i = n - 1; i &gt;= 0; i--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        max_s[i] = max(max_s[i + 1], v[i]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    ll cycles <span class="token-operator">=</span> (h <span class="token-operator">-</span> <span class="token-number">1</span>) <span class="token-operator">/</span> sum;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    ll r <span class="token-operator">=</span> (h <span class="token-operator">-</span> <span class="token-number">1</span>) <span class="token-operator">%</span> sum <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span>ll<span class="token-operator">&gt;</span> <span class="token-function">max_s</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>, <span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> n <span class="token-operator">-</span> <span class="token-number">1</span>; i <span class="token-operator">&gt;=</span> <span class="token-number">0</span>; i<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>        max_s[i] <span class="token-operator">=</span> <span class="token-function">max</span>(max_s[i <span class="token-operator">+</span> <span class="token-number">1</span>], v[i]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    ll pref = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    ll min_p = INF;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    ll best_m = n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    for (int m = 1; m &lt;= n; m++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        pref += v[m - 1];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        min_p = min(min_p, v[m - 1]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        ll max_possible_damage = pref - min_p + max(min_p, max_s[m]);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        if (max_possible_damage &gt;= r) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>            best_m = m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            break;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    ll pref <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    ll min_p <span class="token-operator">=</span> <span class="token-constant">INF</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    ll best_m <span class="token-operator">=</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> m <span class="token-operator">=</span> <span class="token-number">1</span>; m <span class="token-operator">&lt;=</span> n; m<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        pref <span class="token-operator">+</span><span class="token-operator">=</span> v[m <span class="token-operator">-</span> <span class="token-number">1</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>        min_p <span class="token-operator">=</span> <span class="token-function">min</span>(min_p, v[m <span class="token-operator">-</span> <span class="token-number">1</span>]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        ll max_possible_damage <span class="token-operator">=</span> pref <span class="token-operator">-</span> min_p <span class="token-operator">+</span> <span class="token-function">max</span>(min_p, max_s[m]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        <span class="token-keyword">if</span> (max_possible_damage <span class="token-operator">&gt;=</span> r) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>            best_m <span class="token-operator">=</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>            <span class="token-keyword">break</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    ll ans = cycles * (n + k) + best_m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    cout &lt;&lt; ans &lt;&lt; &#39;\n&#39;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    ll ans <span class="token-operator">=</span> cycles <span class="token-operator">*</span> (n <span class="token-operator">+</span> k) <span class="token-operator">+</span> best_m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    cout <span class="token-operator">&lt;&lt;</span> ans <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    while (t--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    <span class="token-keyword">while</span> (t<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        <span class="token-function">solve</span>();</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>}</span></span>
         </code></pre>
       </article>

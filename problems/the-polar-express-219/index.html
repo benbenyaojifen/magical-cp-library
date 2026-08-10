@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="The Polar Express: a C++ competitive programming solution using dynamic programming. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="The Polar Express, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="The Polar Express solution: a verified C++ approach using dynamic programming, with complexity analysis and implementation." />
+    <meta name="keywords" content="The Polar Express, year2018p4, Other, Dynamic programming, C++ solution, DMOJ" />
     <meta property="og:title" content="The Polar Express — C++ Solution" />
-    <meta property="og:description" content="The Polar Express: a C++ competitive programming solution using dynamic programming. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="The Polar Express solution: a verified C++ approach using dynamic programming, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/the-polar-express-219" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/the-polar-express-219" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>The Polar Express — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The Polar Express — C++ Solution","description":"The Polar Express: a C++ competitive programming solution using dynamic programming. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/the-polar-express-219","keywords":["The Polar Express","Other","Dynamic programming","Dynamic programming","Two-dimensional DP","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>The Polar Express — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"The Polar Express — C++ Solution","description":"The Polar Express solution: a verified C++ approach using dynamic programming, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/the-polar-express-219","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["The Polar Express","year2018p4","Other","Dynamic programming","Dynamic programming","Two-dimensional DP","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/the-polar-express-219","sameAs":"https://dmoj.ca/problem/year2018p4","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-219">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · year2018p4</p>
           <h1>The Polar Express</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for The Polar Express, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Dynamic programming</span><span>C++</span><span>24 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>219</strong><small>of 245</small></div>
@@ -85,29 +87,29 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>typedef long long ll;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>ll L, R; int sum, ans; ll dp[20][2][163];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>ll fun(string s, int idx, bool lmt, int ds) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    if (idx == s.size()) return ds == sum;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    if (dp[idx][lmt][ds] != -1) return dp[idx][lmt][ds];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int up = lmt ? s[idx] - &#39;0&#39; : 9; ll cnt = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    for (int i = 0; i &lt;= up; i++) </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        cnt += fun(s, idx + 1, lmt &amp; (i + &#39;0&#39; == s[idx]), ds + i);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    return dp[idx][lmt][ds] = cnt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">typedef</span> <span class="token-type">long</span> <span class="token-type">long</span> ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>ll <span class="token-constant">L</span>, <span class="token-constant">R</span>; <span class="token-type">int</span> sum, ans; ll dp[<span class="token-number">20</span>][<span class="token-number">2</span>][<span class="token-number">163</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>ll <span class="token-function">fun</span>(<span class="token-type">string</span> s, <span class="token-type">int</span> idx, <span class="token-type">bool</span> lmt, <span class="token-type">int</span> ds) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-keyword">if</span> (idx <span class="token-operator">==</span> s.<span class="token-function">size</span>()) <span class="token-keyword">return</span> ds <span class="token-operator">==</span> sum;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-keyword">if</span> (dp[idx][lmt][ds] <span class="token-operator">!=</span> <span class="token-operator">-</span><span class="token-number">1</span>) <span class="token-keyword">return</span> dp[idx][lmt][ds];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">int</span> up <span class="token-operator">=</span> lmt <span class="token-operator">?</span> s[idx] <span class="token-operator">-</span> <span class="token-string">&#39;0&#39;</span> <span class="token-operator">:</span> <span class="token-number">9</span>; ll cnt <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;=</span> up; i<span class="token-operator">++</span>) </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        cnt <span class="token-operator">+</span><span class="token-operator">=</span> <span class="token-function">fun</span>(s, idx <span class="token-operator">+</span> <span class="token-number">1</span>, lmt <span class="token-operator">&amp;</span> (i <span class="token-operator">+</span> <span class="token-string">&#39;0&#39;</span> <span class="token-operator">==</span> s[idx]), ds <span class="token-operator">+</span> i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    <span class="token-keyword">return</span> dp[idx][lmt][ds] <span class="token-operator">=</span> cnt;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>ll solve(ll val) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    string s = to_string(val); memset(dp, -1, sizeof(dp));</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    return fun(s, 0, 1, 0);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>ll <span class="token-function">solve</span>(ll val) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-type">string</span> s <span class="token-operator">=</span> <span class="token-function">to_string</span>(val); <span class="token-function">memset</span>(dp, <span class="token-operator">-</span><span class="token-number">1</span>, <span class="token-keyword">sizeof</span>(dp));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-keyword">return</span> <span class="token-function">fun</span>(s, <span class="token-number">0</span>, <span class="token-number">1</span>, <span class="token-number">0</span>);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    cin &gt;&gt; L &gt;&gt; R;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    for (sum = 1; sum &lt;= 9 * 18; sum++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        if (solve(R) - solve(L-1) &gt; 0) ans++;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    cin <span class="token-operator">&gt;&gt;</span> <span class="token-constant">L</span> <span class="token-operator">&gt;&gt;</span> <span class="token-constant">R</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-keyword">for</span> (sum <span class="token-operator">=</span> <span class="token-number">1</span>; sum <span class="token-operator">&lt;=</span> <span class="token-number">9</span> <span class="token-operator">*</span> <span class="token-number">18</span>; sum<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        <span class="token-keyword">if</span> (<span class="token-function">solve</span>(<span class="token-constant">R</span>) <span class="token-operator">-</span> <span class="token-function">solve</span>(<span class="token-constant">L</span><span class="token-operator">-</span><span class="token-number">1</span>) <span class="token-operator">&gt;</span> <span class="token-number">0</span>) ans<span class="token-operator">++</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>    cout <span class="token-operator">&lt;&lt;</span> ans <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;\n&quot;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>}</span></span>
         </code></pre>
       </article>

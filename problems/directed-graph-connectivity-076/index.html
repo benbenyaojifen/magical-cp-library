@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Directed Graph Connectivity: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Directed Graph Connectivity, Graphs &amp; trees, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Directed Graph Connectivity solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
+    <meta name="keywords" content="Directed Graph Connectivity, nccc5j5s3, Graphs &amp; trees, Graph traversal, C++ solution, DMOJ" />
     <meta property="og:title" content="Directed Graph Connectivity — C++ Solution" />
-    <meta property="og:description" content="Directed Graph Connectivity: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Directed Graph Connectivity solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/directed-graph-connectivity-076" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/directed-graph-connectivity-076" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Directed Graph Connectivity — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Directed Graph Connectivity — C++ Solution","description":"Directed Graph Connectivity: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/directed-graph-connectivity-076","keywords":["Directed Graph Connectivity","Graphs & trees","Graph traversal","Graph traversal","Depth-first search","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Directed Graph Connectivity — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Directed Graph Connectivity — C++ Solution","description":"Directed Graph Connectivity solution: a verified C++ approach using graph traversal, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/directed-graph-connectivity-076","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Directed Graph Connectivity","nccc5j5s3","Graphs & trees","Graph traversal","Graph traversal","Depth-first search","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/directed-graph-connectivity-076","sameAs":"https://dmoj.ca/problem/nccc5j5s3","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-076">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · nccc5j5s3</p>
           <h1>Directed Graph Connectivity</h1>
-          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <p class="summary">Verified C++ solution for Directed Graph Connectivity, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Graphs &amp; trees</span><span>Graph traversal</span><span>C++</span><span>38 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>076</strong><small>of 245</small></div>
@@ -85,43 +87,43 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>using namespace std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span> </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>void dfs(int n, int indx, pair&lt;int, int&gt; bad, vector&lt;bool&gt; &amp;visited, vector&lt;vector&lt;int&gt;&gt; &amp;adj){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    if(visited[indx]) return;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    visited[indx] = true;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    if(indx == n) return;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    for(int c : adj[indx]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        if(!(indx == bad.first &amp;&amp; c == bad.second)) dfs(n, c, bad, visited, adj);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">void</span> <span class="token-function">dfs</span>(<span class="token-type">int</span> n, <span class="token-type">int</span> indx, <span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;</span> bad, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">bool</span><span class="token-operator">&gt;</span> <span class="token-operator">&amp;</span>visited, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-operator">&amp;</span>adj){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-keyword">if</span>(visited[indx]) <span class="token-keyword">return</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    visited[indx] <span class="token-operator">=</span> <span class="token-keyword">true</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-keyword">if</span>(indx <span class="token-operator">==</span> n) <span class="token-keyword">return</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> c <span class="token-operator">:</span> adj[indx]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        <span class="token-keyword">if</span>(<span class="token-operator">!</span>(indx <span class="token-operator">==</span> bad.first <span class="token-operator">&amp;&amp;</span> c <span class="token-operator">==</span> bad.second)) <span class="token-function">dfs</span>(n, c, bad, visited, adj);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    ios::sync_with_stdio(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    int n, m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    cin &gt;&gt; n &gt;&gt; m;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    vector&lt;vector&lt;int&gt;&gt; adj(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    unordered_map&lt;int, pair&lt;int, int&gt;&gt; day;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    for(int i = 0; i &lt;m; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        int x, y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        cin &gt;&gt; x &gt;&gt; y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        x--; y--;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        adj[x].push_back(y);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        day[i] = make_pair(x, y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-type">int</span> n, m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">adj</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-type">unordered_map</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> day;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span>m; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        <span class="token-type">int</span> x, y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        cin <span class="token-operator">&gt;&gt;</span> x <span class="token-operator">&gt;&gt;</span> y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        x<span class="token-operator">--</span>; y<span class="token-operator">--</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        adj[x].<span class="token-function">push_back</span>(y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        day[i] <span class="token-operator">=</span> <span class="token-function">make_pair</span>(x, y);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    for(int i = 0; i &lt; m; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        pair bad = day[i];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        vector&lt;bool&gt; visited(n, false);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        dfs(n - 1, 0, bad, visited, adj);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        if(visited[n - 1]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            cout &lt;&lt; &quot;YES\n&quot;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            cout &lt;&lt; &quot;NO\n&quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        <span class="token-type">pair</span> bad <span class="token-operator">=</span> day[i];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">bool</span><span class="token-operator">&gt;</span> <span class="token-function">visited</span>(n, <span class="token-keyword">false</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        <span class="token-function">dfs</span>(n <span class="token-operator">-</span> <span class="token-number">1</span>, <span class="token-number">0</span>, bad, visited, adj);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>        <span class="token-keyword">if</span>(visited[n <span class="token-operator">-</span> <span class="token-number">1</span>]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>            cout <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;YES\n&quot;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>            cout <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;NO\n&quot;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>}</span></span>
         </code></pre>
       </article>

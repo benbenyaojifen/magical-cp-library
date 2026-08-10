@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Surprise Teleport: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Surprise Teleport, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Surprise Teleport solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
+    <meta name="keywords" content="Surprise Teleport, dmopc14c1p5, Other, Graph traversal, C++ solution, DMOJ" />
     <meta property="og:title" content="Surprise Teleport — C++ Solution" />
-    <meta property="og:description" content="Surprise Teleport: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Surprise Teleport solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/surprise-teleport-208" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/surprise-teleport-208" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Surprise Teleport — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Surprise Teleport — C++ Solution","description":"Surprise Teleport: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/surprise-teleport-208","keywords":["Surprise Teleport","Other","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Surprise Teleport — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Surprise Teleport — C++ Solution","description":"Surprise Teleport solution: a verified C++ approach using graph traversal, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/surprise-teleport-208","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Surprise Teleport","dmopc14c1p5","Other","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/surprise-teleport-208","sameAs":"https://dmoj.ca/problem/dmopc14c1p5","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-208">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · dmopc14c1p5</p>
           <h1>Surprise Teleport</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Surprise Teleport, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Graph traversal</span><span>C++</span><span>44 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>208</strong><small>of 245</small></div>
@@ -85,49 +87,49 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    //idea is to use bfs to find shortest path without using teleport and then run bfs one more time with teleportion device taken into consideration</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    int row, col; cin &gt;&gt; row &gt;&gt; col;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    int a, b; cin &gt;&gt; a &gt;&gt; b;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    int mr, mc; cin &gt;&gt; mr &gt;&gt; mc;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    vector&lt;vector&lt;char&gt;&gt; g(row, vector&lt;char&gt;(col));</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    for(int i = 0; i &lt; row; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        for(int j = 0; j &lt; col; j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            cin &gt;&gt; g[i][j];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    <span class="token-comment">//idea is to use bfs to find shortest path without using teleport and then run bfs one more time with teleportion device taken into consideration</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-type">int</span> row, col; cin <span class="token-operator">&gt;&gt;</span> row <span class="token-operator">&gt;&gt;</span> col;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">int</span> a, b; cin <span class="token-operator">&gt;&gt;</span> a <span class="token-operator">&gt;&gt;</span> b;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-type">int</span> mr, mc; cin <span class="token-operator">&gt;&gt;</span> mr <span class="token-operator">&gt;&gt;</span> mc;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">char</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">g</span>(row, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">char</span><span class="token-operator">&gt;</span>(col));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> row; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">0</span>; j <span class="token-operator">&lt;</span> col; j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            cin <span class="token-operator">&gt;&gt;</span> g[i][j];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    vector&lt;vector&lt;int&gt;&gt; dist(row, vector&lt;int&gt;(col, INT_MAX));</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    dist[a][b] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    queue&lt;pair&lt;int, int&gt;&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    vector&lt;pair&lt;int, int&gt;&gt; dir = {{0, 1}, {-1, 0}, {1, 0}, {0, -1}};</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    q.push({a, b});</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    while(!q.empty()){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        auto[r, c] = q.front(); q.pop();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        for(auto[rr, cc] : dir){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            int nr = r + rr, nc = c + cc;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            if(nr &gt;= 0 &amp;&amp; nr &lt; row &amp;&amp; nc &gt;= 0 &amp;&amp; nc &lt; col &amp;&amp; g[nr][nc] != &#39;X&#39; &amp;&amp; dist[nr][nc] == INT_MAX){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>                dist[nr][nc] = dist[r][c] + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>                q.push({nr, nc});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">dist</span>(row, <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span>(col, <span class="token-constant">INT_MAX</span>));</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    dist[a][b] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-type">queue</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> dir <span class="token-operator">=</span> {{<span class="token-number">0</span>, <span class="token-number">1</span>}, {<span class="token-operator">-</span><span class="token-number">1</span>, <span class="token-number">0</span>}, {<span class="token-number">1</span>, <span class="token-number">0</span>}, {<span class="token-number">0</span>, <span class="token-operator">-</span><span class="token-number">1</span>}};</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    q.<span class="token-function">push</span>({a, b});</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-keyword">while</span>(<span class="token-operator">!</span>q.<span class="token-function">empty</span>()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        <span class="token-type">auto</span>[r, c] <span class="token-operator">=</span> q.<span class="token-function">front</span>(); q.<span class="token-function">pop</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        <span class="token-keyword">for</span>(<span class="token-type">auto</span>[rr, cc] <span class="token-operator">:</span> dir){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            <span class="token-type">int</span> nr <span class="token-operator">=</span> r <span class="token-operator">+</span> rr, nc <span class="token-operator">=</span> c <span class="token-operator">+</span> cc;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>            <span class="token-keyword">if</span>(nr <span class="token-operator">&gt;=</span> <span class="token-number">0</span> <span class="token-operator">&amp;&amp;</span> nr <span class="token-operator">&lt;</span> row <span class="token-operator">&amp;&amp;</span> nc <span class="token-operator">&gt;=</span> <span class="token-number">0</span> <span class="token-operator">&amp;&amp;</span> nc <span class="token-operator">&lt;</span> col <span class="token-operator">&amp;&amp;</span> g[nr][nc] <span class="token-operator">!=</span> <span class="token-string">&#39;X&#39;</span> <span class="token-operator">&amp;&amp;</span> dist[nr][nc] <span class="token-operator">==</span> <span class="token-constant">INT_MAX</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>                dist[nr][nc] <span class="token-operator">=</span> dist[r][c] <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>                q.<span class="token-function">push</span>({nr, nc});</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    int distance = dist[mr][mc];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    vector&lt;pair&lt;int, int&gt;&gt; tel;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    for(int i = 0; i &lt; t; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        int x, y; cin &gt;&gt; x &gt;&gt; y;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        tel.emplace_back(x, y);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    <span class="token-type">int</span> distance <span class="token-operator">=</span> dist[mr][mc];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>, <span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> tel;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> t; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>        <span class="token-type">int</span> x, y; cin <span class="token-operator">&gt;&gt;</span> x <span class="token-operator">&gt;&gt;</span> y;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>        tel.<span class="token-function">emplace_back</span>(x, y);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    int tel_dist = INT_MAX;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    for(auto[r, c] : tel){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        tel_dist = min(tel_dist, dist[r][c]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    <span class="token-type">int</span> tel_dist <span class="token-operator">=</span> <span class="token-constant">INT_MAX</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    <span class="token-keyword">for</span>(<span class="token-type">auto</span>[r, c] <span class="token-operator">:</span> tel){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        tel_dist <span class="token-operator">=</span> <span class="token-function">min</span>(tel_dist, dist[r][c]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    int ans = distance - (tel_dist != INT_MAX ? tel_dist : distance);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    cout &lt;&lt; ans &lt;&lt; &#39;\n&#39;;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    <span class="token-type">int</span> ans <span class="token-operator">=</span> distance <span class="token-operator">-</span> (tel_dist <span class="token-operator">!=</span> <span class="token-constant">INT_MAX</span> <span class="token-operator">?</span> tel_dist <span class="token-operator">:</span> distance);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    cout <span class="token-operator">&lt;&lt;</span> ans <span class="token-operator">&lt;&lt;</span> <span class="token-string">&#39;\n&#39;</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>}</span></span>
         </code></pre>
       </article>

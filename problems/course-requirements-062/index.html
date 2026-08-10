@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Course Requirements: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Course Requirements, Other, C++, competitive programming solution, DMOJ" />
+    <meta name="description" content="Course Requirements solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
+    <meta name="keywords" content="Course Requirements, sac22cc5jp4, Other, Graph traversal, C++ solution, DMOJ" />
     <meta property="og:title" content="Course Requirements — C++ Solution" />
-    <meta property="og:description" content="Course Requirements: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Course Requirements solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/course-requirements-062" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/course-requirements-062" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Course Requirements — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Course Requirements — C++ Solution","description":"Course Requirements: a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/course-requirements-062","keywords":["Course Requirements","Other","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Course Requirements — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Course Requirements — C++ Solution","description":"Course Requirements solution: a verified C++ approach using graph traversal, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/course-requirements-062","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Course Requirements","sac22cc5jp4","Other","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/course-requirements-062","sameAs":"https://dmoj.ca/problem/sac22cc5jp4","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-062">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">DMOJ · sac22cc5jp4</p>
           <h1>Course Requirements</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for Course Requirements, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Graph traversal</span><span>C++</span><span>33 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>062</strong><small>of 245</small></div>
@@ -85,38 +87,38 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>int main(){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios::sync_with_stdio(0); cin.tie(0);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    vector&lt;vector&lt;int&gt;&gt; adj(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    vector&lt;int&gt; indegree(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    for(int i = 0; i &lt; n; i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        int c; cin &gt;&gt; c;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        for(int j = 0; j &lt; c; j++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            int con; cin &gt;&gt; con;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            con--;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            indegree[i]++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            adj[con].push_back(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-type">int</span> <span class="token-function">main</span>(){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">adj</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">indegree</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        <span class="token-type">int</span> c; cin <span class="token-operator">&gt;&gt;</span> c;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> j <span class="token-operator">=</span> <span class="token-number">0</span>; j <span class="token-operator">&lt;</span> c; j<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>            <span class="token-type">int</span> con; cin <span class="token-operator">&gt;&gt;</span> con;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>            con<span class="token-operator">--</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>            indegree[i]<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>            adj[con].<span class="token-function">push_back</span>(i);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    queue&lt;int&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    vector&lt;int&gt; ans;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    for(int i = 0; i &lt; indegree.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        if(indegree[i] == 0) q.push(i);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    <span class="token-type">queue</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> ans;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> indegree.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        <span class="token-keyword">if</span>(indegree[i] <span class="token-operator">==</span> <span class="token-number">0</span>) q.<span class="token-function">push</span>(i);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>    } </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    while(!q.empty()){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        int cur = q.front(); q.pop();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        ans.push_back(cur);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        for(int nxt : adj[cur]){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            if(--indegree[nxt] == 0) q.push(nxt);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>    <span class="token-keyword">while</span>(<span class="token-operator">!</span>q.<span class="token-function">empty</span>()){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        <span class="token-type">int</span> cur <span class="token-operator">=</span> q.<span class="token-function">front</span>(); q.<span class="token-function">pop</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        ans.<span class="token-function">push_back</span>(cur);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        <span class="token-keyword">for</span>(<span class="token-type">int</span> nxt <span class="token-operator">:</span> adj[cur]){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            <span class="token-keyword">if</span>(<span class="token-operator">--</span>indegree[nxt] <span class="token-operator">==</span> <span class="token-number">0</span>) q.<span class="token-function">push</span>(nxt);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    for(int i = 0; i &lt; ans.size(); i++){</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        cout &lt;&lt; ans[i] + 1 &lt;&lt; &quot; \n&quot;[i == ans.size() - 1];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>    <span class="token-keyword">for</span>(<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> ans.<span class="token-function">size</span>(); i<span class="token-operator">++</span>){</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>        cout <span class="token-operator">&lt;&lt;</span> ans[i] <span class="token-operator">+</span> <span class="token-number">1</span> <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot; \n&quot;</span>[i <span class="token-operator">==</span> ans.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>}</span></span>
         </code></pre>
       </article>

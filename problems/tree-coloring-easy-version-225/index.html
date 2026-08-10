@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Tree Coloring (Easy Version): a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="Tree Coloring (Easy Version), Graphs &amp; trees, C++, competitive programming solution, Codeforces" />
+    <meta name="description" content="Tree Coloring (Easy Version) solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
+    <meta name="keywords" content="Tree Coloring (Easy Version), 2183D1, Graphs &amp; trees, Graph traversal, C++ solution, Codeforces" />
     <meta property="og:title" content="Tree Coloring (Easy Version) — C++ Solution" />
-    <meta property="og:description" content="Tree Coloring (Easy Version): a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="Tree Coloring (Easy Version) solution: a verified C++ approach using graph traversal, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/tree-coloring-easy-version-225" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/tree-coloring-easy-version-225" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>Tree Coloring (Easy Version) — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Tree Coloring (Easy Version) — C++ Solution","description":"Tree Coloring (Easy Version): a C++ competitive programming solution using graph traversal. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/tree-coloring-easy-version-225","keywords":["Tree Coloring (Easy Version)","Graphs & trees","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>Tree Coloring (Easy Version) — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Tree Coloring (Easy Version) — C++ Solution","description":"Tree Coloring (Easy Version) solution: a verified C++ approach using graph traversal, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/tree-coloring-easy-version-225","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["Tree Coloring (Easy Version)","2183D1","Graphs & trees","Graph traversal","Graph traversal","Breadth-first search","Graphs","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/tree-coloring-easy-version-225","sameAs":"https://codeforces.com/problemset/problem/2183/D1","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-225">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">Codeforces · 2183D1</p>
           <h1>Tree Coloring (Easy Version)</h1>
-          <p class="summary">C++ solution for a competitive programming problem in graphs &amp; trees.</p>
+          <p class="summary">Verified C++ solution for Tree Coloring (Easy Version), with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Graphs &amp; trees</span><span>Graph traversal</span><span>C++</span><span>50 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>225</strong><small>of 245</small></div>
@@ -85,55 +87,55 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>typedef long long ll;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const long long INF = 1e17; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>void solve() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    int n; cin &gt;&gt; n;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    vector&lt;vector&lt;int&gt;&gt; g(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    for (int i = 0; i &lt; n - 1; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        int u, v; cin &gt;&gt; u &gt;&gt; v;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        g[u].push_back(v);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        g[v].push_back(u);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">typedef</span> <span class="token-type">long</span> <span class="token-type">long</span> ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e17</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-type">void</span> <span class="token-function">solve</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>    <span class="token-type">int</span> n; cin <span class="token-operator">&gt;&gt;</span> n;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> <span class="token-function">g</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n <span class="token-operator">-</span> <span class="token-number">1</span>; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>        <span class="token-type">int</span> u, v; cin <span class="token-operator">&gt;&gt;</span> u <span class="token-operator">&gt;&gt;</span> v;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        g[u].<span class="token-function">push_back</span>(v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        g[v].<span class="token-function">push_back</span>(u);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    vector&lt;int&gt; depth(n + 1, -1), child_cnt(n + 1), cnt_depth(n + 1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    queue&lt;int&gt; q;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    depth[1] = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    // 1 is root</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    q.push(1);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    int mx_depth = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    while (!q.empty()) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        int u = q.front();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        q.pop();</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        int d = depth[u];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        cnt_depth[d]++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        mx_depth = max(mx_depth, d);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        for (int v : g[u]) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            if (depth[v] == -1) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>                depth[v] = d + 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>                // v is child of u</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>                child_cnt[u]++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>                q.push(v);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>    <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">depth</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>, <span class="token-operator">-</span><span class="token-number">1</span>), <span class="token-function">child_cnt</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>), <span class="token-function">cnt_depth</span>(n <span class="token-operator">+</span> <span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>    <span class="token-type">queue</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> q;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>    depth[<span class="token-number">1</span>] <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>    <span class="token-comment">// 1 is root</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>    q.<span class="token-function">push</span>(<span class="token-number">1</span>);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>    <span class="token-type">int</span> mx_depth <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-keyword">while</span> (<span class="token-operator">!</span>q.<span class="token-function">empty</span>()) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>        <span class="token-type">int</span> u <span class="token-operator">=</span> q.<span class="token-function">front</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        q.<span class="token-function">pop</span>();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>        <span class="token-type">int</span> d <span class="token-operator">=</span> depth[u];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>        cnt_depth[d]<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        mx_depth <span class="token-operator">=</span> <span class="token-function">max</span>(mx_depth, d);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        <span class="token-keyword">for</span> (<span class="token-type">int</span> v <span class="token-operator">:</span> g[u]) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            <span class="token-keyword">if</span> (depth[v] <span class="token-operator">==</span> <span class="token-operator">-</span><span class="token-number">1</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>                depth[v] <span class="token-operator">=</span> d <span class="token-operator">+</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>                <span class="token-comment">// v is child of u</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>                child_cnt[u]<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>                q.<span class="token-function">push</span>(v);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>            }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    int ans = 0;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    for (int i = 0; i &lt;= mx_depth; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        ans = max(ans, cnt_depth[i]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    <span class="token-type">int</span> ans <span class="token-operator">=</span> <span class="token-number">0</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;=</span> mx_depth; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>        ans <span class="token-operator">=</span> <span class="token-function">max</span>(ans, cnt_depth[i]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    for (int i = 1; i &lt;= n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        ans = max(ans, 1 + child_cnt[i]);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">1</span>; i <span class="token-operator">&lt;=</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>        ans <span class="token-operator">=</span> <span class="token-function">max</span>(ans, <span class="token-number">1</span> <span class="token-operator">+</span> child_cnt[i]);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    cout <span class="token-operator">&lt;&lt;</span> ans <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot;\n&quot;</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    while (t--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">44</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">45</span><span>    <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">46</span><span>    <span class="token-keyword">while</span> (t<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">47</span><span>        <span class="token-function">solve</span>();</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">48</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">49</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">50</span><span>}</span></span>
         </code></pre>
       </article>

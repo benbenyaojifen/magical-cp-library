@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0f16" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="OutOfMemoryError: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
-    <meta name="keywords" content="OutOfMemoryError, Other, C++, competitive programming solution, Codeforces" />
+    <meta name="description" content="OutOfMemoryError solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
+    <meta name="keywords" content="OutOfMemoryError, 2185D, Other, Simulation, C++ solution, Codeforces" />
     <meta property="og:title" content="OutOfMemoryError — C++ Solution" />
-    <meta property="og:description" content="OutOfMemoryError: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation." />
+    <meta property="og:description" content="OutOfMemoryError solution: a verified C++ approach using simulation, with complexity analysis and implementation." />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Magical CP Library" />
     <meta property="og:url" content="https://magical-cp-library.vercel.app/problems/outofmemoryerror-156" />
@@ -16,11 +16,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/problems/outofmemoryerror-156" />
     <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s)}</script>
     <link rel="stylesheet" href="../../problem.css" />
     <script src="../../problem.js" defer></script>
-    <title>OutOfMemoryError — C++ Solution | Magical CP Library</title>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"OutOfMemoryError — C++ Solution","description":"OutOfMemoryError: a C++ competitive programming solution using simulation. Read the approach, complexity, and implementation.","url":"https://magical-cp-library.vercel.app/problems/outofmemoryerror-156","keywords":["OutOfMemoryError","Other","Simulation","Simulation","Other","C++","competitive programming"],"isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
+    <title>OutOfMemoryError — C++ Solution</title>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"OutOfMemoryError — C++ Solution","description":"OutOfMemoryError solution: a verified C++ approach using simulation, with complexity analysis and implementation.","url":"https://magical-cp-library.vercel.app/problems/outofmemoryerror-156","dateModified":"2026-08-09","inLanguage":"en","isAccessibleForFree":true,"keywords":["OutOfMemoryError","2185D","Other","Simulation","Simulation","Other","C++","competitive programming"],"mainEntityOfPage":"https://magical-cp-library.vercel.app/problems/outofmemoryerror-156","sameAs":"https://codeforces.com/problemset/problem/2185/D","isPartOf":{"@type":"WebSite","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/"}}</script>
   </head>
   <body data-solution-id="solution-156">
     <header class="site-header">
@@ -38,7 +40,7 @@
         <div>
           <p class="eyebrow">Codeforces · 2185D</p>
           <h1>OutOfMemoryError</h1>
-          <p class="summary">C++ solution for a competitive programming problem in other.</p>
+          <p class="summary">Verified C++ solution for OutOfMemoryError, with the core idea, complexity, and readable implementation.</p>
           <div class="tags"><span>Other</span><span>Simulation</span><span>C++</span><span>43 lines</span></div>
         </div>
         <div class="problem-number"><span>Solution</span><strong>156</strong><small>of 245</small></div>
@@ -85,48 +87,48 @@
           </div>
         </div>
         <pre aria-label="C++ solution code"><code>
-    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span>#include &lt;bits/stdc++.h&gt;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span>using namespace std;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span>typedef long long ll;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span>const int inf = 1e9;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span>const long long INF = 1e17; //❄️</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span>void solve() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>     int n, m, h; cin &gt;&gt; n &gt;&gt; m &gt;&gt; h;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>     vector&lt;int&gt; old(n), cur(n), upd(n);</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>     for (int i = 0; i &lt; n; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        int x; cin &gt;&gt; x;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        old[i] = x; cur[i] = x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">1</span><span><span class="token-preprocessor">#include &lt;bits/stdc++.h&gt;</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">2</span><span><span class="token-keyword">using</span> <span class="token-keyword">namespace</span> std;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">3</span><span><span class="token-keyword">typedef</span> <span class="token-type">long</span> <span class="token-type">long</span> ll;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">4</span><span><span class="token-keyword">const</span> <span class="token-type">int</span> inf <span class="token-operator">=</span> <span class="token-number">1e9</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">5</span><span><span class="token-keyword">const</span> <span class="token-type">long</span> <span class="token-type">long</span> <span class="token-constant">INF</span> <span class="token-operator">=</span> <span class="token-number">1e17</span>; <span class="token-comment">//❄️</span></span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">6</span><span><span class="token-type">void</span> <span class="token-function">solve</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">7</span><span>     <span class="token-type">int</span> n, m, h; cin <span class="token-operator">&gt;&gt;</span> n <span class="token-operator">&gt;&gt;</span> m <span class="token-operator">&gt;&gt;</span> h;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">8</span><span>     <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">int</span><span class="token-operator">&gt;</span> <span class="token-function">old</span>(n), <span class="token-function">cur</span>(n), <span class="token-function">upd</span>(n);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">9</span><span>     <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> n; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">10</span><span>        <span class="token-type">int</span> x; cin <span class="token-operator">&gt;&gt;</span> x;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">11</span><span>        old[i] <span class="token-operator">=</span> x; cur[i] <span class="token-operator">=</span> x;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">12</span><span>     }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>     vector&lt;pair&lt;int,int&gt;&gt; op;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>     for (int i = 0; i &lt; m; i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        int pos, val; cin &gt;&gt; pos &gt;&gt; val;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        pos--;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        op.emplace_back(pos, val);</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">13</span><span>     <span class="token-type">vector</span><span class="token-operator">&lt;</span><span class="token-type">pair</span><span class="token-operator">&lt;</span><span class="token-type">int</span>,<span class="token-type">int</span><span class="token-operator">&gt;&gt;</span> op;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">14</span><span>     <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> m; i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">15</span><span>        <span class="token-type">int</span> pos, val; cin <span class="token-operator">&gt;&gt;</span> pos <span class="token-operator">&gt;&gt;</span> val;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">16</span><span>        pos<span class="token-operator">--</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">17</span><span>        op.<span class="token-function">emplace_back</span>(pos, val);</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">18</span><span>     }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    int update = 1;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    for (auto[pos, val] : op) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        if (upd[pos] != update) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            upd[pos] = update;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            cur[pos] = old[pos];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">19</span><span>    <span class="token-type">int</span> update <span class="token-operator">=</span> <span class="token-number">1</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">20</span><span>    <span class="token-keyword">for</span> (<span class="token-type">auto</span>[pos, val] <span class="token-operator">:</span> op) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">21</span><span>        <span class="token-keyword">if</span> (upd[pos] <span class="token-operator">!=</span> update) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">22</span><span>            upd[pos] <span class="token-operator">=</span> update;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">23</span><span>            cur[pos] <span class="token-operator">=</span> old[pos];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">24</span><span>        }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        if (cur[pos] + val &gt; h) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            update++;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        } else {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>            cur[pos] += val;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">25</span><span>        <span class="token-keyword">if</span> (cur[pos] <span class="token-operator">+</span> val <span class="token-operator">&gt;</span> h) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">26</span><span>            update<span class="token-operator">++</span>;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">27</span><span>        } <span class="token-keyword">else</span> {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">28</span><span>            cur[pos] <span class="token-operator">+</span><span class="token-operator">=</span> val;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">29</span><span>        }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">30</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    for (int i = 0; i &lt; cur.size(); i++) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        if (upd[i] != update) cout &lt;&lt; old[i] &lt;&lt; &quot; \n&quot;[i == cur.size() - 1];</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        else cout &lt;&lt; cur[i] &lt;&lt; &quot; \n&quot;[i == cur.size() - 1];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">31</span><span>    <span class="token-keyword">for</span> (<span class="token-type">int</span> i <span class="token-operator">=</span> <span class="token-number">0</span>; i <span class="token-operator">&lt;</span> cur.<span class="token-function">size</span>(); i<span class="token-operator">++</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">32</span><span>        <span class="token-keyword">if</span> (upd[i] <span class="token-operator">!=</span> update) cout <span class="token-operator">&lt;&lt;</span> old[i] <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot; \n&quot;</span>[i <span class="token-operator">==</span> cur.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>];</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">33</span><span>        <span class="token-keyword">else</span> cout <span class="token-operator">&lt;&lt;</span> cur[i] <span class="token-operator">&lt;&lt;</span> <span class="token-string">&quot; \n&quot;</span>[i <span class="token-operator">==</span> cur.<span class="token-function">size</span>() <span class="token-operator">-</span> <span class="token-number">1</span>];</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">34</span><span>    }</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">35</span><span>}</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span>int main() {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    ios::sync_with_stdio(0); cin.tie(0); </span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    int t; cin &gt;&gt; t;</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    while (t--) {</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        solve();</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">36</span><span><span class="token-type">int</span> <span class="token-function">main</span>() {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">37</span><span>    ios<span class="token-operator">::</span><span class="token-function">sync_with_stdio</span>(<span class="token-number">0</span>); cin.<span class="token-function">tie</span>(<span class="token-number">0</span>); </span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">38</span><span>    <span class="token-type">int</span> t; cin <span class="token-operator">&gt;&gt;</span> t;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">39</span><span>    <span class="token-keyword">while</span> (t<span class="token-operator">--</span>) {</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">40</span><span>        <span class="token-function">solve</span>();</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">41</span><span>    }</span></span>
-    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    return 0;</span></span>
+    <span class="code-line"><span class="line-number" aria-hidden="true">42</span><span>    <span class="token-keyword">return</span> <span class="token-number">0</span>;</span></span>
     <span class="code-line"><span class="line-number" aria-hidden="true">43</span><span>}</span></span>
         </code></pre>
       </article>
