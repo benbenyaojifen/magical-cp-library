@@ -2,12 +2,15 @@
   const favoriteKey = "magical-cp-favorites";
   const recentKey = "magical-cp-recent";
   const themeKey = "magical-cp-theme";
+  const progressKey = "magical-cp-progress";
   const solutionId = document.body.dataset.solutionId;
   const solutionPanel = document.querySelector("[data-solution-panel]");
   const learningPanel = document.querySelector("[data-learning-panel]");
   const practiceCard = document.querySelector("[data-practice-card]");
   const themeButton = document.querySelector("[data-theme-toggle]");
   const favoriteButton = document.querySelector("[data-favorite]");
+  const progressSelect = document.querySelector("[data-progress-status]");
+  const validStatuses = ["Not started", "Solving", "Solved", "Review"];
 
   const readList = (key) => {
     try {
@@ -15,6 +18,15 @@
       return Array.isArray(value) ? value.filter((item) => typeof item === "string") : [];
     } catch {
       return [];
+    }
+  };
+
+  const readProgress = () => {
+    try {
+      const value = JSON.parse(localStorage.getItem(progressKey) || "{}");
+      return value && typeof value === "object" && !Array.isArray(value) ? value : {};
+    } catch {
+      return {};
     }
   };
 
@@ -55,6 +67,19 @@
     paintFavorite();
   });
   paintFavorite();
+
+  if (progressSelect && solutionId) {
+    const progress = readProgress();
+    const currentStatus = progress[solutionId];
+    progressSelect.value = validStatuses.includes(currentStatus) ? currentStatus : "Not started";
+    progressSelect.addEventListener("change", () => {
+      const nextStatus = validStatuses.includes(progressSelect.value) ? progressSelect.value : "Not started";
+      const nextProgress = readProgress();
+      if (nextStatus === "Not started") delete nextProgress[solutionId];
+      else nextProgress[solutionId] = nextStatus;
+      localStorage.setItem(progressKey, JSON.stringify(nextProgress));
+    });
+  }
 
   const showPractice = (enabled) => {
     if (!practiceCard || !solutionPanel || !learningPanel) return;

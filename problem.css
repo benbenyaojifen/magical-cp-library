@@ -87,6 +87,9 @@ h1 { font-size: clamp(3.4rem, 8vw, 7.6rem); letter-spacing: -0.055em; line-heigh
 .actions a:hover, .actions button:hover, .actions button[aria-pressed="true"] { background: var(--acid); color: #0d1117; }
 .actions a.primary { background: var(--cinnabar); color: white; }
 .actions a.primary:hover { background: #c24e3e; }
+.progress-action { align-items: center; border-right: 1px solid var(--edge); display: inline-flex; gap: 10px; min-height: 56px; padding: 0 14px; }
+.progress-action > span { font-size: 0.62rem; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
+.progress-action select { appearance: none; background: var(--surface); border: 1px solid var(--edge); color: var(--ink); cursor: pointer; font-size: 0.68rem; min-height: 34px; padding: 0 9px; }
 
 [hidden] { display: none !important; }
 .practice-card { align-items: center; background: var(--code); color: white; display: flex; flex-direction: column; min-height: 540px; padding: 72px 28px; text-align: center; }
@@ -171,6 +174,7 @@ html[data-theme="moon"] .problem-number { background: #080c13; }
   .problem-number strong { font-size: 2.6rem; }
   .actions { display: grid; }
   .actions a, .actions button { border-bottom: 1px solid var(--edge); border-right: 0; }
+  .progress-action { border-bottom: 1px solid var(--edge); border-right: 0; justify-content: space-between; }
   .learning-panel { grid-template-columns: 1fr; padding: 22px; }
   .learning-panel dl { grid-template-columns: 1fr 1fr; min-width: 0; }
   .panel-heading { align-items: flex-start; flex-direction: column; gap: 16px; }
