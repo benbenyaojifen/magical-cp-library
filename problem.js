@@ -134,4 +134,92 @@
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeFullscreen();
   });
+
+  const runner = document.querySelector("[data-problem-runner]");
+  if (runner) {
+    const language = runner.querySelector("[data-runner-language]");
+    const mode = runner.querySelector("[data-runner-mode]");
+    const code = runner.querySelector("[data-runner-code]");
+    const input = runner.querySelector("[data-runner-input]");
+    const expected = runner.querySelector("[data-runner-expected]");
+    const submit = runner.querySelector("[data-runner-submit]");
+    const loadButton = runner.querySelector("[data-load-solution]");
+    const status = runner.querySelector("[data-runner-status]");
+    const timing = runner.querySelector("[data-runner-timing]");
+    const stdout = runner.querySelector("[data-runner-stdout]");
+    const stderr = runner.querySelector("[data-runner-stderr]");
+    const traceList = runner.querySelector("[data-runner-trace]");
+    const traceHelp = runner.querySelector("[data-trace-help]");
+    let libraryCode = "";
+
+    const normalizeOutput = (value) => value.replace(/\r\n/g, "\n").split("\n").map((line) => line.trimEnd()).join("\n").trimEnd();
+    const loadLibrarySolution = async () => {
+      const codeUrl = runner.dataset.codeUrl;
+      if (!codeUrl) return;
+      loadButton.disabled = true;
+      try {
+        const response = await fetch(codeUrl);
+        if (!response.ok) throw new Error("Unable to load solution");
+        libraryCode = await response.text();
+        language.value = "cpp";
+        code.value = libraryCode;
+      } catch {
+        status.textContent = "Solution could not be loaded";
+      } finally {
+        loadButton.disabled = false;
+      }
+    };
+    const paintTrace = (events) => {
+      traceList.replaceChildren();
+      const visible = Array.isArray(events) ? events.slice(0, 120) : [];
+      traceList.hidden = visible.length === 0;
+      for (const event of visible) {
+        const item = document.createElement("li");
+        const line = document.createElement("strong");
+        line.textContent = `Line ${event.line}${event.function ? ` · ${event.function}()` : ""}`;
+        const values = document.createElement("span");
+        const locals = event.locals && typeof event.locals === "object" ? Object.entries(event.locals).map(([name, value]) => `${name} = ${value}`) : Array.isArray(event.values) ? event.values : [];
+        values.textContent = locals.length ? locals.join(" · ") : "Executed";
+        item.append(line, values);
+        traceList.append(item);
+      }
+    };
+    mode.addEventListener("change", () => {
+      traceHelp.hidden = mode.value !== "trace";
+      submit.textContent = mode.value === "trace" ? "Build execution timeline →" : mode.value === "debug" ? "Run with checks →" : "Compile & run →";
+    });
+    language.addEventListener("change", () => { if (language.value === "cpp" && !code.value.trim()) code.value = libraryCode; });
+    loadButton.addEventListener("click", loadLibrarySolution);
+    submit.addEventListener("click", async () => {
+      if (!code.value.trim() || submit.disabled) return;
+      submit.disabled = true;
+      status.textContent = "Running in isolation…";
+      timing.textContent = "";
+      stdout.textContent = "Waiting for output…";
+      stderr.textContent = "Waiting for diagnostics…";
+      paintTrace([]);
+      try {
+        const response = await fetch("/api/run", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ language: language.value, mode: mode.value, code: code.value, inputs: [input.value] }) });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "The isolated runner could not start.");
+        const labels = { finished: "Finished", compile_error: "Compile error", runtime_error: "Runtime error", time_limit: "Time limit exceeded" };
+        const verdict = result.status === "finished" && expected.value.trim() ? normalizeOutput(result.stdout || "") === normalizeOutput(expected.value) ? "Accepted" : "Wrong answer" : labels[result.status] || result.status || "Finished";
+        status.textContent = verdict;
+        status.dataset.verdict = verdict === "Accepted" ? "pass" : verdict === "Wrong answer" || result.status !== "finished" ? "fail" : "neutral";
+        timing.textContent = `${result.compileMs || 0} ms compile · ${result.runMs || 0} ms run`;
+        stdout.textContent = result.stdout || "No output";
+        stderr.textContent = result.stderr || (result.status === "finished" ? "No compiler or runtime errors." : "No diagnostics returned.");
+        paintTrace(result.trace);
+        window.va?.("event", { name: "problem_code_run", data: { solution: solutionId, language: language.value, mode: mode.value, status: result.status } });
+      } catch (error) {
+        status.textContent = "Runner unavailable";
+        status.dataset.verdict = "fail";
+        stdout.textContent = "No output";
+        stderr.textContent = error instanceof Error ? error.message : "The isolated runner could not start.";
+      } finally {
+        submit.disabled = false;
+      }
+    });
+    loadLibrarySolution();
+  }
 })();
