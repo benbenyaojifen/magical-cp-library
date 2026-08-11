@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#10151f" />
+    <meta name="theme-color" content="#efe7d7" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="description" content="Search more than 7,000 MIT-licensed C++ and Python competitive-programming implementations with clear source and licence attribution." />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/community/" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
     <link rel="stylesheet" href="../community.css" />
     <script>if(location.hostname.endsWith(".github.io")){location.replace("https://magical-cp-library.vercel.app/community/"+location.search+location.hash)}</script>
     <title>Community Code Archive — Magical CP Library</title>
@@ -17,11 +18,16 @@
       <a class="community-brand" href="../" aria-label="Back to Magical CP Library">
         <span>CP</span><strong>Magical CP Library</strong>
       </a>
-      <nav aria-label="Community archive navigation">
-        <a href="../#solutions">Curated library</a>
-        <a href="../#code-lab">Code Lab</a>
-        <a href="./LICENSE.md">MIT licence</a>
-      </nav>
+      <div class="community-header-actions">
+        <nav aria-label="Community archive navigation">
+          <a href="../#solutions">Curated library</a>
+          <a href="../#lab">Code Lab</a>
+          <a href="./LICENSE.md">MIT licence</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to moon theme" aria-pressed="false">
+          <span aria-hidden="true">◐</span><span id="theme-label">Moon</span>
+        </button>
+      </div>
     </header>
 
     <main>

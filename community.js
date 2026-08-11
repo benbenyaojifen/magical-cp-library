@@ -3,6 +3,7 @@
 
   const PAGE_SIZE = 80;
   const savedKey = "magical-cp-community-saved";
+  const themeKey = "magical-cp-theme";
   const list = document.getElementById("implementation-list");
   const search = document.getElementById("community-search");
   const summary = document.getElementById("result-summary");
@@ -19,6 +20,28 @@
   let visibleCount = PAGE_SIZE;
   let sourceController = null;
   let saved = readSaved();
+
+  function currentTheme() {
+    return document.documentElement.dataset.theme === "moon" ? "moon" : "day";
+  }
+
+  function updateThemeButton() {
+    const button = document.getElementById("theme-toggle");
+    const label = document.getElementById("theme-label");
+    const isMoon = currentTheme() === "moon";
+    button.setAttribute("aria-pressed", String(isMoon));
+    button.setAttribute("aria-label", `Switch to ${isMoon ? "day" : "moon"} theme`);
+    label.textContent = isMoon ? "Day" : "Moon";
+    const color = isMoon ? "#10151f" : "#efe7d7";
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", color);
+  }
+
+  function toggleTheme() {
+    const next = currentTheme() === "moon" ? "day" : "moon";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem(themeKey, next); } catch { /* Preferences are optional. */ }
+    updateThemeButton();
+  }
 
   function readSaved() {
     try {
@@ -179,6 +202,7 @@
     renderList();
   });
   document.getElementById("random-pick").addEventListener("click", chooseRandom);
+  document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
   document.getElementById("daily-pick").addEventListener("click", () => {
     if (manifest && manifest.entries.length) selectEntry(manifest.entries[currentDayIndex(manifest.entries.length)]);
   });
@@ -205,5 +229,6 @@
     }
   });
 
+  updateThemeButton();
   loadManifest();
 })();
