@@ -1,15 +1,74 @@
 {
-  "name": "Kamyu LeetCode Solutions",
-  "author": "kamyu104",
-  "repository": "https://github.com/kamyu104/LeetCode-Solutions",
-  "commit": "44658618de207e812b8f136119a72853a8e2de8a",
-  "license": "MIT",
-  "licensePath": "LICENSE.md",
-  "importedAt": "2026-08-11T04:06:57.001Z",
-  "implementationCount": 7216,
-  "problemCount": 3651,
-  "languageCounts": {
-    "C++": 3611,
-    "Python": 3605
-  }
+  "importedAt": "2026-08-11T04:44:40.901Z",
+  "sources": [
+    {
+      "id": "kamyu",
+      "name": "Kamyu LeetCode Solutions",
+      "author": "kamyu104",
+      "repository": "https://github.com/kamyu104/LeetCode-Solutions",
+      "commit": "44658618de207e812b8f136119a72853a8e2de8a",
+      "license": "MIT",
+      "licensePath": "licenses/kamyu-MIT.md",
+      "kind": "LeetCode solutions",
+      "importedAt": "2026-08-11T04:44:40.901Z",
+      "implementationCount": 7216,
+      "problemCount": 3651,
+      "languageCounts": {
+        "C++": 3611,
+        "Python": 3605
+      }
+    },
+    {
+      "id": "walkccc",
+      "name": "walkccc LeetCode Solutions",
+      "author": "P.-Y. Chen (walkccc)",
+      "repository": "https://github.com/walkccc/LeetCode",
+      "commit": "8c0c473c62ad66ca0ef805b83f92b8f1d46ea473",
+      "license": "MIT",
+      "licensePath": "licenses/walkccc-MIT.txt",
+      "kind": "LeetCode solutions",
+      "importedAt": "2026-08-11T04:44:40.901Z",
+      "implementationCount": 10411,
+      "problemCount": 3559,
+      "languageCounts": {
+        "C++": 3495,
+        "Java": 3371,
+        "Python": 3169,
+        "SQL": 307,
+        "TypeScript": 69
+      }
+    },
+    {
+      "id": "algorithms-cpp",
+      "name": "TheAlgorithms C++",
+      "author": "TheAlgorithms contributors",
+      "repository": "https://github.com/TheAlgorithms/C-Plus-Plus",
+      "commit": "b9c118fb5dca86f6325e816481959e1e6c360373",
+      "license": "MIT",
+      "licensePath": "licenses/thealgorithms-cpp-MIT.txt",
+      "kind": "Algorithm references",
+      "importedAt": "2026-08-11T04:44:40.901Z",
+      "implementationCount": 360,
+      "problemCount": 360,
+      "languageCounts": {
+        "C++": 360
+      }
+    },
+    {
+      "id": "algorithms-python",
+      "name": "TheAlgorithms Python",
+      "author": "TheAlgorithms contributors",
+      "repository": "https://github.com/TheAlgorithms/Python",
+      "commit": "f5988cc09713315817df6a7e327e258013a94440",
+      "license": "MIT",
+      "licensePath": "licenses/thealgorithms-python-MIT.md",
+      "kind": "Algorithm references",
+      "importedAt": "2026-08-11T04:44:40.901Z",
+      "implementationCount": 1145,
+      "problemCount": 969,
+      "languageCounts": {
+        "Python": 1145
+      }
+    }
+  ]
 }

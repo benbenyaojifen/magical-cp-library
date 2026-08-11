@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#efe7d7" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="description" content="Search more than 7,000 MIT-licensed C++ and Python competitive-programming implementations with clear source and licence attribution." />
+    <meta name="description" content="Search more than 19,000 credited competitive-programming solutions and algorithm references in C++, Python, Java, TypeScript, and SQL." />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/community/" />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
     <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
@@ -22,7 +22,7 @@
         <nav aria-label="Community archive navigation">
           <a href="../#solutions">Curated library</a>
           <a href="../#lab">Code Lab</a>
-          <a href="./LICENSE.md">MIT licence</a>
+          <a href="./provenance.json">Sources</a>
         </nav>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to moon theme" aria-pressed="false">
           <span aria-hidden="true">◐</span><span id="theme-label">Moon</span>
@@ -33,11 +33,11 @@
     <main>
       <section class="community-hero" aria-labelledby="community-title">
         <div>
-          <p class="eyebrow">Open-source expansion · fully attributed</p>
+          <p class="eyebrow">Community solution bank · credited sources</p>
           <h1 id="community-title">Community<br />Code Archive.</h1>
         </div>
         <div class="community-hero-copy">
-          <p>Search thousands of C++ and Python implementations without mixing them up with the owner’s original solutions. Every file keeps its author, repository, pinned source revision, and MIT licence.</p>
+          <p>Search problem solutions and algorithm references across five languages. Use them as guidance when you are genuinely stuck, understand the idea, then write your own solution.</p>
           <div class="hero-actions">
             <button id="daily-pick" type="button">Open today’s challenge <span>→</span></button>
             <button class="secondary-button" id="random-pick" type="button">Surprise me</button>
@@ -46,10 +46,10 @@
       </section>
 
       <section class="community-stats" aria-label="Community archive summary">
-        <article><strong id="implementation-count">7,000+</strong><span>implementations</span></article>
-        <article><strong id="problem-count">3,500+</strong><span>problem names</span></article>
-        <article><strong>2</strong><span>languages</span></article>
-        <article><strong>MIT</strong><span>licence</span></article>
+        <article><strong id="implementation-count">19,000+</strong><span>implementations</span></article>
+        <article><strong id="problem-count">4,000+</strong><span>searchable titles</span></article>
+        <article><strong id="language-count">5</strong><span>languages</span></article>
+        <article><strong id="source-count">4</strong><span>credited sources</span></article>
       </section>
 
       <section class="archive-workspace" aria-labelledby="archive-title">
@@ -57,7 +57,7 @@
           <div class="archive-heading">
             <p class="eyebrow">Find an implementation</p>
             <h2 id="archive-title">Search the archive.</h2>
-            <p>These community files are preserved separately from the curated library. Platform harness code may be required before running them.</p>
+            <p>Community code stays separate from the owner’s curated library. Search by problem, algorithm, category, language, or source.</p>
           </div>
 
           <label class="archive-search">
@@ -66,12 +66,11 @@
             <kbd>/</kbd>
           </label>
 
-          <div class="language-filters" aria-label="Filter by language">
+          <div class="language-filters" id="language-filters" aria-label="Filter by language">
             <button class="active" type="button" data-language="All">All <span id="all-count">—</span></button>
-            <button type="button" data-language="C++">C++ <span id="cpp-count">—</span></button>
-            <button type="button" data-language="Python">Python <span id="python-count">—</span></button>
           </div>
 
+          <label class="source-filter"><span>Source</span><select id="source-filter"><option value="All">All credited sources</option></select></label>
           <label class="saved-filter"><input id="saved-only" type="checkbox" /> Saved only <span id="saved-count">0</span></label>
 
           <div class="result-summary" id="result-summary" aria-live="polite">Loading the archive…</div>
@@ -99,13 +98,13 @@
             <div class="viewer-actions">
               <a id="open-problem" href="#" target="_blank" rel="noreferrer">Open problem ↗</a>
               <a id="open-source" href="#" target="_blank" rel="noreferrer">Original source ↗</a>
-              <a id="download-code" href="#" download>Download</a>
+              <button id="download-code" type="button">Download</button>
               <button id="copy-code" type="button">Copy code</button>
             </div>
 
             <div class="source-notice">
               <strong>Community implementation</strong>
-              <span>Author: <a href="https://github.com/kamyu104" target="_blank" rel="noreferrer">kamyu104</a> · <a href="./LICENSE.md">MIT licence</a> · not an original Magical CP Library solution</span>
+              <span>Found in <a id="notice-source" href="#" target="_blank" rel="noreferrer">a credited source</a> by <span id="notice-author">its contributors</span> · <a id="notice-license" href="#">licence</a> · not an original Magical CP Library solution</span>
             </div>
 
             <pre tabindex="0" aria-label="Selected community source code"><code id="source-code">Loading source…</code></pre>
@@ -113,14 +112,10 @@
         </article>
       </section>
 
-      <section class="archive-principles" aria-labelledby="principles-title">
-        <p class="eyebrow">Quality before quantity</p>
-        <h2 id="principles-title">A bigger library, with a visible paper trail.</h2>
-        <div>
-          <article><span>01</span><h3>No copied statements</h3><p>The archive links to the original problem page instead of republishing platform-owned statements.</p></article>
-          <article><span>02</span><h3>Source stays visible</h3><p>Every implementation points back to its exact upstream file and pinned repository revision.</p></article>
-          <article><span>03</span><h3>Licences travel with code</h3><p>The upstream MIT notice is shipped beside the imported files and linked from every viewer.</p></article>
-        </div>
+      <section class="study-disclaimer" aria-labelledby="study-disclaimer-title">
+        <p class="eyebrow">Study responsibly</p>
+        <h2 id="study-disclaimer-title">Guidance, not a shortcut.</h2>
+        <p>These community solutions were found in other credited open-source repositories. Magical CP Library does not claim their work or intend to take anyone’s credit. Do not copy a solution directly into a submission. Try the problem first, use the code only when you are truly stuck, understand why it works, and then write your own solution.</p>
       </section>
     </main>
 
