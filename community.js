@@ -1,0 +1,209 @@
+(function () {
+  "use strict";
+
+  const PAGE_SIZE = 80;
+  const savedKey = "magical-cp-community-saved";
+  const list = document.getElementById("implementation-list");
+  const search = document.getElementById("community-search");
+  const summary = document.getElementById("result-summary");
+  const loadMore = document.getElementById("load-more");
+  const savedOnly = document.getElementById("saved-only");
+  const viewerEmpty = document.getElementById("viewer-empty");
+  const viewerContent = document.getElementById("viewer-content");
+  const sourceCode = document.getElementById("source-code");
+  const numberFormat = new Intl.NumberFormat();
+  let manifest = null;
+  let filtered = [];
+  let selected = null;
+  let language = "All";
+  let visibleCount = PAGE_SIZE;
+  let sourceController = null;
+  let saved = readSaved();
+
+  function readSaved() {
+    try {
+      const value = JSON.parse(localStorage.getItem(savedKey) || "[]");
+      return new Set(Array.isArray(value) ? value.filter((item) => typeof item === "string") : []);
+    } catch {
+      return new Set();
+    }
+  }
+
+  function writeSaved() {
+    localStorage.setItem(savedKey, JSON.stringify(Array.from(saved)));
+    document.getElementById("saved-count").textContent = numberFormat.format(saved.size);
+  }
+
+  function normalize(value) {
+    return String(value || "").trim().toLowerCase();
+  }
+
+  function sourceUrl(entry) {
+    return `${manifest.source.repository}/blob/${manifest.source.commit}/${entry.sourcePath.split("/").map(encodeURIComponent).join("/")}`;
+  }
+
+  function problemUrl(entry) {
+    return `https://leetcode.com/problems/${encodeURIComponent(entry.slug)}/`;
+  }
+
+  function currentDayIndex(length) {
+    const date = new Date();
+    const key = `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`;
+    let hash = 2166136261;
+    for (const character of key) {
+      hash ^= character.charCodeAt(0);
+      hash = Math.imul(hash, 16777619);
+    }
+    return Math.abs(hash) % Math.max(1, length);
+  }
+
+  function renderCounts() {
+    const counts = manifest.source.languageCounts;
+    document.getElementById("implementation-count").textContent = numberFormat.format(manifest.source.implementationCount);
+    document.getElementById("problem-count").textContent = numberFormat.format(manifest.source.problemCount);
+    document.getElementById("all-count").textContent = numberFormat.format(manifest.entries.length);
+    document.getElementById("cpp-count").textContent = numberFormat.format(counts["C++"] || 0);
+    document.getElementById("python-count").textContent = numberFormat.format(counts.Python || 0);
+    writeSaved();
+  }
+
+  function applyFilters() {
+    const query = normalize(search.value);
+    filtered = manifest.entries.filter((entry) => {
+      if (language !== "All" && entry.language !== language) return false;
+      if (savedOnly.checked && !saved.has(entry.id)) return false;
+      return !query || entry.title.toLowerCase().includes(query) || entry.slug.includes(query);
+    });
+    visibleCount = PAGE_SIZE;
+    renderList();
+  }
+
+  function renderList() {
+    list.replaceChildren();
+    const fragment = document.createDocumentFragment();
+    filtered.slice(0, visibleCount).forEach((entry, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `implementation-card${selected && selected.id === entry.id ? " selected" : ""}`;
+      button.setAttribute("aria-current", selected && selected.id === entry.id ? "true" : "false");
+      button.addEventListener("click", () => selectEntry(entry));
+
+      const number = document.createElement("span");
+      number.className = "implementation-number";
+      number.textContent = String(index + 1).padStart(4, "0");
+      const copy = document.createElement("span");
+      copy.className = "implementation-copy";
+      const title = document.createElement("strong");
+      title.textContent = entry.title;
+      const meta = document.createElement("small");
+      meta.textContent = `${entry.language} · ${numberFormat.format(entry.lines)} lines${saved.has(entry.id) ? " · saved" : ""}`;
+      copy.append(title, meta);
+      const arrow = document.createElement("span");
+      arrow.className = "implementation-arrow";
+      arrow.textContent = "→";
+      button.append(number, copy, arrow);
+      fragment.appendChild(button);
+    });
+    list.appendChild(fragment);
+    summary.textContent = `${numberFormat.format(filtered.length)} implementations match`;
+    loadMore.hidden = visibleCount >= filtered.length;
+  }
+
+  async function selectEntry(entry, updateHash = true) {
+    selected = entry;
+    renderList();
+    viewerEmpty.hidden = true;
+    viewerContent.hidden = false;
+    document.getElementById("viewer-title").textContent = entry.title;
+    document.getElementById("viewer-language").textContent = `${entry.language} community implementation`;
+    document.getElementById("viewer-meta").textContent = `${numberFormat.format(entry.lines)} lines · imported from ${manifest.source.author}`;
+    document.getElementById("open-problem").href = problemUrl(entry);
+    document.getElementById("open-source").href = sourceUrl(entry);
+    document.getElementById("download-code").href = entry.asset;
+    document.getElementById("download-code").download = entry.sourcePath.split("/").pop();
+    const saveButton = document.getElementById("save-entry");
+    saveButton.setAttribute("aria-pressed", String(saved.has(entry.id)));
+    saveButton.textContent = saved.has(entry.id) ? "Saved" : "Save";
+    sourceCode.textContent = "Loading source…";
+    if (updateHash) history.replaceState(null, "", `#${encodeURIComponent(entry.id)}`);
+
+    if (sourceController) sourceController.abort();
+    sourceController = new AbortController();
+    try {
+      const response = await fetch(entry.asset, { signal: sourceController.signal });
+      if (!response.ok) throw new Error("Source unavailable");
+      sourceCode.textContent = await response.text();
+    } catch (error) {
+      if (error.name !== "AbortError") sourceCode.textContent = "// This source file could not be loaded.";
+    }
+
+    if (window.matchMedia("(max-width: 920px)").matches) {
+      viewerContent.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  function chooseRandom() {
+    const pool = filtered.length ? filtered : manifest.entries;
+    if (!pool.length) return;
+    selectEntry(pool[Math.floor(Math.random() * pool.length)]);
+  }
+
+  async function loadManifest() {
+    try {
+      const response = await fetch("manifest.json");
+      if (!response.ok) throw new Error("Archive unavailable");
+      manifest = await response.json();
+      renderCounts();
+      applyFilters();
+      const requestedId = decodeURIComponent(location.hash.slice(1));
+      const requested = manifest.entries.find((entry) => entry.id === requestedId);
+      const daily = manifest.entries[currentDayIndex(manifest.entries.length)];
+      if (requested || daily) await selectEntry(requested || daily, Boolean(requested));
+    } catch {
+      summary.textContent = "The community archive could not be loaded right now.";
+      summary.classList.add("error");
+    }
+  }
+
+  search.addEventListener("input", applyFilters);
+  savedOnly.addEventListener("change", applyFilters);
+  document.querySelectorAll("[data-language]").forEach((button) => {
+    button.addEventListener("click", () => {
+      language = button.dataset.language;
+      document.querySelectorAll("[data-language]").forEach((item) => item.classList.toggle("active", item === button));
+      applyFilters();
+    });
+  });
+  loadMore.addEventListener("click", () => {
+    visibleCount += PAGE_SIZE;
+    renderList();
+  });
+  document.getElementById("random-pick").addEventListener("click", chooseRandom);
+  document.getElementById("daily-pick").addEventListener("click", () => {
+    if (manifest && manifest.entries.length) selectEntry(manifest.entries[currentDayIndex(manifest.entries.length)]);
+  });
+  document.getElementById("save-entry").addEventListener("click", () => {
+    if (!selected) return;
+    if (saved.has(selected.id)) saved.delete(selected.id);
+    else saved.add(selected.id);
+    writeSaved();
+    renderList();
+    const button = document.getElementById("save-entry");
+    button.setAttribute("aria-pressed", String(saved.has(selected.id)));
+    button.textContent = saved.has(selected.id) ? "Saved" : "Save";
+  });
+  document.getElementById("copy-code").addEventListener("click", async (event) => {
+    if (!selected || sourceCode.textContent.startsWith("// This source")) return;
+    await navigator.clipboard.writeText(sourceCode.textContent);
+    event.currentTarget.textContent = "Copied";
+    setTimeout(() => { event.currentTarget.textContent = "Copy code"; }, 1400);
+  });
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "/" && document.activeElement !== search) {
+      event.preventDefault();
+      search.focus();
+    }
+  });
+
+  loadManifest();
+})();

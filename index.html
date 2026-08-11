@@ -2,26 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content="noindex, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#efe7d7" />
     <meta name="application-name" content="Magical CP Library" />
-    <meta name="description" content="Magical CP Library has moved to its canonical website." />
+    <meta name="apple-mobile-web-app-title" content="Magical CP Library" />
+    <meta name="google-site-verification" content="r4wyA8bMLsNk9Q7Bk8vSClCUsZ1oqYWG7KfJ7kOd0C8" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta
+      name="description"
+      content="Explore 246 curated C++ solutions plus 7,216 clearly attributed MIT-licensed community implementations in C++ and Python, with code-aware tools and original problem links."
+    />
+    <meta property="og:title" content="Magical CP Library" />
+    <meta
+      property="og:description"
+      content="A searchable competitive-programming library with 7,462 curated and open-source implementations, original problem links, and code-aware learning tools."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Magical CP Library" />
+    <meta property="og:url" content="https://magical-cp-library.vercel.app/" />
+    <meta
+      property="og:image"
+      content="https://magical-cp-library.vercel.app/og.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://magical-cp-library.vercel.app/" />
-    <meta http-equiv="refresh" content="0; url=https://magical-cp-library.vercel.app/" />
-    <title>Magical CP Library</title>
-    <script>
-      const path = location.pathname.replace(/^\/magical-cp-library\/?/, "/");
-      location.replace(`https://magical-cp-library.vercel.app${path}${location.search}${location.hash}`);
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <script>if(location.hostname.endsWith(".github.io")){const m=document.querySelector('meta[name="robots"]');if(m)m.content="noindex, follow"}</script>
+    <script>try{document.documentElement.dataset.theme=localStorage.getItem("magical-cp-theme")==="moon"?"moon":"day"}catch{document.documentElement.dataset.theme="day"}</script>
+    <script>if(location.hostname.endsWith(".vercel.app")){window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};const s=document.createElement("script");s.defer=true;s.src="/_vercel/insights/script.js";document.head.appendChild(s);const a=document.createElement("script");a.defer=true;a.src="/api/analytics-config";document.head.appendChild(a)}</script>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"WebSite","@id":"https://magical-cp-library.vercel.app/#website","name":"Magical CP Library","alternateName":"Magical CP","url":"https://magical-cp-library.vercel.app/","description":"A searchable competitive-programming library with curated C++ solutions, thousands of attributed community implementations, verified problem links, and interactive code tools.","publisher":{"@type":"Organization","name":"Magical CP Library","url":"https://magical-cp-library.vercel.app/","logo":{"@type":"ImageObject","url":"https://magical-cp-library.vercel.app/icon-512.png"}}}
     </script>
     <style>
-      body{align-items:center;background:#10151f;color:#f2eee7;display:grid;font-family:system-ui,sans-serif;min-height:100vh;margin:0;place-items:center;text-align:center}a{color:#eefc18}
+      .boot-screen{align-items:center;background:#efe7d7;color:#151515;display:flex;flex-direction:column;gap:12px;justify-content:center;min-height:100vh;text-align:center}.boot-mark{align-items:center;background:#151515;color:#eefc18;display:flex;font:800 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;height:48px;justify-content:center;width:48px}.boot-screen strong{font:500 clamp(28px,5vw,54px)/1 "Iowan Old Style",Georgia,serif;letter-spacing:-.045em}.boot-screen p{color:#68645e;font:700 11px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.08em;margin:2px 0 0;text-transform:uppercase}.boot-error,.boot-retry{display:none}.boot-retry{border:1px solid currentColor;color:inherit;font:800 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;margin-top:8px;padding:12px 18px;text-decoration:none;text-transform:uppercase}.boot-failed .boot-loading{display:none}.boot-failed .boot-error,.boot-failed .boot-retry{display:block}[data-theme="moon"] .boot-screen{background:#10151f;color:#f2eee7}[data-theme="moon"] .boot-mark{background:#eefc18;color:#10151f}[data-theme="moon"] .boot-screen p{color:#9ba6b6}
     </style>
+    <script>addEventListener("error",e=>{if(e.target&&e.target.tagName==="SCRIPT")document.documentElement.classList.add("boot-failed")},true)</script>
+    <title>Magical CP Library</title>
+    <script type="module" crossorigin src="./assets/app.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/app.css">
   </head>
   <body>
-    <main>
-      <h1>Magical CP Library</h1>
-      <p>The library has moved to its canonical home.</p>
-      <a href="https://magical-cp-library.vercel.app/">Open Magical CP Library</a>
-    </main>
+    <div id="root">
+      <main class="boot-screen" aria-live="polite">
+        <span class="boot-mark" aria-hidden="true">CP</span>
+        <strong>Magical CP Library</strong>
+        <p class="boot-loading">Opening the library…</p>
+        <p class="boot-error">The library could not load.</p>
+        <a class="boot-retry" href="/">Reload</a>
+      </main>
+    </div>
   </body>
 </html>

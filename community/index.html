@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#10151f" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Search more than 7,000 MIT-licensed C++ and Python competitive-programming implementations with clear source and licence attribution." />
+    <link rel="canonical" href="https://magical-cp-library.vercel.app/community/" />
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../community.css" />
+    <script>if(location.hostname.endsWith(".github.io")){location.replace("https://magical-cp-library.vercel.app/community/"+location.search+location.hash)}</script>
+    <title>Community Code Archive — Magical CP Library</title>
+  </head>
+  <body>
+    <header class="community-header">
+      <a class="community-brand" href="../" aria-label="Back to Magical CP Library">
+        <span>CP</span><strong>Magical CP Library</strong>
+      </a>
+      <nav aria-label="Community archive navigation">
+        <a href="../#solutions">Curated library</a>
+        <a href="../#code-lab">Code Lab</a>
+        <a href="./LICENSE.md">MIT licence</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="community-hero" aria-labelledby="community-title">
+        <div>
+          <p class="eyebrow">Open-source expansion · fully attributed</p>
+          <h1 id="community-title">Community<br />Code Archive.</h1>
+        </div>
+        <div class="community-hero-copy">
+          <p>Search thousands of C++ and Python implementations without mixing them up with the owner’s original solutions. Every file keeps its author, repository, pinned source revision, and MIT licence.</p>
+          <div class="hero-actions">
+            <button id="daily-pick" type="button">Open today’s challenge <span>→</span></button>
+            <button class="secondary-button" id="random-pick" type="button">Surprise me</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="community-stats" aria-label="Community archive summary">
+        <article><strong id="implementation-count">7,000+</strong><span>implementations</span></article>
+        <article><strong id="problem-count">3,500+</strong><span>problem names</span></article>
+        <article><strong>2</strong><span>languages</span></article>
+        <article><strong>MIT</strong><span>licence</span></article>
+      </section>
+
+      <section class="archive-workspace" aria-labelledby="archive-title">
+        <aside class="archive-sidebar">
+          <div class="archive-heading">
+            <p class="eyebrow">Find an implementation</p>
+            <h2 id="archive-title">Search the archive.</h2>
+            <p>These community files are preserved separately from the curated library. Platform harness code may be required before running them.</p>
+          </div>
+
+          <label class="archive-search">
+            <span>Problem or keyword</span>
+            <input id="community-search" type="search" placeholder="Try binary tree, palindrome, graph…" autocomplete="off" />
+            <kbd>/</kbd>
+          </label>
+
+          <div class="language-filters" aria-label="Filter by language">
+            <button class="active" type="button" data-language="All">All <span id="all-count">—</span></button>
+            <button type="button" data-language="C++">C++ <span id="cpp-count">—</span></button>
+            <button type="button" data-language="Python">Python <span id="python-count">—</span></button>
+          </div>
+
+          <label class="saved-filter"><input id="saved-only" type="checkbox" /> Saved only <span id="saved-count">0</span></label>
+
+          <div class="result-summary" id="result-summary" aria-live="polite">Loading the archive…</div>
+          <div class="implementation-list" id="implementation-list" aria-label="Community implementations"></div>
+          <button class="load-more" id="load-more" type="button" hidden>Load more</button>
+        </aside>
+
+        <article class="community-viewer" aria-live="polite">
+          <div class="viewer-empty" id="viewer-empty">
+            <span aria-hidden="true">{ }</span>
+            <h2>Choose an implementation.</h2>
+            <p>Select a result, use today’s challenge, or ask for a random pick.</p>
+          </div>
+
+          <div class="viewer-content" id="viewer-content" hidden>
+            <header class="viewer-header">
+              <div>
+                <p class="viewer-kicker" id="viewer-language">Community source</p>
+                <h2 id="viewer-title"></h2>
+                <p id="viewer-meta"></p>
+              </div>
+              <button id="save-entry" type="button" aria-pressed="false">Save</button>
+            </header>
+
+            <div class="viewer-actions">
+              <a id="open-problem" href="#" target="_blank" rel="noreferrer">Open problem ↗</a>
+              <a id="open-source" href="#" target="_blank" rel="noreferrer">Original source ↗</a>
+              <a id="download-code" href="#" download>Download</a>
+              <button id="copy-code" type="button">Copy code</button>
+            </div>
+
+            <div class="source-notice">
+              <strong>Community implementation</strong>
+              <span>Author: <a href="https://github.com/kamyu104" target="_blank" rel="noreferrer">kamyu104</a> · <a href="./LICENSE.md">MIT licence</a> · not an original Magical CP Library solution</span>
+            </div>
+
+            <pre tabindex="0" aria-label="Selected community source code"><code id="source-code">Loading source…</code></pre>
+          </div>
+        </article>
+      </section>
+
+      <section class="archive-principles" aria-labelledby="principles-title">
+        <p class="eyebrow">Quality before quantity</p>
+        <h2 id="principles-title">A bigger library, with a visible paper trail.</h2>
+        <div>
+          <article><span>01</span><h3>No copied statements</h3><p>The archive links to the original problem page instead of republishing platform-owned statements.</p></article>
+          <article><span>02</span><h3>Source stays visible</h3><p>Every implementation points back to its exact upstream file and pinned repository revision.</p></article>
+          <article><span>03</span><h3>Licences travel with code</h3><p>The upstream MIT notice is shipped beside the imported files and linked from every viewer.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="../">Magical CP Library</a>
+      <span>Curated originals + clearly separated open-source community code</span>
+      <a href="./provenance.json">Import record ↗</a>
+    </footer>
+    <script src="../community.js" defer></script>
+  </body>
+</html>
